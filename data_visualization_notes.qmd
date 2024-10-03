@@ -42,5 +42,7 @@ The `echo: false` option disables the printing of code (only output is displayed
 
 
 ```{r}
+# Write your first bit of code here
+
 
 ```
