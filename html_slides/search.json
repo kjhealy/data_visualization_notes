@@ -2450,22 +2450,43 @@
     "text": "An IDE for Meals"
   },
   {
+    "objectID": "slides/02-about-r.html#your-code-is-whats-real-in-your-project",
+    "href": "slides/02-about-r.html#your-code-is-whats-real-in-your-project",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Your code is what’s real in your project",
+    "text": "Your code is what’s real in your project"
+  },
+  {
+    "objectID": "slides/02-about-r.html#consider-not-showing-output-inline",
+    "href": "slides/02-about-r.html#consider-not-showing-output-inline",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Consider not showing output inline",
+    "text": "Consider not showing output inline"
+  },
+  {
     "objectID": "slides/02-about-r.html#where-we-want-to-end-up",
     "href": "slides/02-about-r.html#where-we-want-to-end-up",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "Where we want to end up",
-    "text": "Where we want to end up\n\nPDF out"
+    "text": "Where we want to end up"
   },
   {
     "objectID": "slides/02-about-r.html#where-we-want-to-end-up-1",
     "href": "slides/02-about-r.html#where-we-want-to-end-up-1",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "Where we want to end up",
-    "text": "Where we want to end up\n\nHTML out"
+    "text": "Where we want to end up\n\nPDF out"
   },
   {
     "objectID": "slides/02-about-r.html#where-we-want-to-end-up-2",
     "href": "slides/02-about-r.html#where-we-want-to-end-up-2",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Where we want to end up",
+    "text": "Where we want to end up\n\nHTML out"
+  },
+  {
+    "objectID": "slides/02-about-r.html#where-we-want-to-end-up-3",
+    "href": "slides/02-about-r.html#where-we-want-to-end-up-3",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "Where we want to end up",
     "text": "Where we want to end up\n\nWord out"
@@ -2517,7 +2538,7 @@
     "href": "slides/02-about-r.html#loading-the-tidyverse-libraries",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "Loading the tidyverse libraries",
-    "text": "Loading the tidyverse libraries\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\nThe tidyverse has several components.\nWe’ll return to this message about Conflicts later.\nAgain, the code and messages you see here is actual R output, produced at the same time as the slide."
+    "text": "Loading the tidyverse libraries\nlibrary(tidyverse)\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package to force all conflicts to become errors\n\nThe tidyverse has several components.\nWe’ll return to this message about Conflicts later.\nAgain, the code and messages you see here is actual R output, produced at the same time as the slide."
   },
   {
     "objectID": "slides/02-about-r.html#tidyverse-components",
@@ -2870,32 +2891,32 @@
     "text": "The scope of names\n\nmean(x) # argument names are internal to functions\n\n[1] 5.5\n\nmean(x = x)\n\n[1] 5.5\n\nmean(x = y)\n\n[1] 95\n\nx\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ny\n\n [1]  90  91  92  93  94  95  96  97  98  99 100"
   },
   {
+    "objectID": "slides/02-about-r.html#vectors-come-in-types-objects-in-classes",
+    "href": "slides/02-about-r.html#vectors-come-in-types-objects-in-classes",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "5. Vectors come in types; Objects in classes",
+    "text": "5. Vectors come in types; Objects in classes\nI’m going to speak somewhat loosely here for now, and gloss over some distinctions between object classes and data structures, as well as kinds of objects and their attributes."
+  },
+  {
     "objectID": "slides/02-about-r.html#objects-come-in-types-and-classes",
     "href": "slides/02-about-r.html#objects-come-in-types-and-classes",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "5. Objects come in types and classes",
-    "text": "5. Objects come in types and classes\nI’m going to speak somewhat loosely here for now, and gloss over some distinctions between object classes and data structures, as well as kinds of objects and their attributes."
+    "text": "5. Objects come in types and classes\nI’m going to speak somewhat loosely here for now, and gloss over some distinctions between object classes and data structures, as well as kinds of objects and their attributes.\nThe object inspector in RStudio is your friend.\nYou can ask an object what it is at the console, too:\n\nclass(my_numbers)\n\n[1] \"numeric\"\n\ntypeof(my_numbers)\n\n[1] \"double\""
   },
   {
     "objectID": "slides/02-about-r.html#objects-come-in-types-and-classes-1",
     "href": "slides/02-about-r.html#objects-come-in-types-and-classes-1",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "5. Objects come in types and classes",
-    "text": "5. Objects come in types and classes\nI’m going to speak somewhat loosely here for now, and gloss over some distinctions between object classes and data structures, as well as kinds of objects and their attributes.\nThe object inspector in RStudio is your friend.\nYou can ask an object what it is at the console, too:\n\nclass(my_numbers)\n\n[1] \"numeric\"\n\ntypeof(my_numbers)\n\n[1] \"double\""
+    "text": "5. Objects come in types and classes\nObjects can have more than one (nested) class:\n\nsummary(my_numbers)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   1.00    1.75    3.00    6.25    6.25   25.00 \n\nmy_smry &lt;- summary(my_numbers) # remember, outputs can be assigned to a name, creating an object\n\nclass(summary(my_numbers)) # functions can be nested, and are evaluated from the inside out\n\n[1] \"summaryDefault\" \"table\"         \n\nclass(my_smry) # equivalent to the previous line\n\n[1] \"summaryDefault\" \"table\""
   },
   {
     "objectID": "slides/02-about-r.html#objects-come-in-types-and-classes-2",
     "href": "slides/02-about-r.html#objects-come-in-types-and-classes-2",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "5. Objects come in types and classes",
-    "text": "5. Objects come in types and classes\nObjects can have more than one (nested) class:\n\nsummary(my_numbers)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   1.00    1.75    3.00    6.25    6.25   25.00 \n\nmy_smry &lt;- summary(my_numbers) # remember, outputs can be assigned to a name, creating an object\n\nclass(summary(my_numbers)) # functions can be nested, and are evaluated from the inside out\n\n[1] \"summaryDefault\" \"table\"         \n\nclass(my_smry) # equivalent to the previous line\n\n[1] \"summaryDefault\" \"table\""
-  },
-  {
-    "objectID": "slides/02-about-r.html#vectors-come-in-types-objects-in-classes",
-    "href": "slides/02-about-r.html#vectors-come-in-types-objects-in-classes",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "5. Vectors come in types; Objects in classes",
-    "text": "5. Vectors come in types; Objects in classes\n\ntypeof(my_smry)\n\n[1] \"double\"\n\nattributes(my_smry)\n\n$names\n[1] \"Min.\"    \"1st Qu.\" \"Median\"  \"Mean\"    \"3rd Qu.\" \"Max.\"   \n\n$class\n[1] \"summaryDefault\" \"table\"         \n\n## In this case, the functions extract the corresponding attribute\nclass(my_smry)\n\n[1] \"summaryDefault\" \"table\"         \n\nnames(my_smry)\n\n[1] \"Min.\"    \"1st Qu.\" \"Median\"  \"Mean\"    \"3rd Qu.\" \"Max.\""
+    "text": "5. Objects come in types and classes\n\ntypeof(my_smry)\n\n[1] \"double\"\n\nattributes(my_smry)\n\n$names\n[1] \"Min.\"    \"1st Qu.\" \"Median\"  \"Mean\"    \"3rd Qu.\" \"Max.\"   \n\n$class\n[1] \"summaryDefault\" \"table\"         \n\n## In this case, the functions extract the corresponding attribute\nclass(my_smry)\n\n[1] \"summaryDefault\" \"table\"         \n\nnames(my_smry)\n\n[1] \"Min.\"    \"1st Qu.\" \"Median\"  \"Mean\"    \"3rd Qu.\" \"Max.\""
   },
   {
     "objectID": "slides/02-about-r.html#types-of-vector",
@@ -2944,7 +2965,7 @@
     "href": "slides/02-about-r.html#a-table-of-data-is-a-kind-of-list-1",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "A table of data is a kind of list",
-    "text": "A table of data is a kind of list\n\nLists can be internally heterogenous. Underneath, most complex R objects are some kind of list with different components.\nA data frame is a list of vectors of the same length, where the vectors can be of different types (e.g. numeric, character, logical, etc)\nA tibble is an enhanced data frame\n\n\nTibbles have an enhanced print method, never coerce strings to factors, and provide stricter subsetting methods. (HW)\nAgain the object inspector is helpful here"
+    "text": "A table of data is a kind of list\n\nLists can be heterogenous. Underneath, most complex R objects are some kind of list with different components that can be accessed by some function that knows their names.\nA data frame is a list of vectors of the same length, where the vectors can be of different types (e.g. numeric, character, logical, etc).\nA data frame is a natural representation of what most real tables of data look like. Having it be a basic sort of entity in the programming language IS ONE OF R’s BEST IDEAS AND EASILY UNDERRATED!\nA tibble is an enhanced data frame\n\n\nTibbles have an enhanced print method, never coerce strings to factors, and provide stricter subsetting methods. (HW)\nAgain the object inspector is helpful here"
   },
   {
     "objectID": "slides/02-about-r.html#some-classes-are-versions-of-others",
