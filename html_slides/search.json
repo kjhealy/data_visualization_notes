@@ -2538,7 +2538,7 @@
     "href": "slides/02-about-r.html#loading-the-tidyverse-libraries",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "Loading the tidyverse libraries",
-    "text": "Loading the tidyverse libraries\nlibrary(tidyverse)\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package to force all conflicts to become errors\n\nThe tidyverse has several components.\nWe’ll return to this message about Conflicts later.\nAgain, the code and messages you see here is actual R output, produced at the same time as the slide."
+    "text": "Loading the tidyverse libraries\nlibrary(tidyverse)\n── Attaching core tidyverse packages ────────────────────────────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ──────────────────────────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package to force all conflicts to become errors\n\nThe tidyverse has several components.\nWe’ll return to this message about Conflicts later."
   },
   {
     "objectID": "slides/02-about-r.html#tidyverse-components",
@@ -2583,76 +2583,6 @@
     "text": "Boolean and Logical operators\nLogical equality and inequality (yielding a TRUE or FALSE result) is done with == and !=. Other logical operators include &lt;, &gt;, &lt;=, &gt;=, and ! for negation.\n\n## A logical test\n2 == 2 # Write `=` twice\n\n[1] TRUE\n\n\n\n## This will cause an error, because R will think you are trying to assign a value\n2 = 2\n\n## Error in 2 = 2 : invalid (do_set) left-hand side to assignment\n\n\n3 != 7 # Write `!` and then `=` to make `!=`\n\n[1] TRUE"
   },
   {
-    "objectID": "slides/02-about-r.html#watch-out",
-    "href": "slides/02-about-r.html#watch-out",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "Watch out!",
-    "text": "Watch out!\nHere’s a gotcha. You might think you could write 3 &lt; 5 & 7 and have it be interpreted as “Three is less than five and also less than seven [True or False?]”:\n\n3 &lt; 5 & 7\n\n[1] TRUE\n\n\nIt seems to work!"
-  },
-  {
-    "objectID": "slides/02-about-r.html#watch-out-1",
-    "href": "slides/02-about-r.html#watch-out-1",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "Watch out!",
-    "text": "Watch out!\nBut now try 3 &lt; 5 & 1, where your intention is “Three is less than five and also less than one [True or False?]”\n\n3 &lt; 5 & 1\n\n[1] TRUE\n\n\n\nWhat’s happening is that 3 &lt; 5 is evaluated first, and resolves to TRUE, leaving us with the expression TRUE & 1.\nR interprets this as TRUE & as.logical(1).\nIn Boolean algebra, 1 resolves to TRUE. Any other number is FALSE. So,"
-  },
-  {
-    "objectID": "slides/02-about-r.html#watch-out-2",
-    "href": "slides/02-about-r.html#watch-out-2",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "Watch out!",
-    "text": "Watch out!\n\nTRUE & as.logical(1)\n\n[1] TRUE\n\n\n\n3 &lt; 5 & 3 &lt; 1\n\n[1] FALSE\n\n\n\nYou have to make your comparisons explicit."
-  },
-  {
-    "objectID": "slides/02-about-r.html#logic-and-floating-point-arithmetic",
-    "href": "slides/02-about-r.html#logic-and-floating-point-arithmetic",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "Logic and floating point arithmetic",
-    "text": "Logic and floating point arithmetic\nLet’s evaluate 0.6 + 0.2 == 0.8"
-  },
-  {
-    "objectID": "slides/02-about-r.html#logic-and-floating-point-arithmetic-1",
-    "href": "slides/02-about-r.html#logic-and-floating-point-arithmetic-1",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "Logic and floating point arithmetic",
-    "text": "Logic and floating point arithmetic\nLet’s evaluate 0.6 + 0.2 == 0.8\n\n0.6 + 0.2 == 0.8\n\n[1] TRUE"
-  },
-  {
-    "objectID": "slides/02-about-r.html#logic-and-floating-point-arithmetic-2",
-    "href": "slides/02-about-r.html#logic-and-floating-point-arithmetic-2",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "Logic and floating point arithmetic",
-    "text": "Logic and floating point arithmetic\nLet’s evaluate 0.6 + 0.2 == 0.8\n\n0.6 + 0.2 == 0.8\n\n[1] TRUE\n\n\nNow let’s try 0.6 + 0.3 == 0.9"
-  },
-  {
-    "objectID": "slides/02-about-r.html#logic-and-floating-point-arithmetic-3",
-    "href": "slides/02-about-r.html#logic-and-floating-point-arithmetic-3",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "Logic and floating point arithmetic",
-    "text": "Logic and floating point arithmetic\nLet’s evaluate 0.6 + 0.2 == 0.8\n\n0.6 + 0.2 == 0.8\n\n[1] TRUE\n\n\nNow let’s try 0.6 + 0.3 == 0.9\n\n0.6 + 0.3 == 0.9\n\n[1] FALSE\n\n\nEr. That’s not right."
-  },
-  {
-    "objectID": "slides/02-about-r.html#welcome-to-floating-point-math",
-    "href": "slides/02-about-r.html#welcome-to-floating-point-math",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "Welcome to floating point math!",
-    "text": "Welcome to floating point math!\n\n\nIn Base 10, you can’t precisely express fractions like \\(\\frac{1}{3}\\) and \\(\\frac{1}{9}\\). They come out as repeating decimals: 0.3333… or 0.1111… You can cleanly represent fractions that use a prime factor of the base, which in the case of Base 10 are 2 and 5."
-  },
-  {
-    "objectID": "slides/02-about-r.html#welcome-to-floating-point-math-1",
-    "href": "slides/02-about-r.html#welcome-to-floating-point-math-1",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "Welcome to floating point math!",
-    "text": "Welcome to floating point math!\n\n\nIn Base 10, you can’t precisely express fractions like \\(\\frac{1}{3}\\) and \\(\\frac{1}{9}\\). They come out as repeating decimals: 0.3333… or 0.1111… You can cleanly represent fractions that use a prime factor of the base, which in the case of Base 10 are 2 and 5.\nComputers represent numbers as binary (i.e. Base 2) floating-points. In Base 2, the only prime factor is 2. So \\(\\frac{1}{5}\\) or \\(\\frac{1}{10}\\) in binary would be repeating."
-  },
-  {
-    "objectID": "slides/02-about-r.html#logic-and-floating-point-arithmetic-4",
-    "href": "slides/02-about-r.html#logic-and-floating-point-arithmetic-4",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "Logic and floating point arithmetic",
-    "text": "Logic and floating point arithmetic\nWhen you do binary math on repeating numbers and convert back to decimals you get tiny leftovers, and this can mess up logical comparisons of equality. The all.equal() function exists for this purpose.\n\nprint(.1 + .2)\n\n[1] 0.3\n\nprint(.1 + .2, digits=18)\n\n[1] 0.300000000000000044\n\nall.equal(.1 + .2, 0.3)\n\n[1] TRUE\n\n\nSee e.g. https://0.30000000000000004.com"
-  },
-  {
     "objectID": "slides/02-about-r.html#everything-in-r-has-a-name",
     "href": "slides/02-about-r.html#everything-in-r-has-a-name",
     "title": "Data Visualization - 2. Finding your way in R",
@@ -2686,20 +2616,6 @@
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "The assignment operator",
     "text": "The assignment operator\n\nThe assignment operator performs the action of creating objects\nUse a keyboard shortcut to write it:\nPress option and - on a Mac\nPress alt and - on Windows"
-  },
-  {
-    "objectID": "slides/02-about-r.html#assignment-with",
-    "href": "slides/02-about-r.html#assignment-with",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "Assignment with =",
-    "text": "Assignment with =\n\nYou can use = as well as &lt;- for assignment.\n\n\nmy_numbers = c(1, 2, 3, 1, 3, 5, 25)\n\nmy_numbers\n\n[1]  1  2  3  1  3  5 25\n\n\n\nOn the other hand, = has a different meaning when used in functions.\nI’m going to use &lt;- for assignment throughout.\nBe consistent either way."
-  },
-  {
-    "objectID": "slides/02-about-r.html#assignment-with-1",
-    "href": "slides/02-about-r.html#assignment-with-1",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "Assignment with =",
-    "text": "Assignment with ="
   },
   {
     "objectID": "slides/02-about-r.html#do-things-to-objects-with-functions",
@@ -2821,27 +2737,6 @@
     "text": "Pipelines make code more readable\n\nMuch nicer:\n\neggs |&gt; \n  get_from_fridge() |&gt; \n  crack_eggs(into = \"bowl\") |&gt; \n  whisk(len = 40) |&gt; \n  pour_in_pan(temp = \"med-high\") |&gt; \n  stir() |&gt; \n  serve()\n\nWe’ll still use nested parentheses quite a bit, often in the context of a function working inside a pipeline. But it’s good not to have too many levels of nesting."
   },
   {
-    "objectID": "slides/02-about-r.html#the-other-pipe",
-    "href": "slides/02-about-r.html#the-other-pipe",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "The other pipe: %>%",
-    "text": "The other pipe: %&gt;%\n\nThe Base R pipe operator, |&gt; is a relatively recent addition to R.\nPiping operations were originally introduced in a package called called magrittr, where it took the form %&gt;%"
-  },
-  {
-    "objectID": "slides/02-about-r.html#the-other-pipe-1",
-    "href": "slides/02-about-r.html#the-other-pipe-1",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "The other pipe: %>%",
-    "text": "The other pipe: %&gt;%\n\nThe Base R pipe operator, |&gt; is a relatively recent addition to R.\nPiping operations were originally introduced in a package called called magrittr, where it took the form %&gt;%\nIt’s been so successful, a version of it has been incorporated into Base R. It mostly but does not quite work the same way as %&gt;% in every case."
-  },
-  {
-    "objectID": "slides/02-about-r.html#the-other-pipe-2",
-    "href": "slides/02-about-r.html#the-other-pipe-2",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "The other pipe: %>%",
-    "text": "The other pipe: %&gt;%\n\nThe Base R pipe operator, |&gt; is a relatively recent addition to R.\nPiping operations were originally introduced in a package called called magrittr, where it took the form %&gt;%\nIt’s been so successful, a version of it has been incorporated into Base R. It mostly but does not quite work the same way as %&gt;% in every case. We’ll use the Base R pipe in this course, but you’ll see the Magrittr pipe a lot out in the world.\n\n\n\nWith the Base R pipe, you can only pass an object to the first argument in a function. This is fine for most tidyverse pipelines, where the first argument is usually (implicitly) the data. But it does mean that most Base R functions will continue not to be easily piped, as most of them do not follow the convention of passing the current data as the first argument"
-  },
-  {
     "objectID": "slides/02-about-r.html#functions-are-bundled-into-packages",
     "href": "slides/02-about-r.html#functions-are-bundled-into-packages",
     "title": "Data Visualization - 2. Finding your way in R",
@@ -2891,32 +2786,25 @@
     "text": "The scope of names\n\nmean(x) # argument names are internal to functions\n\n[1] 5.5\n\nmean(x = x)\n\n[1] 5.5\n\nmean(x = y)\n\n[1] 95\n\nx\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ny\n\n [1]  90  91  92  93  94  95  96  97  98  99 100"
   },
   {
-    "objectID": "slides/02-about-r.html#vectors-come-in-types-objects-in-classes",
-    "href": "slides/02-about-r.html#vectors-come-in-types-objects-in-classes",
+    "objectID": "slides/02-about-r.html#vector-types-object-classes",
+    "href": "slides/02-about-r.html#vector-types-object-classes",
     "title": "Data Visualization - 2. Finding your way in R",
-    "section": "5. Vectors come in types; Objects in classes",
-    "text": "5. Vectors come in types; Objects in classes\nI’m going to speak somewhat loosely here for now, and gloss over some distinctions between object classes and data structures, as well as kinds of objects and their attributes."
+    "section": "5. Vector types; Object classes",
+    "text": "5. Vector types; Object classes\nI’m going to speak somewhat loosely here for now, and gloss over some distinctions between object classes and data structures, as well as kinds of objects and their attributes."
   },
   {
-    "objectID": "slides/02-about-r.html#objects-come-in-types-and-classes",
-    "href": "slides/02-about-r.html#objects-come-in-types-and-classes",
+    "objectID": "slides/02-about-r.html#vector-types-object-classes-1",
+    "href": "slides/02-about-r.html#vector-types-object-classes-1",
     "title": "Data Visualization - 2. Finding your way in R",
-    "section": "5. Objects come in types and classes",
-    "text": "5. Objects come in types and classes\nI’m going to speak somewhat loosely here for now, and gloss over some distinctions between object classes and data structures, as well as kinds of objects and their attributes.\nThe object inspector in RStudio is your friend.\nYou can ask an object what it is at the console, too:\n\nclass(my_numbers)\n\n[1] \"numeric\"\n\ntypeof(my_numbers)\n\n[1] \"double\""
+    "section": "5. Vector types; Object classes",
+    "text": "5. Vector types; Object classes\nObjects are made of one or more vectors. A vector can, in effect, have a single type: integer, double, logical, character, factor, date, etc. That is, vectors are “atomic”. Complex objects are mostly lists of vectors of different sorts, or nested lists of other simpler objects that are themselves ultimately made up of vectors of"
   },
   {
-    "objectID": "slides/02-about-r.html#objects-come-in-types-and-classes-1",
-    "href": "slides/02-about-r.html#objects-come-in-types-and-classes-1",
+    "objectID": "slides/02-about-r.html#vector-types-object-classes-2",
+    "href": "slides/02-about-r.html#vector-types-object-classes-2",
     "title": "Data Visualization - 2. Finding your way in R",
-    "section": "5. Objects come in types and classes",
-    "text": "5. Objects come in types and classes\nObjects can have more than one (nested) class:\n\nsummary(my_numbers)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   1.00    1.75    3.00    6.25    6.25   25.00 \n\nmy_smry &lt;- summary(my_numbers) # remember, outputs can be assigned to a name, creating an object\n\nclass(summary(my_numbers)) # functions can be nested, and are evaluated from the inside out\n\n[1] \"summaryDefault\" \"table\"         \n\nclass(my_smry) # equivalent to the previous line\n\n[1] \"summaryDefault\" \"table\""
-  },
-  {
-    "objectID": "slides/02-about-r.html#objects-come-in-types-and-classes-2",
-    "href": "slides/02-about-r.html#objects-come-in-types-and-classes-2",
-    "title": "Data Visualization - 2. Finding your way in R",
-    "section": "5. Objects come in types and classes",
-    "text": "5. Objects come in types and classes\n\ntypeof(my_smry)\n\n[1] \"double\"\n\nattributes(my_smry)\n\n$names\n[1] \"Min.\"    \"1st Qu.\" \"Median\"  \"Mean\"    \"3rd Qu.\" \"Max.\"   \n\n$class\n[1] \"summaryDefault\" \"table\"         \n\n## In this case, the functions extract the corresponding attribute\nclass(my_smry)\n\n[1] \"summaryDefault\" \"table\"         \n\nnames(my_smry)\n\n[1] \"Min.\"    \"1st Qu.\" \"Median\"  \"Mean\"    \"3rd Qu.\" \"Max.\""
+    "section": "5. Vector types; Object classes",
+    "text": "5. Vector types; Object classes\nThe object inspector in RStudio is your friend.\nYou can ask an object what it is at the console, too:\n\nclass(my_numbers)\n\n[1] \"numeric\"\n\ntypeof(my_numbers)\n\n[1] \"double\""
   },
   {
     "objectID": "slides/02-about-r.html#types-of-vector",
@@ -2940,18 +2828,18 @@
     "text": "Types of vector\n\n\n\n\n\n\n## Factors are for storing undordered or ordered categorical variables\nx &lt;- factor(c(\"Yes\", \"No\", \"No\", \"Maybe\", \"Yes\", \"Yes\", \"Yes\", \"No\"))\nx\n\n[1] Yes   No    No    Maybe Yes   Yes   Yes   No   \nLevels: Maybe No Yes\n\nsummary(x) # Alphabetical order by default\n\nMaybe    No   Yes \n    1     3     4 \n\ntypeof(x)       # Underneath, a factor is a type of integer ...\n\n[1] \"integer\"\n\nattributes(x)   # ... with labels for its numbers, or \"levels\" \n\n$levels\n[1] \"Maybe\" \"No\"    \"Yes\"  \n\n$class\n[1] \"factor\"\n\nlevels(x)\n\n[1] \"Maybe\" \"No\"    \"Yes\"  \n\nis.ordered(x)\n\n[1] FALSE\n\n\n\n\n\nHW:\nCategorical data, where values come from a fixed set of levels recorded in factor vectors.\nDates (with day resolution), which are recorded in Date vectors.\nDate-times (with second or sub-second resolution), which are stored in POSIXct vectors.\nDurations, which are stored in difftime vectors."
   },
   {
-    "objectID": "slides/02-about-r.html#vector-types-cant-be-heterogenous",
-    "href": "slides/02-about-r.html#vector-types-cant-be-heterogenous",
+    "objectID": "slides/02-about-r.html#vectors-cant-be-heterogenous",
+    "href": "slides/02-about-r.html#vectors-cant-be-heterogenous",
     "title": "Data Visualization - 2. Finding your way in R",
-    "section": "Vector types can’t be heterogenous",
-    "text": "Vector types can’t be heterogenous\n\nObjects can be manually or automatically coerced from one class to another. Take care.\n\n\nclass(my_numbers)\n\n[1] \"numeric\"\n\nmy_new_vector &lt;- c(my_numbers, \"Apple\")\n\nmy_new_vector # vectors are homogeneous/atomic\n\n[1] \"1\"     \"2\"     \"3\"     \"1\"     \"3\"     \"5\"     \"25\"    \"10\"    \"Apple\"\n\nclass(my_new_vector)\n\n[1] \"character\""
+    "section": "Vectors can’t be heterogenous",
+    "text": "Vectors can’t be heterogenous\n\nObjects can be manually or automatically coerced from one class to another. Take care.\n\n\nclass(my_numbers)\n\n[1] \"numeric\"\n\nmy_new_vector &lt;- c(my_numbers, \"Apple\")\n\nmy_new_vector # vectors are homogeneous/atomic\n\n[1] \"1\"     \"2\"     \"3\"     \"1\"     \"3\"     \"5\"     \"25\"    \"10\"    \"Apple\"\n\nclass(my_new_vector)\n\n[1] \"character\""
   },
   {
-    "objectID": "slides/02-about-r.html#vector-types-cant-be-heterogenous-1",
-    "href": "slides/02-about-r.html#vector-types-cant-be-heterogenous-1",
+    "objectID": "slides/02-about-r.html#vectors-cant-be-heterogenous-1",
+    "href": "slides/02-about-r.html#vectors-cant-be-heterogenous-1",
     "title": "Data Visualization - 2. Finding your way in R",
-    "section": "Vector types can’t be heterogenous",
-    "text": "Vector types can’t be heterogenous\n\nObjects can be manually or automatically coerced from one class to another. Take care.\n\n\nmy_dbl &lt;- c(2.1, 4.77, 30.111, 3.14519)\nis.double(my_dbl)\n\n[1] TRUE\n\nmy_dbl &lt;- as.integer(my_dbl)\n\nmy_dbl\n\n[1]  2  4 30  3"
+    "section": "Vectors can’t be heterogenous",
+    "text": "Vectors can’t be heterogenous\n\nObjects can be manually or automatically coerced from one class to another. Take care.\n\n\nmy_dbl &lt;- c(2.1, 4.77, 30.111, 3.14519)\nis.double(my_dbl)\n\n[1] TRUE\n\nmy_dbl &lt;- as.integer(my_dbl)\n\nmy_dbl\n\n[1]  2  4 30  3"
   },
   {
     "objectID": "slides/02-about-r.html#a-table-of-data-is-a-kind-of-list",
@@ -2965,7 +2853,7 @@
     "href": "slides/02-about-r.html#a-table-of-data-is-a-kind-of-list-1",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "A table of data is a kind of list",
-    "text": "A table of data is a kind of list\n\nLists can be heterogenous. Underneath, most complex R objects are some kind of list with different components that can be accessed by some function that knows their names.\nA data frame is a list of vectors of the same length, where the vectors can be of different types (e.g. numeric, character, logical, etc).\nA data frame is a natural representation of what most real tables of data look like. Having it be a basic sort of entity in the programming language IS ONE OF R’s BEST IDEAS AND EASILY UNDERRATED!\nA tibble is an enhanced data frame\n\n\nTibbles have an enhanced print method, never coerce strings to factors, and provide stricter subsetting methods. (HW)\nAgain the object inspector is helpful here"
+    "text": "A table of data is a kind of list\n\nLists are collections of vectors of possibly different types and lengths, or collections of more complex objects that are themselves ultimately made out of vectors. Underneath, most complex R objects are some kind of list with different components that can be accessed by some function that knows the names of the things inside the list.\nA data frame is a list of vectors of the same length, where the vectors can be of different types (e.g. numeric, character, logical, etc).\nA data frame is a natural representation of what most real tables of data look like. Having it be a basic sort of entity in the programming language IS ONE OF R’s BEST IDEAS AND EASILY UNDERRATED!\nA tibble is an enhanced data frame\n\n\nTibbles have an enhanced print method, never coerce strings to factors, and provide stricter subsetting methods. (HW)\nAgain the object inspector is helpful here"
   },
   {
     "objectID": "slides/02-about-r.html#some-classes-are-versions-of-others",
@@ -3070,7 +2958,7 @@
     "href": "slides/02-about-r.html#what-we-did",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "What we did",
-    "text": "What we did\n\nlibrary(tidyverse)\n\nlibrary(gapminder)\n\n\nLoad the packages we need: tidyverse and gapminder"
+    "text": "What we did\n\nlibrary(gapminder)\n\n\nLoad the packages we need: tidyverse and gapminder"
   },
   {
     "objectID": "slides/02-about-r.html#what-we-did-1",
@@ -3099,6 +2987,125 @@
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "Objects are like Bento Boxes",
     "text": "Objects are like Bento Boxes"
+  },
+  {
+    "objectID": "slides/02-about-r.html#logic-watch-out",
+    "href": "slides/02-about-r.html#logic-watch-out",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Logic: Watch out!",
+    "text": "Logic: Watch out!\nHere’s a gotcha. You might think you could write 3 &lt; 5 & 7 and have it be interpreted as “Three is less than five and also less than seven [True or False?]”:\n\n3 &lt; 5 & 7\n\n[1] TRUE\n\n\nIt seems to work!"
+  },
+  {
+    "objectID": "slides/02-about-r.html#logic-watch-out-1",
+    "href": "slides/02-about-r.html#logic-watch-out-1",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Logic: Watch out!",
+    "text": "Logic: Watch out!\nBut now try 3 &lt; 5 & 1, where your intention is “Three is less than five and also less than one [True or False?]”\n\n3 &lt; 5 & 1\n\n[1] TRUE\n\n\n\nWhat’s happening is that 3 &lt; 5 is evaluated first, and resolves to TRUE, leaving us with the expression TRUE & 1.\nR interprets this as TRUE & as.logical(1).\nIn Boolean algebra, 1 resolves to TRUE. Any other number is FALSE. So,"
+  },
+  {
+    "objectID": "slides/02-about-r.html#logic-watch-out-2",
+    "href": "slides/02-about-r.html#logic-watch-out-2",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Logic: Watch out!",
+    "text": "Logic: Watch out!\n\nTRUE & as.logical(1)\n\n[1] TRUE\n\n\n\n3 &lt; 5 & 3 &lt; 1\n\n[1] FALSE\n\n\n\nYou have to make your comparisons explicit."
+  },
+  {
+    "objectID": "slides/02-about-r.html#logic-and-floating-point-arithmetic",
+    "href": "slides/02-about-r.html#logic-and-floating-point-arithmetic",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Logic and floating point arithmetic",
+    "text": "Logic and floating point arithmetic\nLet’s evaluate 0.6 + 0.2 == 0.8"
+  },
+  {
+    "objectID": "slides/02-about-r.html#logic-and-floating-point-arithmetic-1",
+    "href": "slides/02-about-r.html#logic-and-floating-point-arithmetic-1",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Logic and floating point arithmetic",
+    "text": "Logic and floating point arithmetic\nLet’s evaluate 0.6 + 0.2 == 0.8\n\n0.6 + 0.2 == 0.8\n\n[1] TRUE"
+  },
+  {
+    "objectID": "slides/02-about-r.html#logic-and-floating-point-arithmetic-2",
+    "href": "slides/02-about-r.html#logic-and-floating-point-arithmetic-2",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Logic and floating point arithmetic",
+    "text": "Logic and floating point arithmetic\nLet’s evaluate 0.6 + 0.2 == 0.8\n\n0.6 + 0.2 == 0.8\n\n[1] TRUE\n\n\nNow let’s try 0.6 + 0.3 == 0.9"
+  },
+  {
+    "objectID": "slides/02-about-r.html#logic-and-floating-point-arithmetic-3",
+    "href": "slides/02-about-r.html#logic-and-floating-point-arithmetic-3",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Logic and floating point arithmetic",
+    "text": "Logic and floating point arithmetic\nLet’s evaluate 0.6 + 0.2 == 0.8\n\n0.6 + 0.2 == 0.8\n\n[1] TRUE\n\n\nNow let’s try 0.6 + 0.3 == 0.9\n\n0.6 + 0.3 == 0.9\n\n[1] FALSE\n\n\nEr. That’s not right."
+  },
+  {
+    "objectID": "slides/02-about-r.html#welcome-to-floating-point-math",
+    "href": "slides/02-about-r.html#welcome-to-floating-point-math",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Welcome to floating point math!",
+    "text": "Welcome to floating point math!\n\n\nIn Base 10, you can’t precisely express fractions like \\(\\frac{1}{3}\\) and \\(\\frac{1}{9}\\). They come out as repeating decimals: 0.3333… or 0.1111… You can cleanly represent fractions that use a prime factor of the base, which in the case of Base 10 are 2 and 5."
+  },
+  {
+    "objectID": "slides/02-about-r.html#welcome-to-floating-point-math-1",
+    "href": "slides/02-about-r.html#welcome-to-floating-point-math-1",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Welcome to floating point math!",
+    "text": "Welcome to floating point math!\n\n\nIn Base 10, you can’t precisely express fractions like \\(\\frac{1}{3}\\) and \\(\\frac{1}{9}\\). They come out as repeating decimals: 0.3333… or 0.1111… You can cleanly represent fractions that use a prime factor of the base, which in the case of Base 10 are 2 and 5.\nComputers represent numbers as binary (i.e. Base 2) floating-points. In Base 2, the only prime factor is 2. So \\(\\frac{1}{5}\\) or \\(\\frac{1}{10}\\) in binary would be repeating."
+  },
+  {
+    "objectID": "slides/02-about-r.html#logic-and-floating-point-arithmetic-4",
+    "href": "slides/02-about-r.html#logic-and-floating-point-arithmetic-4",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Logic and floating point arithmetic",
+    "text": "Logic and floating point arithmetic\nWhen you do binary math on repeating numbers and convert back to decimals you get tiny leftovers, and this can mess up logical comparisons of equality. The all.equal() function exists for this purpose.\n\nprint(.1 + .2)\n\n[1] 0.3\n\nprint(.1 + .2, digits=18)\n\n[1] 0.300000000000000044\n\nall.equal(.1 + .2, 0.3)\n\n[1] TRUE\n\n\nSee e.g. https://0.30000000000000004.com"
+  },
+  {
+    "objectID": "slides/02-about-r.html#assignment-with",
+    "href": "slides/02-about-r.html#assignment-with",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Assignment with =",
+    "text": "Assignment with =\n\nYou can use = as well as &lt;- for assignment.\n\n\nmy_numbers = c(1, 2, 3, 1, 3, 5, 25)\n\nmy_numbers\n\n[1]  1  2  3  1  3  5 25\n\n\n\nOn the other hand, = has a different meaning when used in functions.\nI’m going to use &lt;- for assignment throughout.\nBe consistent either way."
+  },
+  {
+    "objectID": "slides/02-about-r.html#assignment-with-1",
+    "href": "slides/02-about-r.html#assignment-with-1",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Assignment with =",
+    "text": "Assignment with ="
+  },
+  {
+    "objectID": "slides/02-about-r.html#the-other-pipe",
+    "href": "slides/02-about-r.html#the-other-pipe",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "The other pipe: %>%",
+    "text": "The other pipe: %&gt;%\n\nThe Base R pipe operator, |&gt; is a relatively recent addition to R.\nPiping operations were originally introduced in a package called called magrittr, where it took the form %&gt;%"
+  },
+  {
+    "objectID": "slides/02-about-r.html#the-other-pipe-1",
+    "href": "slides/02-about-r.html#the-other-pipe-1",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "The other pipe: %>%",
+    "text": "The other pipe: %&gt;%\n\nThe Base R pipe operator, |&gt; is a relatively recent addition to R.\nPiping operations were originally introduced in a package called called magrittr, where it took the form %&gt;%\nIt’s been so successful, a version of it has been incorporated into Base R. It mostly but does not quite work the same way as %&gt;% in every case."
+  },
+  {
+    "objectID": "slides/02-about-r.html#the-other-pipe-2",
+    "href": "slides/02-about-r.html#the-other-pipe-2",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "The other pipe: %>%",
+    "text": "The other pipe: %&gt;%\n\nThe Base R pipe operator, |&gt; is a relatively recent addition to R.\nPiping operations were originally introduced in a package called called magrittr, where it took the form %&gt;%\nIt’s been so successful, a version of it has been incorporated into Base R. It mostly but does not quite work the same way as %&gt;% in every case. We’ll use the Base R pipe in this course, but you’ll see the Magrittr pipe a lot out in the world.\n\n\n\nWith the Base R pipe, you can only pass an object to the first argument in a function. This is fine for most tidyverse pipelines, where the first argument is usually (implicitly) the data. But it does mean that most Base R functions will continue not to be easily piped, as most of them do not follow the convention of passing the current data as the first argument"
+  },
+  {
+    "objectID": "slides/02-about-r.html#object-classes",
+    "href": "slides/02-about-r.html#object-classes",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Object classes",
+    "text": "Object classes\nObjects can have more than one (nested) class:\n\nsummary(my_numbers)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  1.000   1.500   3.000   5.714   4.000  25.000 \n\nmy_smry &lt;- summary(my_numbers) # remember, outputs can be assigned to a name, creating an object\n\nclass(summary(my_numbers)) # functions can be nested, and are evaluated from the inside out\n\n[1] \"summaryDefault\" \"table\"         \n\nclass(my_smry) # equivalent to the previous line\n\n[1] \"summaryDefault\" \"table\""
+  },
+  {
+    "objectID": "slides/02-about-r.html#object-classes-1",
+    "href": "slides/02-about-r.html#object-classes-1",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Object classes",
+    "text": "Object classes\n\ntypeof(my_smry)\n\n[1] \"double\"\n\nattributes(my_smry)\n\n$names\n[1] \"Min.\"    \"1st Qu.\" \"Median\"  \"Mean\"    \"3rd Qu.\" \"Max.\"   \n\n$class\n[1] \"summaryDefault\" \"table\"         \n\n## In this case, the functions extract the corresponding attribute\nclass(my_smry)\n\n[1] \"summaryDefault\" \"table\"         \n\nnames(my_smry)\n\n[1] \"Min.\"    \"1st Qu.\" \"Median\"  \"Mean\"    \"3rd Qu.\" \"Max.\""
   },
   {
     "objectID": "index.html",
