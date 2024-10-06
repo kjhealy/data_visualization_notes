@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="Kieran Healy">
-  <meta name="dcterms.date" content="2024-10-05">
+  <meta name="dcterms.date" content="2024-10-06">
   <title>Data Visualization with R and the Tidyverse – Data Visualization - 2. Finding your way in R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -406,7 +406,7 @@ Kieran Healy
     </div>
 </div>
 
-  <p class="date">October 5, 2024</p>
+  <p class="date">October 6, 2024</p>
 </section>
 <section>
 <section id="getting-to-know-r-and-rstudio" class="title-slide slide level1 inv-title center" data-background-color="#252F3E">
@@ -1344,12 +1344,12 @@ Kieran Healy
 <!-- preamble start -->
 
     <script>
-      function styleCell_r9mydgfhl7z83w7svy7e(i, j, css_id) {
-        var table = document.getElementById("tinytable_r9mydgfhl7z83w7svy7e");
+      function styleCell_xmlu7etqx8tsig8txhzt(i, j, css_id) {
+        var table = document.getElementById("tinytable_xmlu7etqx8tsig8txhzt");
         table.rows[i].cells[j].classList.add(css_id);
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_r9mydgfhl7z83w7svy7e');
+        var table = document.getElementById('tinytable_xmlu7etqx8tsig8txhzt');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -1357,8 +1357,8 @@ Kieran Healy
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_r9mydgfhl7z83w7svy7e(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_r9mydgfhl7z83w7svy7e");
+      function spanCell_xmlu7etqx8tsig8txhzt(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_xmlu7etqx8tsig8txhzt");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -1384,18 +1384,18 @@ Kieran Healy
         targetCell.rowSpan = rowspan;
         targetCell.colSpan = colspan;
       }
-window.addEventListener('load', function () { styleCell_r9mydgfhl7z83w7svy7e(0, 0, 'tinytable_css_idqsept4pqw1chbhqyve5x') })
-window.addEventListener('load', function () { styleCell_r9mydgfhl7z83w7svy7e(0, 1, 'tinytable_css_idqsept4pqw1chbhqyve5x') })
-window.addEventListener('load', function () { styleCell_r9mydgfhl7z83w7svy7e(0, 2, 'tinytable_css_idqsept4pqw1chbhqyve5x') })
-window.addEventListener('load', function () { styleCell_r9mydgfhl7z83w7svy7e(0, 3, 'tinytable_css_idqsept4pqw1chbhqyve5x') })
-window.addEventListener('load', function () { styleCell_r9mydgfhl7z83w7svy7e(0, 4, 'tinytable_css_idqsept4pqw1chbhqyve5x') })
+window.addEventListener('load', function () { styleCell_xmlu7etqx8tsig8txhzt(0, 0, 'tinytable_css_id3vt4ysogiyl6wwxd6kkx') })
+window.addEventListener('load', function () { styleCell_xmlu7etqx8tsig8txhzt(0, 1, 'tinytable_css_id3vt4ysogiyl6wwxd6kkx') })
+window.addEventListener('load', function () { styleCell_xmlu7etqx8tsig8txhzt(0, 2, 'tinytable_css_id3vt4ysogiyl6wwxd6kkx') })
+window.addEventListener('load', function () { styleCell_xmlu7etqx8tsig8txhzt(0, 3, 'tinytable_css_id3vt4ysogiyl6wwxd6kkx') })
+window.addEventListener('load', function () { styleCell_xmlu7etqx8tsig8txhzt(0, 4, 'tinytable_css_id3vt4ysogiyl6wwxd6kkx') })
     </script>
 
     <style>
-    .table td.tinytable_css_idqsept4pqw1chbhqyve5x, .table th.tinytable_css_idqsept4pqw1chbhqyve5x {  border-bottom: solid 0.1em #d3d8dc; }
+    .table td.tinytable_css_id3vt4ysogiyl6wwxd6kkx, .table th.tinytable_css_id3vt4ysogiyl6wwxd6kkx {  border-bottom: solid 0.1em #d3d8dc; }
     </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_r9mydgfhl7z83w7svy7e" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_xmlu7etqx8tsig8txhzt" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
@@ -2354,6 +2354,7 @@ $class
   <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-spotlight/spotlight.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -2375,6 +2376,7 @@ $class
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'spotlight': {"size":60,"lockPointerInsideCanvas":false,"toggleSpotlightOnMouseDown":true,"spotlightOnKeyPressAndHold":false,"spotlightCursor":"none","presentingCursor":"none","initialPresentationMode":true,"disablingUserSelect":true,"fadeInAndOut":100,"useAsPointer":false,"pointerColor":"red"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -2545,7 +2547,7 @@ $class
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealSpotlight, QuartoSupport,
 
           RevealMath,
           RevealNotes,

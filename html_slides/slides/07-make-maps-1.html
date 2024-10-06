@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="Kieran Healy">
-  <meta name="dcterms.date" content="2024-10-02">
+  <meta name="dcterms.date" content="2024-10-06">
   <title>Data Visualization with R and the Tidyverse – Data Visualization - 7. Make Maps (1)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -406,7 +406,7 @@ Kieran Healy
     </div>
 </div>
 
-  <p class="date">October 2, 2024</p>
+  <p class="date">October 6, 2024</p>
 </section>
 <section>
 <section id="making-maps" class="title-slide slide level1 inv-title center" data-background-color="#252F3E">
@@ -1275,18 +1275,18 @@ Kieran Healy
 <span id="cb43-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample_n</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code># A tibble: 10 × 5
-   id    name                   state pop_dens      pct_black  
-   &lt;chr&gt; &lt;chr&gt;                  &lt;fct&gt; &lt;fct&gt;         &lt;fct&gt;      
- 1 48159 Franklin County        TX    [   10,   50) [ 2.0, 5.0)
- 2 21127 Lawrence County        KY    [   10,   50) [ 0.0, 2.0)
- 3 47087 Jackson County         TN    [   10,   50) [ 0.0, 2.0)
- 4 02070 Dillingham Census Area AK    [    0,   10) [ 0.0, 2.0)
- 5 47035 Cumberland County      TN    [   50,  100) [ 0.0, 2.0)
- 6 19177 Van Buren County       IA    [   10,   50) [ 0.0, 2.0)
- 7 29219 Warren County          MO    [   50,  100) [ 2.0, 5.0)
- 8 36049 Lewis County           NY    [   10,   50) [ 0.0, 2.0)
- 9 13159 Jasper County          GA    [   10,   50) [15.0,25.0)
-10 13053 Chattahoochee County   GA    [   10,   50) [15.0,25.0)</code></pre>
+   id    name               state pop_dens      pct_black  
+   &lt;chr&gt; &lt;chr&gt;              &lt;fct&gt; &lt;fct&gt;         &lt;fct&gt;      
+ 1 28015 Carroll County     MS    [   10,   50) [25.0,50.0)
+ 2 22089 St. Charles Parish LA    [  100,  500) [25.0,50.0)
+ 3 27051 Grant County       MN    [   10,   50) [ 0.0, 2.0)
+ 4 01087 Macon County       AL    [   10,   50) [50.0,85.3]
+ 5 29089 Howard County      MO    [   10,   50) [ 5.0,10.0)
+ 6 46083 Lincoln County     SD    [   50,  100) [ 0.0, 2.0)
+ 7 25001 Barnstable County  MA    [  500, 1000) [ 2.0, 5.0)
+ 8 20075 Hamilton County    KS    [    0,   10) [ 0.0, 2.0)
+ 9 18005 Bartholomew County IN    [  100,  500) [ 2.0, 5.0)
+10 48313 Madison County     TX    [   10,   50) [15.0,25.0)</code></pre>
 </div>
 </div>
 </section>
@@ -2641,6 +2641,7 @@ Kieran Healy
   <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-spotlight/spotlight.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -2662,6 +2663,7 @@ Kieran Healy
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'spotlight': {"size":60,"lockPointerInsideCanvas":false,"toggleSpotlightOnMouseDown":true,"spotlightOnKeyPressAndHold":false,"spotlightCursor":"none","presentingCursor":"none","initialPresentationMode":true,"disablingUserSelect":true,"fadeInAndOut":100,"useAsPointer":false,"pointerColor":"red"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -2832,7 +2834,7 @@ Kieran Healy
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealSpotlight, QuartoSupport,
 
           RevealMath,
           RevealNotes,
