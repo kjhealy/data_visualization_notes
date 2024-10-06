@@ -2090,7 +2090,7 @@
     "href": "slides/07-make-maps-1.html#county-level-choropleths-2",
     "title": "Data Visualization - 7. Make Maps (1)",
     "section": "County-level choropleths",
-    "text": "County-level choropleths\n\n3,195 entities, including states (FIPS id ends in four zeros)\nAnd the US as a whole (FIPS id of 0)\nSample a few rows, with specific columns:\n\n\ncounty_data  |&gt; \n    select(id, name, state, pop_dens, pct_black) |&gt;\n    sample_n(10)\n\n# A tibble: 10 × 5\n   id    name             state pop_dens      pct_black  \n   &lt;chr&gt; &lt;chr&gt;            &lt;fct&gt; &lt;fct&gt;         &lt;fct&gt;      \n 1 01027 Clay County      AL    [   10,   50) [10.0,15.0)\n 2 21145 McCracken County KY    [  100,  500) [10.0,15.0)\n 3 48103 Crane County     TX    [    0,   10) [ 2.0, 5.0)\n 4 53013 Columbia County  WA    [    0,   10) [ 0.0, 2.0)\n 5 46061 Hanson County    SD    [    0,   10) [ 0.0, 2.0)\n 6 37159 Rowan County     NC    [  100,  500) [15.0,25.0)\n 7 47131 Obion County     TN    [   50,  100) [10.0,15.0)\n 8 18025 Crawford County  IN    [   10,   50) [ 0.0, 2.0)\n 9 39117 Morrow County    OH    [   50,  100) [ 0.0, 2.0)\n10 27021 Cass County      MN    [   10,   50) [ 0.0, 2.0)"
+    "text": "County-level choropleths\n\n3,195 entities, including states (FIPS id ends in four zeros)\nAnd the US as a whole (FIPS id of 0)\nSample a few rows, with specific columns:\n\n\ncounty_data  |&gt; \n    select(id, name, state, pop_dens, pct_black) |&gt;\n    sample_n(10)\n\n# A tibble: 10 × 5\n   id    name                   state pop_dens      pct_black  \n   &lt;chr&gt; &lt;chr&gt;                  &lt;fct&gt; &lt;fct&gt;         &lt;fct&gt;      \n 1 48159 Franklin County        TX    [   10,   50) [ 2.0, 5.0)\n 2 21127 Lawrence County        KY    [   10,   50) [ 0.0, 2.0)\n 3 47087 Jackson County         TN    [   10,   50) [ 0.0, 2.0)\n 4 02070 Dillingham Census Area AK    [    0,   10) [ 0.0, 2.0)\n 5 47035 Cumberland County      TN    [   50,  100) [ 0.0, 2.0)\n 6 19177 Van Buren County       IA    [   10,   50) [ 0.0, 2.0)\n 7 29219 Warren County          MO    [   50,  100) [ 2.0, 5.0)\n 8 36049 Lewis County           NY    [   10,   50) [ 0.0, 2.0)\n 9 13159 Jasper County          GA    [   10,   50) [15.0,25.0)\n10 13053 Chattahoochee County   GA    [   10,   50) [15.0,25.0)"
   },
   {
     "objectID": "slides/07-make-maps-1.html#joined-table",
@@ -2769,7 +2769,7 @@
     "href": "slides/02-about-r.html#remember-those-conflicts",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "Remember those conflicts?",
-    "text": "Remember those conflicts?\n\n\nNotice how some functions in different packages have the same names.\nRelated concepts of namespaces and environments."
+    "text": "Remember those conflicts?\nlibrary(tidyverse)\n── Attaching core tidyverse packages ────────────────────────────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ──────────────────────────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package to force all conflicts to become errors\n\nSome functions in different packages have the same names.\nRelated concepts of namespaces and environments."
   },
   {
     "objectID": "slides/02-about-r.html#the-scope-of-names",
@@ -3273,7 +3273,7 @@
     "href": "slides/03-make-a-graph.html#wheres-the-data-using-here",
     "title": "Data Visualization - 3. Make Some Graphs",
     "section": "Where’s the data? Using here()",
-    "text": "Where’s the data? Using here()\nThis seminar’s files all live in an RStudio project. It looks like this:\n\n\n\n/Users/kjhealy/Documents/courses/data_visualization\n├── 00_dummy_files\n├── LICENSE\n├── Makefile\n├── README.md\n├── README.qmd\n├── _extensions\n├── _freeze\n├── _quarto.yml\n├── _site\n├── _targets\n├── _targets.R\n├── _variables.yml\n├── code\n├── course_notes.qmd\n├── data\n├── data_visualization.Rproj\n├── deploy.sh\n├── docs\n├── figures\n├── html\n├── pdf_slides\n└── slides\n\n\n\nI want to load files from the data folder, but I also want you to be able to load them. I’m writing this from somewhere deep in the slides folder, but you won’t be there. Also, I’m on a Mac, but you may not be."
+    "text": "Where’s the data? Using here()\nThis seminar’s files all live in an RStudio project. It looks like this:\n\n\n\n/Users/kjhealy/Documents/courses/data_visualization\n├── 00_dummy_files\n├── LICENSE\n├── Makefile\n├── README.md\n├── README.qmd\n├── _extensions\n├── _freeze\n├── _quarto.yml\n├── _site\n├── _targets\n├── _targets.R\n├── _variables.yml\n├── code\n├── course_notes.qmd\n├── data\n├── data_visualization.Rproj\n├── deploy.sh\n├── docs\n├── figures\n├── html\n├── index.html\n├── index.qmd\n├── pdf_slides\n├── site_libs\n└── slides\n\n\n\nI want to load files from the data folder, but I also want you to be able to load them. I’m writing this from somewhere deep in the slides folder, but you won’t be there. Also, I’m on a Mac, but you may not be."
   },
   {
     "objectID": "slides/03-make-a-graph.html#wheres-the-data-using-here-1",
