@@ -1565,7 +1565,7 @@
     "href": "slides/05-work-with-dplyr-and-geoms.html#the-guides-function",
     "title": "Data Visualization - 5. Dplyr and Geoms",
     "section": "The guides() function",
-    "text": "The guides() function\n\nControl overall properties of the guide labels.\nCommon use: turning it off.\nWe’ll see more advanced uses later.\n\n\n\norgandata |&gt; \n  ggplot(mapping = aes(x = roads,\n                       y = donors,\n                       color = consent_law)) + \n  geom_point() +\n  facet_wrap(~ consent_law, ncol = 1) +\n  guides(color = \"none\") + \n  labs(x = \"Road Deaths\",\n       y = \"Donor Procurement\")"
+    "text": "The guides() function\n\nControls overall properties of the guide labels. Common use: turning it off. We’ll see more advanced uses later.\n\n\n\norgandata |&gt; \n  ggplot(mapping = aes(x = roads,\n                       y = donors,\n                       color = consent_law)) + \n  geom_point() +\n  facet_wrap(~ consent_law, ncol = 1) +\n  guides(color = \"none\") + \n  labs(x = \"Road Deaths\",\n       y = \"Donor Procurement\")"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#the-theme-function",
@@ -3980,7 +3980,7 @@
     "href": "slides/06-work-with-models.html#iterating-in-a-pipeline-3",
     "title": "Data Visualization - 6. Work With Models",
     "section": "Iterating in a pipeline",
-    "text": "Iterating in a pipeline\nBut you could also say “Feed each column of gapminder in turn to the n_distinct() function”.\nThis is what the map() function is for.\n\n  map(gapminder, n_distinct)\n\n$country\n[1] 142\n\n$continent\n[1] 5\n\n$year\n[1] 12\n\n$lifeExp\n[1] 1626\n\n$pop\n[1] 1704\n\n$gdpPercap\n[1] 1704\n\n\nRead it as “Feed each column of gapminder to the n_distinct() function.\n(This is pretty much what across() is doing more nicely.)"
+    "text": "Iterating in a pipeline\nBut you could also say “Feed each column of gapminder in turn to the n_distinct() function”. This is what map() is for.\n\n  map(gapminder, n_distinct)\n\n$country\n[1] 142\n\n$continent\n[1] 5\n\n$year\n[1] 12\n\n$lifeExp\n[1] 1626\n\n$pop\n[1] 1704\n\n$gdpPercap\n[1] 1704\n\n\nRead it as “Feed each column of gapminder to the n_distinct() function.\n(This is pretty much what across() is doing more nicely.)"
   },
   {
     "objectID": "slides/06-work-with-models.html#iterating-in-a-pipeline-4",
@@ -4176,7 +4176,7 @@
     "href": "slides/06-work-with-models.html#trends-in-the-happy-measure",
     "title": "Data Visualization - 6. Work With Models",
     "section": "Trends in the happy measure",
-    "text": "Trends in the happy measure\n\nout_hap &lt;- gss_svy |&gt; \n    group_by(year, sex, happy)  |&gt; \n    summarize(prop = survey_mean(na.rm = TRUE, vartype = \"ci\"))\n\nout_hap\n\n# A tibble: 221 × 6\n# Groups:   year, sex [56]\n    year sex    happy            prop   prop_low prop_upp\n   &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;           &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;\n 1  1975 Male   Very Happy    0.319    0.279      0.358  \n 2  1975 Male   Pretty Happy  0.555    0.514      0.597  \n 3  1975 Male   Not Too Happy 0.119    0.0934     0.145  \n 4  1975 Male   &lt;NA&gt;          0.00670 -0.0000539  0.0134 \n 5  1975 Female Very Happy    0.345    0.310      0.380  \n 6  1975 Female Pretty Happy  0.516    0.472      0.560  \n 7  1975 Female Not Too Happy 0.138    0.108      0.167  \n 8  1975 Female &lt;NA&gt;          0.00117 -0.00113    0.00347\n 9  1976 Male   Very Happy    0.328    0.289      0.367  \n10  1976 Male   Pretty Happy  0.543    0.505      0.580  \n# ℹ 211 more rows\n\n\nOnce again, it’s now a tidy tibble, and we know what to do with those."
+    "text": "Trends in the happy measure\n\nout_hap &lt;- gss_svy |&gt; \n    group_by(year, happy)  |&gt; \n    summarize(prop = survey_mean(na.rm = TRUE, vartype = \"ci\"))\n\nout_hap\n\n# A tibble: 111 × 5\n# Groups:   year [28]\n    year happy            prop prop_low prop_upp\n   &lt;dbl&gt; &lt;fct&gt;           &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n 1  1975 Very Happy    0.333   0.304     0.361  \n 2  1975 Pretty Happy  0.534   0.504     0.565  \n 3  1975 Not Too Happy 0.129   0.108     0.150  \n 4  1975 &lt;NA&gt;          0.00375 0.000362  0.00714\n 5  1976 Very Happy    0.348   0.321     0.376  \n 6  1976 Pretty Happy  0.529   0.504     0.555  \n 7  1976 Not Too Happy 0.122   0.104     0.141  \n 8  1977 Very Happy    0.357   0.330     0.384  \n 9  1977 Pretty Happy  0.532   0.504     0.560  \n10  1977 Not Too Happy 0.110   0.0918    0.128  \n# ℹ 101 more rows\n\n\nOnce again, it’s now a tidy tibble, and we know what to do with those."
   },
   {
     "objectID": "slides/06-work-with-models.html#trends-in-the-happy-measure-1",
@@ -4186,11 +4186,11 @@
     "text": "Trends in the happy measure\n\n\nout_hap |&gt;  \n  filter(happy == \"Not Too Happy\") |&gt; \n  ggplot(mapping = aes(x = year, \n                       y = prop,\n                       ymin = prop_low, \n                       ymax = prop_upp)) +\n  geom_line(linewidth = 1.2) +\n  geom_ribbon(alpha = 0.3) +\n  scale_x_continuous(breaks = \n                       seq(1978, 2018, 4)) +\n  scale_y_continuous(labels = \n                       label_percent(accuracy = 1)) + \n  labs(x = \"Year\",\n    y = \"Percent\",\n    title = \"Trends in Unhappiness\", \n    subtitle = \"1975-2018\", \n    caption = \"Data: GSS.\")"
   },
   {
-    "objectID": "slides/06-work-with-models.html#with-a-proper-aspect-ratio",
-    "href": "slides/06-work-with-models.html#with-a-proper-aspect-ratio",
+    "objectID": "slides/06-work-with-models.html#with-a-better-aspect-ratio",
+    "href": "slides/06-work-with-models.html#with-a-better-aspect-ratio",
     "title": "Data Visualization - 6. Work With Models",
-    "section": "With a proper aspect ratio",
-    "text": "With a proper aspect ratio"
+    "section": "With a better aspect ratio",
+    "text": "With a better aspect ratio"
   },
   {
     "objectID": "slides/06-work-with-models.html#a-more-complex-example",

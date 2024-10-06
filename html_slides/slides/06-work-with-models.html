@@ -1344,8 +1344,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
 </section>
 <section id="iterating-in-a-pipeline-3" class="slide level2">
 <h2><span class="fg-green">Iterating</span> in a pipeline</h2>
-<p>But you could also say “Feed each column of <span class="fg-pink"><code>gapminder</code></span> in turn to the <span class="fg-green"><code>n_distinct()</code></span> function”.</p>
-<p>This is what the <span class="fg-green"><code>map()</code></span> function is for.</p>
+<p>But you could also say “Feed each column of <span class="fg-pink"><code>gapminder</code></span> in turn to the <span class="fg-green"><code>n_distinct()</code></span> function”. This is what <span class="fg-green"><code>map()</code></span> is for.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb80" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(gapminder, n_distinct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1842,7 +1841,7 @@ F-statistic: 35.24 on 1 and 28 DF,  p-value: 2.173e-06</code></pre>
 <section class="slide level2">
 
 <div class="huge">
-<p><span class="fg-blue">But these points apply just as well</span> to presenting data in <em>any</em> format. <span class="fg-pink">Graphs are not special here!</span></p>
+<p><span class="fg-blue">But all this applies</span> to data in <em>any</em> format. <span class="fg-pink">Graphs are not special here!</span></p>
 </div>
 </section></section>
 <section>
@@ -2074,26 +2073,26 @@ Data variables:
 <h2>Trends in the <span class="fg-orange"><code>happy</code></span> measure</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb131" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a aria-hidden="true" tabindex="-1"></a>out_hap <span class="ot">&lt;-</span> gss_svy <span class="sc">|&gt;</span> </span>
-<span id="cb131-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(year, sex, happy)  <span class="sc">|&gt;</span> </span>
+<span id="cb131-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(year, happy)  <span class="sc">|&gt;</span> </span>
 <span id="cb131-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">prop =</span> <span class="fu">survey_mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">vartype =</span> <span class="st">"ci"</span>))</span>
 <span id="cb131-4"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb131-5"><a aria-hidden="true" tabindex="-1"></a>out_hap</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code># A tibble: 221 × 6
-# Groups:   year, sex [56]
-    year sex    happy            prop   prop_low prop_upp
-   &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;           &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;
- 1  1975 Male   Very Happy    0.319    0.279      0.358  
- 2  1975 Male   Pretty Happy  0.555    0.514      0.597  
- 3  1975 Male   Not Too Happy 0.119    0.0934     0.145  
- 4  1975 Male   &lt;NA&gt;          0.00670 -0.0000539  0.0134 
- 5  1975 Female Very Happy    0.345    0.310      0.380  
- 6  1975 Female Pretty Happy  0.516    0.472      0.560  
- 7  1975 Female Not Too Happy 0.138    0.108      0.167  
- 8  1975 Female &lt;NA&gt;          0.00117 -0.00113    0.00347
- 9  1976 Male   Very Happy    0.328    0.289      0.367  
-10  1976 Male   Pretty Happy  0.543    0.505      0.580  
-# ℹ 211 more rows</code></pre>
+<pre data-code-line-numbers=""><code># A tibble: 111 × 5
+# Groups:   year [28]
+    year happy            prop prop_low prop_upp
+   &lt;dbl&gt; &lt;fct&gt;           &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+ 1  1975 Very Happy    0.333   0.304     0.361  
+ 2  1975 Pretty Happy  0.534   0.504     0.565  
+ 3  1975 Not Too Happy 0.129   0.108     0.150  
+ 4  1975 &lt;NA&gt;          0.00375 0.000362  0.00714
+ 5  1976 Very Happy    0.348   0.321     0.376  
+ 6  1976 Pretty Happy  0.529   0.504     0.555  
+ 7  1976 Not Too Happy 0.122   0.104     0.141  
+ 8  1977 Very Happy    0.357   0.330     0.384  
+ 9  1977 Pretty Happy  0.532   0.504     0.560  
+10  1977 Not Too Happy 0.110   0.0918    0.128  
+# ℹ 101 more rows</code></pre>
 </div>
 </div>
 <p>Once again, it’s now a tidy tibble, and we know what to do with those.</p>
@@ -2129,8 +2128,8 @@ Data variables:
 </div>
 </div></div>
 </section>
-<section id="with-a-proper-aspect-ratio" class="slide level2">
-<h2>With a proper aspect ratio</h2>
+<section id="with-a-better-aspect-ratio" class="slide level2">
+<h2>With a better aspect ratio</h2>
 
 <img data-src="06-work-with-models_files/figure-revealjs/06-work-with-models-72-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1056"></section>
 <section id="a-more-complex-example" class="slide level2">
