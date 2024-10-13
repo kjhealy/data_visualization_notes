@@ -2496,7 +2496,7 @@
     "href": "slides/02-about-r.html#how-to-get-there",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "How to get there?",
-    "text": "How to get there?\n\n\n\n\n\nWe could write an R script with some notes inside, using it to create some figures and tables, paste them into our document.\nThis will work, but we can do better."
+    "text": "How to get there?\n\n\n\n\n\nWe could write an R script with some notes inside, using it to create some figures and tables, paste them into our document.\nThis will work well. The more complex our projects get the more likely it is we will write code like this. It will also look less and less like a single all-in-one-breath script and more like a structured collection R files that combine to do many things.\nBut to begin we can also do things a little differently, by taking a more notebook-based approach. For many simpler and routine uses, this will be better."
   },
   {
     "objectID": "slides/02-about-r.html#we-can-make-this",
@@ -2517,7 +2517,21 @@
     "href": "slides/02-about-r.html#the-code-gets-replaced-by-its-output",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "The code gets replaced by its output",
-    "text": "The code gets replaced by its output"
+    "text": "The code gets replaced by its output\nThis way of doing things is called a Literate Programming or Notebook approach."
+  },
+  {
+    "objectID": "slides/02-about-r.html#strengths-and-weaknesses",
+    "href": "slides/02-about-r.html#strengths-and-weaknesses",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Strengths and weaknesses",
+    "text": "Strengths and weaknesses\n\n\nNotebooks work smoothly when\n\nYour document or report is small and self-contained.\nYour analysis is quick or lightweight.\nYou are making slides.\nYou are making a lot of similar reports from a template.\nYou regularly refer to calculated items in the text of your analysis.\n\n\n\n\nNotebooks can get awkward when\n\nYour analysis has many pieces.\nYour project has many authors.\nYour analysis needs a lot of scaffolding in code.\nYou have a lot of different outputs."
+  },
+  {
+    "objectID": "slides/02-about-r.html#in-practice",
+    "href": "slides/02-about-r.html#in-practice",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "In Practice",
+    "text": "In Practice\nNotebook-style documents like Quarto files are great as part of larger projects. The more complex your project, the less likely it will straightforwardly fit into a single notebook. More likely you will find yourself, first, splitting parts of a complex project up into different notebooks; and then, second, writing R scripts that programatically clean and pre-process data, run analyses, and produce some outputs—such as key tables and figures—that you then incorporate into a Quarto document indirectly. Not by copying and pasting, but by pointing to those outputs."
   },
   {
     "objectID": "slides/02-about-r.html#basic-markdown-summary",

@@ -579,7 +579,8 @@ Kieran Healy
 </div><div class="column right" style="width:70%;">
 <ul>
 <li>We could write an <strong>R script</strong> with some notes inside, using it to create some figures and tables, paste them into our document.</li>
-<li>This will work, but we can do better.</li>
+<li>This will work well. The more complex our projects get the more likely it is we will write code like this. It will also look less and less like a single all-in-one-breath script and more like a structured collection R files that combine to do many things.</li>
+<li>But to begin we can also do things a little differently, by taking a more <em>notebook-based</em> approach. For many simpler and routine uses, this will be better.</li>
 </ul>
 </div></div>
 </section>
@@ -593,6 +594,7 @@ Kieran Healy
 <img data-src="img/02_lorem_ipsum_raw.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="the-code-gets-replaced-by-its-output" class="slide level2">
 <h2>The <span class="fg-pink">code</span> gets replaced by its <span class="fg-green">output</span></h2>
+<p>This way of doing things is called a <em>Literate Programming</em> or <em>Notebook</em> approach.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><img data-src="img/02_lorem_ipsum_raw.png"></p>
@@ -615,8 +617,34 @@ Kieran Healy
 <li>This approach has its limitations, but it’s <em>very</em> useful and has many benefits.</li>
 </ul>
 </section>
-<section class="slide level2">
-
+<section id="strengths-and-weaknesses" class="slide level2">
+<h2>Strengths and weaknesses</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="notebooks-work-smoothly-when">Notebooks work smoothly when</h3>
+<ul>
+<li>Your document or report is small and self-contained.</li>
+<li>Your analysis is quick or lightweight.</li>
+<li>You are making slides.</li>
+<li>You are making a lot of similar reports from a template.</li>
+<li>You regularly refer to calculated items in the text of your analysis.</li>
+</ul>
+</div><div class="column right" style="width:50%;">
+<div class="fragment" data-fragment-index="1">
+<!-- -->
+<h3 id="notebooks-can-get-awkward-when">Notebooks can get awkward when</h3>
+<ul>
+<li>Your analysis has many pieces.</li>
+<li>Your project has many authors.</li>
+<li>Your analysis needs a lot of scaffolding in code.</li>
+<li>You have a lot of different outputs.</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="in-practice" class="slide level2">
+<h2>In Practice</h2>
+<p>Notebook-style documents like Quarto files are great as part of larger projects. The more complex your project, the less likely it will straightforwardly fit into a <em>single</em> notebook. More likely you will find yourself, first, splitting parts of a complex project up into different notebooks; and then, second, writing R scripts that programatically clean and pre-process data, run analyses, and produce some outputs—such as key tables and figures—that you then incorporate into a Quarto document indirectly. Not by copying and pasting, but by pointing to those outputs.</p>
 </section>
 <section id="basic-markdown-summary" class="slide level2">
 <h2>Basic markdown summary</h2>
@@ -1343,12 +1371,12 @@ Kieran Healy
 <!-- preamble start -->
 
     <script>
-      function styleCell_fw285c7cw164hksn0ulo(i, j, css_id) {
-        var table = document.getElementById("tinytable_fw285c7cw164hksn0ulo");
+      function styleCell_42k5nn8uojog81a3cfsd(i, j, css_id) {
+        var table = document.getElementById("tinytable_42k5nn8uojog81a3cfsd");
         table.rows[i].cells[j].classList.add(css_id);
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_fw285c7cw164hksn0ulo');
+        var table = document.getElementById('tinytable_42k5nn8uojog81a3cfsd');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -1356,8 +1384,8 @@ Kieran Healy
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_fw285c7cw164hksn0ulo(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_fw285c7cw164hksn0ulo");
+      function spanCell_42k5nn8uojog81a3cfsd(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_42k5nn8uojog81a3cfsd");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -1383,18 +1411,18 @@ Kieran Healy
         targetCell.rowSpan = rowspan;
         targetCell.colSpan = colspan;
       }
-window.addEventListener('load', function () { styleCell_fw285c7cw164hksn0ulo(0, 0, 'tinytable_css_idaraech1v79ipterkce8j') })
-window.addEventListener('load', function () { styleCell_fw285c7cw164hksn0ulo(0, 1, 'tinytable_css_idaraech1v79ipterkce8j') })
-window.addEventListener('load', function () { styleCell_fw285c7cw164hksn0ulo(0, 2, 'tinytable_css_idaraech1v79ipterkce8j') })
-window.addEventListener('load', function () { styleCell_fw285c7cw164hksn0ulo(0, 3, 'tinytable_css_idaraech1v79ipterkce8j') })
-window.addEventListener('load', function () { styleCell_fw285c7cw164hksn0ulo(0, 4, 'tinytable_css_idaraech1v79ipterkce8j') })
+window.addEventListener('load', function () { styleCell_42k5nn8uojog81a3cfsd(0, 0, 'tinytable_css_idtth2pjjw50xt7r9duoic') })
+window.addEventListener('load', function () { styleCell_42k5nn8uojog81a3cfsd(0, 1, 'tinytable_css_idtth2pjjw50xt7r9duoic') })
+window.addEventListener('load', function () { styleCell_42k5nn8uojog81a3cfsd(0, 2, 'tinytable_css_idtth2pjjw50xt7r9duoic') })
+window.addEventListener('load', function () { styleCell_42k5nn8uojog81a3cfsd(0, 3, 'tinytable_css_idtth2pjjw50xt7r9duoic') })
+window.addEventListener('load', function () { styleCell_42k5nn8uojog81a3cfsd(0, 4, 'tinytable_css_idtth2pjjw50xt7r9duoic') })
     </script>
 
     <style>
-    .table td.tinytable_css_idaraech1v79ipterkce8j, .table th.tinytable_css_idaraech1v79ipterkce8j {  border-bottom: solid 0.1em #d3d8dc; }
+    .table td.tinytable_css_idtth2pjjw50xt7r9duoic, .table th.tinytable_css_idtth2pjjw50xt7r9duoic {  border-bottom: solid 0.1em #d3d8dc; }
     </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_fw285c7cw164hksn0ulo" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_42k5nn8uojog81a3cfsd" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
