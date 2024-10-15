@@ -1202,11 +1202,8 @@ Kieran Healy
 # ℹ 14 more rows</code></pre>
 </div>
 </div>
-<div class="small">
-<ul>
-<li>Groups are carried forward till summarized or explicitly ungrouped</li>
-<li>Summary calculations are done on the innermost group, which then “disappears”.</li>
-</ul>
+<div class="smallkh">
+<p>Groups are carried forward till summarized or explicitly ungrouped. Summary calculations are done on the innermost group, which then “disappears”—i.e.&nbsp;it becomes the rows of in the summary table.</p>
 </div>
 </section>
 <section id="pipelines-carry-assumptions-forward-1" class="slide level2">
@@ -2705,9 +2702,6 @@ Kieran Healy
 </section>
 <section id="the-guides-function" class="slide level2">
 <h2>The <span class="fg-green"><code>guides()</code></span> function</h2>
-<ul>
-<li>Controls overall properties of the guide labels. Common use: turning it off. We’ll see more advanced uses later.</li>
-</ul>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
 <div class="sourceCode cell-code" id="cb109" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a aria-hidden="true" tabindex="-1"></a>organdata <span class="sc">|&gt;</span> </span>
@@ -2728,10 +2722,10 @@ Kieran Healy
 </div>
 </div>
 </div></div>
+<p>Controls overall properties of the guide labels. Common use: turning it off. We’ll see more advanced uses later.</p>
 </section>
 <section id="the-theme-function" class="slide level2">
 <h2>The <span class="fg-green"><code>theme()</code></span> function</h2>
-<p><span class="fg-green"><code>theme()</code></span> styles parts of your plot that are <em>not</em> directly representing your data. Often the first thing people want to adjust; but logically it’s the <em>last</em> thing.</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
 <div class="sourceCode cell-code" id="cb110" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a aria-hidden="true" tabindex="-1"></a><span class="do">## Using the "classic" ggplot theme here</span></span>
@@ -2756,6 +2750,7 @@ Kieran Healy
 </div>
 </div>
 </div></div>
+<p><span class="fg-green"><code>theme()</code></span> styles parts of your plot that do <em>not</em> direct represent data. Often the first thing people want to adjust; but logically it’s the <em>last</em> thing.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -2773,7 +2768,6 @@ Kieran Healy
   <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-spotlight/spotlight.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -2795,7 +2789,6 @@ Kieran Healy
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'spotlight': {"size":60,"lockPointerInsideCanvas":false,"toggleSpotlightOnMouseDown":true,"spotlightOnKeyPressAndHold":false,"spotlightCursor":"none","presentingCursor":"none","initialPresentationMode":true,"disablingUserSelect":true,"fadeInAndOut":100,"useAsPointer":false,"pointerColor":"red"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -2966,7 +2959,7 @@ Kieran Healy
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealSpotlight, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
           RevealNotes,

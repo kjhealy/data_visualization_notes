@@ -1089,7 +1089,7 @@
     "href": "slides/05-work-with-dplyr-and-geoms.html#pipelines-carry-assumptions-forward",
     "title": "Data Visualization - 5. Dplyr and Geoms",
     "section": "Pipelines carry assumptions forward",
-    "text": "Pipelines carry assumptions forward\n\ngss_sm |&gt; \n  group_by(bigregion, religion) |&gt; \n  summarize(total = n()) |&gt; \n  mutate(freq = total / sum(total),\n           pct = round((freq*100), 1))\n\n# A tibble: 24 × 5\n# Groups:   bigregion [4]\n   bigregion religion   total    freq   pct\n   &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;\n 1 Northeast Protestant   158 0.324    32.4\n 2 Northeast Catholic     162 0.332    33.2\n 3 Northeast Jewish        27 0.0553    5.5\n 4 Northeast None         112 0.230    23  \n 5 Northeast Other         28 0.0574    5.7\n 6 Northeast &lt;NA&gt;           1 0.00205   0.2\n 7 Midwest   Protestant   325 0.468    46.8\n 8 Midwest   Catholic     172 0.247    24.7\n 9 Midwest   Jewish         3 0.00432   0.4\n10 Midwest   None         157 0.226    22.6\n# ℹ 14 more rows\n\n\n\n\nGroups are carried forward till summarized or explicitly ungrouped\nSummary calculations are done on the innermost group, which then “disappears”."
+    "text": "Pipelines carry assumptions forward\n\ngss_sm |&gt; \n  group_by(bigregion, religion) |&gt; \n  summarize(total = n()) |&gt; \n  mutate(freq = total / sum(total),\n           pct = round((freq*100), 1))\n\n# A tibble: 24 × 5\n# Groups:   bigregion [4]\n   bigregion religion   total    freq   pct\n   &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;\n 1 Northeast Protestant   158 0.324    32.4\n 2 Northeast Catholic     162 0.332    33.2\n 3 Northeast Jewish        27 0.0553    5.5\n 4 Northeast None         112 0.230    23  \n 5 Northeast Other         28 0.0574    5.7\n 6 Northeast &lt;NA&gt;           1 0.00205   0.2\n 7 Midwest   Protestant   325 0.468    46.8\n 8 Midwest   Catholic     172 0.247    24.7\n 9 Midwest   Jewish         3 0.00432   0.4\n10 Midwest   None         157 0.226    22.6\n# ℹ 14 more rows\n\n\n\nGroups are carried forward till summarized or explicitly ungrouped. Summary calculations are done on the innermost group, which then “disappears”—i.e. it becomes the rows of in the summary table."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#pipelines-carry-assumptions-forward-1",
@@ -1565,14 +1565,14 @@
     "href": "slides/05-work-with-dplyr-and-geoms.html#the-guides-function",
     "title": "Data Visualization - 5. Dplyr and Geoms",
     "section": "The guides() function",
-    "text": "The guides() function\n\nControls overall properties of the guide labels. Common use: turning it off. We’ll see more advanced uses later.\n\n\n\norgandata |&gt; \n  ggplot(mapping = aes(x = roads,\n                       y = donors,\n                       color = consent_law)) + \n  geom_point() +\n  facet_wrap(~ consent_law, ncol = 1) +\n  guides(color = \"none\") + \n  labs(x = \"Road Deaths\",\n       y = \"Donor Procurement\")"
+    "text": "The guides() function\n\n\norgandata |&gt; \n  ggplot(mapping = aes(x = roads,\n                       y = donors,\n                       color = consent_law)) + \n  geom_point() +\n  facet_wrap(~ consent_law, ncol = 1) +\n  guides(color = \"none\") + \n  labs(x = \"Road Deaths\",\n       y = \"Donor Procurement\")\n\n\n\n\n\n\n\n\n\nControls overall properties of the guide labels. Common use: turning it off. We’ll see more advanced uses later."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#the-theme-function",
     "href": "slides/05-work-with-dplyr-and-geoms.html#the-theme-function",
     "title": "Data Visualization - 5. Dplyr and Geoms",
     "section": "The theme() function",
-    "text": "The theme() function\ntheme() styles parts of your plot that are not directly representing your data. Often the first thing people want to adjust; but logically it’s the last thing.\n\n\n## Using the \"classic\" ggplot theme here\norgandata |&gt; \n  ggplot(mapping = aes(x = roads,\n                       y = donors,\n                       color = consent_law)) + \n  geom_point() +\n  labs(title = \"By Consent Law\",\n    x = \"Road Deaths\",\n    y = \"Donor Procurement\", \n    color = \"Legal Regime:\") + \n  theme(legend.position = \"bottom\", \n        plot.title = element_text(color = \"darkred\",\n                                  face = \"bold\"))"
+    "text": "The theme() function\n\n\n## Using the \"classic\" ggplot theme here\norgandata |&gt; \n  ggplot(mapping = aes(x = roads,\n                       y = donors,\n                       color = consent_law)) + \n  geom_point() +\n  labs(title = \"By Consent Law\",\n    x = \"Road Deaths\",\n    y = \"Donor Procurement\", \n    color = \"Legal Regime:\") + \n  theme(legend.position = \"bottom\", \n        plot.title = element_text(color = \"darkred\",\n                                  face = \"bold\"))\n\n\n\n\n\n\n\n\n\ntheme() styles parts of your plot that do not direct represent data. Often the first thing people want to adjust; but logically it’s the last thing."
   },
   {
     "objectID": "slides/07-make-maps-2.html#load-our-packages",
@@ -2090,7 +2090,7 @@
     "href": "slides/07-make-maps-1.html#county-level-choropleths-2",
     "title": "Data Visualization - 7. Make Maps (1)",
     "section": "County-level choropleths",
-    "text": "County-level choropleths\n\n3,195 entities, including states (FIPS id ends in four zeros)\nAnd the US as a whole (FIPS id of 0)\nSample a few rows, with specific columns:\n\n\ncounty_data  |&gt; \n    select(id, name, state, pop_dens, pct_black) |&gt;\n    sample_n(10)\n\n# A tibble: 10 × 5\n   id    name              state pop_dens      pct_black  \n   &lt;chr&gt; &lt;chr&gt;             &lt;fct&gt; &lt;fct&gt;         &lt;fct&gt;      \n 1 39083 Knox County       OH    [  100,  500) [ 0.0, 2.0)\n 2 19149 Plymouth County   IA    [   10,   50) [ 0.0, 2.0)\n 3 36043 Herkimer County   NY    [   10,   50) [ 0.0, 2.0)\n 4 01091 Marengo County    AL    [   10,   50) [50.0,85.3]\n 5 48231 Hunt County       TX    [  100,  500) [ 5.0,10.0)\n 6 16083 Twin Falls County ID    [   10,   50) [ 0.0, 2.0)\n 7 48441 Taylor County     TX    [  100,  500) [ 5.0,10.0)\n 8 47007 Bledsoe County    TN    [   10,   50) [ 2.0, 5.0)\n 9 28053 Humphreys County  MS    [   10,   50) [50.0,85.3]\n10 01051 Elmore County     AL    [  100,  500) [15.0,25.0)"
+    "text": "County-level choropleths\n\n3,195 entities, including states (FIPS id ends in four zeros)\nAnd the US as a whole (FIPS id of 0)\nSample a few rows, with specific columns:\n\n\ncounty_data  |&gt; \n    select(id, name, state, pop_dens, pct_black) |&gt;\n    sample_n(10)\n\n# A tibble: 10 × 5\n   id    name              state pop_dens      pct_black  \n   &lt;chr&gt; &lt;chr&gt;             &lt;fct&gt; &lt;fct&gt;         &lt;fct&gt;      \n 1 35027 Lincoln County    NM    [    0,   10) [ 0.0, 2.0)\n 2 05075 Lawrence County   AR    [   10,   50) [ 0.0, 2.0)\n 3 20067 Grant County      KS    [   10,   50) [ 0.0, 2.0)\n 4 48095 Concho County     TX    [    0,   10) [ 2.0, 5.0)\n 5 47149 Rutherford County TN    [  100,  500) [10.0,15.0)\n 6 17029 Coles County      IL    [  100,  500) [ 2.0, 5.0)\n 7 12051 Hendry County     FL    [   10,   50) [10.0,15.0)\n 8 16059 Lemhi County      ID    [    0,   10) [ 0.0, 2.0)\n 9 46113 Shannon County    SD    [    0,   10) [ 0.0, 2.0)\n10 21059 Daviess County    KY    [  100,  500) [ 2.0, 5.0)"
   },
   {
     "objectID": "slides/07-make-maps-1.html#joined-table",
@@ -4407,7 +4407,7 @@
     "href": "slides/04-show-the-right-numbers.html#compare-two-distributions",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "Compare two distributions",
-    "text": "Compare two distributions\n\n\n## Two state codes\noh_wi &lt;- c(\"OH\", \"WI\")\n\nmidwest |&gt; \n  filter(state %in% oh_wi) |&gt; \n  ggplot(mapping = aes(x = percollege, \n                       fill = state)) + \n  geom_histogram(alpha = 0.5, \n                 position = \"identity\")\n\n\n\n\n\n\n\n\n\n\nHere we do the whole thing in a pipeline using the pipe and the dplyr verb filter() to subset rows of the data by some condition.\nExperiment with leaving the position argument out, or changing it to \"dodge\"."
+    "text": "Compare two distributions\n\n\n## Two state codes\noh_wi &lt;- c(\"OH\", \"WI\")\n\nmidwest |&gt; \n  filter(state %in% oh_wi) |&gt; \n  ggplot(mapping = aes(x = percollege, \n                       fill = state)) + \n  geom_histogram()\n\n\n\n\n\n\n\n\n\n\nHere we do the whole thing in a pipeline using the pipe and the dplyr verb filter() to subset rows of the data by some condition.\nExperiment with changing the position argument to \"dodge\"."
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#geom_density",
@@ -4428,70 +4428,91 @@
     "href": "slides/04-show-the-right-numbers.html#geom_density-2",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "geom_density()",
-    "text": "geom_density()\n\n\nmidwest |&gt;\n  filter(state %in% oh_wi) |&gt; \n  ggplot(mapping = aes(x = area,\n                       fill = state, \n                       color = state)) + \n  geom_density(mapping = aes(y = after_stat(ndensity)), \n               alpha = 0.4)\n\n\n\n\n\n\n\n\n\n\nndensity here is not in our data! It’s computed. Histogram and density geoms have default statistics, but you can ask them to do more. The after_stat functions can do this work for us."
+    "text": "geom_density()\n\n\nmidwest |&gt;\n  filter(state %in% oh_wi) |&gt; \n  ggplot(mapping = aes(x = area,\n                       fill = state, \n                       color = state)) + \n  geom_density(mapping = aes(y = after_stat(ndensity)), \n               alpha = 0.4)\n\n\n\n\n\n\n\n\n\n\nndensity here is computed. Histogram and density geoms have default statistics, but you can ask them to do more. The after_stat functions can do this work for us."
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#some-made-up-data",
     "href": "slides/04-show-the-right-numbers.html#some-made-up-data",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "Some made-up data",
-    "text": "Some made-up data\n\nConsider 3,000 observations of some unit (e.g., a county) with summary measures for each group, and the population average.\n\n\ndf\n\n# A tibble: 3,000 × 5\n    unit   pop_a pop_b   pop_c pop_total\n   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n 1     1  1.29   1.93  -0.0869     1.09 \n 2     2  0.522  0.536 -0.762      0.190\n 3     3  2.14   1.47  -0.616      1.15 \n 4     4  1.13   0.673 -0.242      0.575\n 5     5  1.04   1.30   1.18       1.12 \n 6     6  1.80   0.140  2.05       1.33 \n 7     7  0.186  1.30  -0.709      0.476\n 8     8 -0.953  0.520 -2.44      -0.767\n 9     9  0.700  1.66  -1.09       0.749\n10    10  0.0416 0.484 -0.180      0.177\n# ℹ 2,990 more rows"
+    "text": "Some made-up data\n\nConsider 3,000 observations of some unit (e.g., a county) with summary measures for each group, and the mean weighted by subgroup population within unit.\n\n\ndf\n\n# A tibble: 3,000 × 8\n    unit pop_a pop_b pop_c   a_n   b_n   c_n pop_total\n   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;\n 1     1 0.251 0.579 0.632    40     2    45     0.456\n 2     2 0.376 0.300 0.445     7    29     6     0.333\n 3     3 0.326 0.693 0.511    36    49    13     0.534\n 4     4 0.349 0.596 0.566    37    10    40     0.477\n 5     5 0.294 0.410 0.320    13    12    35     0.332\n 6     6 0.259 0.297 0.583    48    49    44     0.373\n 7     7 0.316 0.574 0.457    19    15    36     0.444\n 8     8 0.344 0.552 0.537    10    13    49     0.513\n 9     9 0.441 0.580 0.818    19    45    43     0.651\n10    10 0.264 0.388 0.630    11    25    10     0.411\n# ℹ 2,990 more rows"
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#get-the-data-into-long-format",
     "href": "slides/04-show-the-right-numbers.html#get-the-data-into-long-format",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "Get the data into long format!",
-    "text": "Get the data into long format!\n\n\n\n df\n\n\n\n\n# A tibble: 3,000 × 5\n    unit   pop_a pop_b   pop_c pop_total\n   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n 1     1  1.29   1.93  -0.0869     1.09 \n 2     2  0.522  0.536 -0.762      0.190\n 3     3  2.14   1.47  -0.616      1.15 \n 4     4  1.13   0.673 -0.242      0.575\n 5     5  1.04   1.30   1.18       1.12 \n 6     6  1.80   0.140  2.05       1.33 \n 7     7  0.186  1.30  -0.709      0.476\n 8     8 -0.953  0.520 -2.44      -0.767\n 9     9  0.700  1.66  -1.09       0.749\n10    10  0.0416 0.484 -0.180      0.177\n# ℹ 2,990 more rows"
+    "text": "Get the data into long format!\n\n\n\n df\n\n\n\n\n# A tibble: 3,000 × 8\n    unit pop_a pop_b pop_c   a_n   b_n   c_n pop_total\n   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;\n 1     1 0.251 0.579 0.632    40     2    45     0.456\n 2     2 0.376 0.300 0.445     7    29     6     0.333\n 3     3 0.326 0.693 0.511    36    49    13     0.534\n 4     4 0.349 0.596 0.566    37    10    40     0.477\n 5     5 0.294 0.410 0.320    13    12    35     0.332\n 6     6 0.259 0.297 0.583    48    49    44     0.373\n 7     7 0.316 0.574 0.457    19    15    36     0.444\n 8     8 0.344 0.552 0.537    10    13    49     0.513\n 9     9 0.441 0.580 0.818    19    45    43     0.651\n10    10 0.264 0.388 0.630    11    25    10     0.411\n# ℹ 2,990 more rows"
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#get-the-data-into-long-format-1",
     "href": "slides/04-show-the-right-numbers.html#get-the-data-into-long-format-1",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "Get the data into long format!",
-    "text": "Get the data into long format!\n\n\n\n df |&gt;\n  pivot_longer(cols = pop_a:pop_total)\n\n\n\n\n# A tibble: 12,000 × 3\n    unit name        value\n   &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;\n 1     1 pop_a      1.29  \n 2     1 pop_b      1.93  \n 3     1 pop_c     -0.0869\n 4     1 pop_total  1.09  \n 5     2 pop_a      0.522 \n 6     2 pop_b      0.536 \n 7     2 pop_c     -0.762 \n 8     2 pop_total  0.190 \n 9     3 pop_a      2.14  \n10     3 pop_b      1.47  \n# ℹ 11,990 more rows"
+    "text": "Get the data into long format!\n\n\n\n df |&gt;\n  select(unit:pop_c, pop_total)\n\n\n\n\n# A tibble: 3,000 × 5\n    unit pop_a pop_b pop_c pop_total\n   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;\n 1     1 0.251 0.579 0.632     0.456\n 2     2 0.376 0.300 0.445     0.333\n 3     3 0.326 0.693 0.511     0.534\n 4     4 0.349 0.596 0.566     0.477\n 5     5 0.294 0.410 0.320     0.332\n 6     6 0.259 0.297 0.583     0.373\n 7     7 0.316 0.574 0.457     0.444\n 8     8 0.344 0.552 0.537     0.513\n 9     9 0.441 0.580 0.818     0.651\n10    10 0.264 0.388 0.630     0.411\n# ℹ 2,990 more rows"
+  },
+  {
+    "objectID": "slides/04-show-the-right-numbers.html#get-the-data-into-long-format-2",
+    "href": "slides/04-show-the-right-numbers.html#get-the-data-into-long-format-2",
+    "title": "Data Visualization - 4. Show the Right Numbers",
+    "section": "Get the data into long format!",
+    "text": "Get the data into long format!\n\n\n\n df |&gt;\n  select(unit:pop_c, pop_total) |&gt;\n  pivot_longer(cols = pop_a:pop_total)\n\n\n\n\n# A tibble: 12,000 × 3\n    unit name      value\n   &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt;\n 1     1 pop_a     0.251\n 2     1 pop_b     0.579\n 3     1 pop_c     0.632\n 4     1 pop_total 0.456\n 5     2 pop_a     0.376\n 6     2 pop_b     0.300\n 7     2 pop_c     0.445\n 8     2 pop_total 0.333\n 9     3 pop_a     0.326\n10     3 pop_b     0.693\n# ℹ 11,990 more rows"
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#first-effort-hard-to-read",
     "href": "slides/04-show-the-right-numbers.html#first-effort-hard-to-read",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "First effort: Hard to read",
-    "text": "First effort: Hard to read\n\n\ndf |&gt; \n  pivot_longer(cols = pop_a:pop_total)  |&gt; \n  ggplot() + \n  geom_histogram(mapping = aes(x = value, \n                               y = after_stat(ncount), \n                          color = name, fill = name), \n            stat = \"bin\", bins = 20, \n            linewidth = 0.5, alpha = 0.7,\n            position = \"identity\") + \n  labs(x = \"Measure\", y = \"Scaled Count\", color = \"Group\", \n       fill = \"Group\",\n       title = \"Comparing Subgroups: Histograms\")\n\n\n\n\n\n\n\n\n\n\nAgain, after_stat(ncount) is computed."
+    "text": "First effort: Hard to read\n\n\n df |&gt; \n  select(unit:pop_c, pop_total) |&gt; \n  pivot_longer(cols = pop_a:pop_total)  |&gt; \n  ggplot() + \n  geom_histogram(mapping = aes(x = value, \n                               y = after_stat(ncount), \n                          color = name, fill = name), \n            stat = \"bin\", bins = 20, \n            linewidth = 0.5, alpha = 0.7,\n            position = \"identity\") + \n  labs(x = \"Measure\", y = \"Scaled Count\", color = \"Group\", \n       fill = \"Group\",\n       title = \"Comparing Subgroups: Histograms\")\n\n\n\n\n\n\n\n\n\n\nAgain, after_stat(ncount) is computed."
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#a-little-pivot-trick",
     "href": "slides/04-show-the-right-numbers.html#a-little-pivot-trick",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "A little pivot trick",
-    "text": "A little pivot trick\n\n\n\n# Treat pop_a to pop_total as a single variable\ndf\n\n\n\n\n# A tibble: 3,000 × 5\n    unit   pop_a pop_b   pop_c pop_total\n   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n 1     1  1.29   1.93  -0.0869     1.09 \n 2     2  0.522  0.536 -0.762      0.190\n 3     3  2.14   1.47  -0.616      1.15 \n 4     4  1.13   0.673 -0.242      0.575\n 5     5  1.04   1.30   1.18       1.12 \n 6     6  1.80   0.140  2.05       1.33 \n 7     7  0.186  1.30  -0.709      0.476\n 8     8 -0.953  0.520 -2.44      -0.767\n 9     9  0.700  1.66  -1.09       0.749\n10    10  0.0416 0.484 -0.180      0.177\n# ℹ 2,990 more rows"
+    "text": "A little pivot trick\n\n\n\n# Treat pop_a to pop_total as a single variable\ndf\n\n\n\n\n# A tibble: 3,000 × 8\n    unit pop_a pop_b pop_c   a_n   b_n   c_n pop_total\n   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;\n 1     1 0.251 0.579 0.632    40     2    45     0.456\n 2     2 0.376 0.300 0.445     7    29     6     0.333\n 3     3 0.326 0.693 0.511    36    49    13     0.534\n 4     4 0.349 0.596 0.566    37    10    40     0.477\n 5     5 0.294 0.410 0.320    13    12    35     0.332\n 6     6 0.259 0.297 0.583    48    49    44     0.373\n 7     7 0.316 0.574 0.457    19    15    36     0.444\n 8     8 0.344 0.552 0.537    10    13    49     0.513\n 9     9 0.441 0.580 0.818    19    45    43     0.651\n10    10 0.264 0.388 0.630    11    25    10     0.411\n# ℹ 2,990 more rows"
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#a-little-pivot-trick-1",
     "href": "slides/04-show-the-right-numbers.html#a-little-pivot-trick-1",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "A little pivot trick",
-    "text": "A little pivot trick\n\n\n\n# Treat pop_a to pop_total as a single variable\ndf |&gt;\n  pivot_longer(cols = pop_a:pop_total)\n\n\n\n\n# A tibble: 12,000 × 3\n    unit name        value\n   &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;\n 1     1 pop_a      1.29  \n 2     1 pop_b      1.93  \n 3     1 pop_c     -0.0869\n 4     1 pop_total  1.09  \n 5     2 pop_a      0.522 \n 6     2 pop_b      0.536 \n 7     2 pop_c     -0.762 \n 8     2 pop_total  0.190 \n 9     3 pop_a      2.14  \n10     3 pop_b      1.47  \n# ℹ 11,990 more rows"
+    "text": "A little pivot trick\n\n\n\n# Treat pop_a to pop_total as a single variable\ndf |&gt;\n  select(unit:pop_c, pop_total)\n\n\n\n\n# A tibble: 3,000 × 5\n    unit pop_a pop_b pop_c pop_total\n   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;\n 1     1 0.251 0.579 0.632     0.456\n 2     2 0.376 0.300 0.445     0.333\n 3     3 0.326 0.693 0.511     0.534\n 4     4 0.349 0.596 0.566     0.477\n 5     5 0.294 0.410 0.320     0.332\n 6     6 0.259 0.297 0.583     0.373\n 7     7 0.316 0.574 0.457     0.444\n 8     8 0.344 0.552 0.537     0.513\n 9     9 0.441 0.580 0.818     0.651\n10    10 0.264 0.388 0.630     0.411\n# ℹ 2,990 more rows"
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#a-little-pivot-trick-2",
     "href": "slides/04-show-the-right-numbers.html#a-little-pivot-trick-2",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "A little pivot trick",
-    "text": "A little pivot trick\n\n\n\n# Just treat pop_a to pop_c as the single variable.\n# Notice that pop_total just gets repeated.\n df\n\n\n\n\n# A tibble: 3,000 × 5\n    unit   pop_a pop_b   pop_c pop_total\n   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n 1     1  1.29   1.93  -0.0869     1.09 \n 2     2  0.522  0.536 -0.762      0.190\n 3     3  2.14   1.47  -0.616      1.15 \n 4     4  1.13   0.673 -0.242      0.575\n 5     5  1.04   1.30   1.18       1.12 \n 6     6  1.80   0.140  2.05       1.33 \n 7     7  0.186  1.30  -0.709      0.476\n 8     8 -0.953  0.520 -2.44      -0.767\n 9     9  0.700  1.66  -1.09       0.749\n10    10  0.0416 0.484 -0.180      0.177\n# ℹ 2,990 more rows"
+    "text": "A little pivot trick\n\n\n\n# Treat pop_a to pop_total as a single variable\ndf |&gt;\n  select(unit:pop_c, pop_total) |&gt;\n  pivot_longer(cols = pop_a:pop_total)\n\n\n\n\n# A tibble: 12,000 × 3\n    unit name      value\n   &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt;\n 1     1 pop_a     0.251\n 2     1 pop_b     0.579\n 3     1 pop_c     0.632\n 4     1 pop_total 0.456\n 5     2 pop_a     0.376\n 6     2 pop_b     0.300\n 7     2 pop_c     0.445\n 8     2 pop_total 0.333\n 9     3 pop_a     0.326\n10     3 pop_b     0.693\n# ℹ 11,990 more rows"
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#a-little-pivot-trick-3",
     "href": "slides/04-show-the-right-numbers.html#a-little-pivot-trick-3",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "A little pivot trick",
-    "text": "A little pivot trick\n\n\n\n# Just treat pop_a to pop_c as the single variable.\n# Notice that pop_total just gets repeated.\n df |&gt;\n  pivot_longer(cols = pop_a:pop_c)\n\n\n\n\n# A tibble: 9,000 × 4\n    unit pop_total name    value\n   &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;\n 1     1     1.09  pop_a  1.29  \n 2     1     1.09  pop_b  1.93  \n 3     1     1.09  pop_c -0.0869\n 4     2     0.190 pop_a  0.522 \n 5     2     0.190 pop_b  0.536 \n 6     2     0.190 pop_c -0.762 \n 7     3     1.15  pop_a  2.14  \n 8     3     1.15  pop_b  1.47  \n 9     3     1.15  pop_c -0.616 \n10     4     0.575 pop_a  1.13  \n# ℹ 8,990 more rows"
+    "text": "A little pivot trick\n\n\n\n# Just treat pop_a to pop_c as the single variable.\n# Notice that pop_total just gets repeated.\n df\n\n\n\n\n# A tibble: 3,000 × 8\n    unit pop_a pop_b pop_c   a_n   b_n   c_n pop_total\n   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;\n 1     1 0.251 0.579 0.632    40     2    45     0.456\n 2     2 0.376 0.300 0.445     7    29     6     0.333\n 3     3 0.326 0.693 0.511    36    49    13     0.534\n 4     4 0.349 0.596 0.566    37    10    40     0.477\n 5     5 0.294 0.410 0.320    13    12    35     0.332\n 6     6 0.259 0.297 0.583    48    49    44     0.373\n 7     7 0.316 0.574 0.457    19    15    36     0.444\n 8     8 0.344 0.552 0.537    10    13    49     0.513\n 9     9 0.441 0.580 0.818    19    45    43     0.651\n10    10 0.264 0.388 0.630    11    25    10     0.411\n# ℹ 2,990 more rows"
+  },
+  {
+    "objectID": "slides/04-show-the-right-numbers.html#a-little-pivot-trick-4",
+    "href": "slides/04-show-the-right-numbers.html#a-little-pivot-trick-4",
+    "title": "Data Visualization - 4. Show the Right Numbers",
+    "section": "A little pivot trick",
+    "text": "A little pivot trick\n\n\n\n# Just treat pop_a to pop_c as the single variable.\n# Notice that pop_total just gets repeated.\n df |&gt;\n  select(unit, pop_a:pop_c, pop_total)\n\n\n\n\n# A tibble: 3,000 × 5\n    unit pop_a pop_b pop_c pop_total\n   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;\n 1     1 0.251 0.579 0.632     0.456\n 2     2 0.376 0.300 0.445     0.333\n 3     3 0.326 0.693 0.511     0.534\n 4     4 0.349 0.596 0.566     0.477\n 5     5 0.294 0.410 0.320     0.332\n 6     6 0.259 0.297 0.583     0.373\n 7     7 0.316 0.574 0.457     0.444\n 8     8 0.344 0.552 0.537     0.513\n 9     9 0.441 0.580 0.818     0.651\n10    10 0.264 0.388 0.630     0.411\n# ℹ 2,990 more rows"
+  },
+  {
+    "objectID": "slides/04-show-the-right-numbers.html#a-little-pivot-trick-5",
+    "href": "slides/04-show-the-right-numbers.html#a-little-pivot-trick-5",
+    "title": "Data Visualization - 4. Show the Right Numbers",
+    "section": "A little pivot trick",
+    "text": "A little pivot trick\n\n\n\n# Just treat pop_a to pop_c as the single variable.\n# Notice that pop_total just gets repeated.\n df |&gt;\n  select(unit, pop_a:pop_c, pop_total) |&gt;\n  pivot_longer(cols = pop_a:pop_c)\n\n\n\n\n# A tibble: 9,000 × 4\n    unit pop_total name  value\n   &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;\n 1     1     0.456 pop_a 0.251\n 2     1     0.456 pop_b 0.579\n 3     1     0.456 pop_c 0.632\n 4     2     0.333 pop_a 0.376\n 5     2     0.333 pop_b 0.300\n 6     2     0.333 pop_c 0.445\n 7     3     0.534 pop_a 0.326\n 8     3     0.534 pop_b 0.693\n 9     3     0.534 pop_c 0.511\n10     4     0.477 pop_a 0.349\n# ℹ 8,990 more rows"
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#now-facet-with-that-data",
     "href": "slides/04-show-the-right-numbers.html#now-facet-with-that-data",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "Now facet with that data",
-    "text": "Now facet with that data\n\n\n\np_out &lt;- df |&gt;\n  pivot_longer(cols = pop_a:pop_c) |&gt;\n  ggplot() + \n  geom_histogram(mapping = aes(x = pop_total, \n                               y = after_stat(ncount)), \n                bins = 20, alpha = 0.7,\n                fill = \"gray40\", linewidth = 0.5) + \n  geom_histogram(mapping = aes(x = value, \n                               y = after_stat(ncount), \n                          color = name, fill = name), \n            stat = \"bin\", bins = 20, linewidth = 0.5,\n            alpha = 0.5) + \n  guides(color = \"none\", fill = \"none\") + \n  labs(x = \"Measure\", y = \"Scaled Count\", \n       title = \"Comparing Subgroups: Histograms\", \n       subtitle = \"Reference distribution shown in gray\") + \n  facet_wrap(~ name, nrow = 1) \n\n\n\nRemember, we can layer geoms one on top of the other. Here we call geom_histogram() twice. What happens if you comment one or other of them out?\nThe call to guides() turns off the legend for the color and fill, because we don’t need them."
+    "text": "Now facet with that data\n\n\n\np_out &lt;- df |&gt;\n  select(unit, pop_a:pop_c, pop_total) |&gt; \n  pivot_longer(pop_a:pop_c) |&gt;\n  ggplot() + \n  geom_histogram(mapping = aes(x = pop_total, \n                               y = after_stat(ncount)), \n                bins = 20, alpha = 0.7,\n                fill = \"gray40\", linewidth = 0.5) + \n  geom_histogram(mapping = aes(x = value, \n                               y = after_stat(ncount), \n                          color = name, fill = name), \n            stat = \"bin\", bins = 20, linewidth = 0.5,\n            alpha = 0.5) + \n  guides(color = \"none\", fill = \"none\") + \n  labs(x = \"Measure\", y = \"Scaled Count\", \n       title = \"Comparing Subgroups: Histograms\", \n       subtitle = \"Reference distribution shown in gray\") + \n  facet_wrap(~ name, nrow = 1) \n\n\n\nRemember, we can layer geoms one on top of the other. Here we call geom_histogram() twice. What happens if you comment one or other of them out?\nThe call to guides() turns off the legend for the color and fill, because we don’t need them."
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#now-facet-with-that-data-1",
@@ -4512,7 +4533,7 @@
     "href": "slides/04-show-the-right-numbers.html#geom_bar-wants-to-count-up",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "geom_bar() wants to count up",
-    "text": "geom_bar() wants to count up\n\nBy default geom_bar() tries to count up data by category. (Really it’s the stat_count() function that does this behind the scenes.) By saying stat=\"identity\" we explicitly tell it not to do that. This also allows us to use a y mapping. Normally this would be the result of the counting up.\n\n\n\np &lt;- ggplot(data = titanic,\n            mapping = aes(x = fate, \n                          y = percent, \n                          fill = sex))\np + geom_bar(stat = \"identity\")"
+    "text": "geom_bar() wants to count up\n\n\np &lt;- ggplot(data = titanic,\n            mapping = aes(x = fate, \n                          y = percent, \n                          fill = sex))\np + geom_bar(stat = \"identity\") \n\n\n\n\n\n\n\n\n\nBy default geom_bar() tries to count up data by category. (Really it’s the stat_count() function that does this behind the scenes.) By saying stat=\"identity\" we explicitly tell it not to do that. This also allows us to use a y mapping. Normally this would be the result of the counting up."
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#geom_bar-stacks-by-default",
@@ -4526,7 +4547,7 @@
     "href": "slides/04-show-the-right-numbers.html#a-quick-theme-adjustment",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "A quick theme() adjustment",
-    "text": "A quick theme() adjustment\nThe theme() function controls the styling of parts of the plot that don’t belong to its “grammatical” structure. That is, that are not contributing to directly representing data.\n\n\np &lt;- ggplot(data = titanic,\n            mapping = aes(x = fate, \n                          y = percent, \n                          fill = sex))\np + geom_bar(stat = \"identity\", \n             position = \"dodge\") +\n  theme(legend.position = \"top\")"
+    "text": "A quick theme() adjustment\n\n\np &lt;- ggplot(data = titanic,\n            mapping = aes(x = fate, \n                          y = percent, \n                          fill = sex))\np + geom_bar(stat = \"identity\", \n             position = \"dodge\") +\n  theme(legend.position = \"top\") \n\n\n\n\n\n\n\n\n\nThe theme() function controls the styling of parts of the plot that don’t belong to its “grammatical” structure. That is, that are not contributing to directly representing data."
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#for-convenience-use-geom_col",
@@ -4547,7 +4568,7 @@
     "href": "slides/04-show-the-right-numbers.html#using-geom_col-for-thresholds-1",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "Using geom_col() for thresholds",
-    "text": "Using geom_col() for thresholds\n\n\n\np &lt;- ggplot(data = oecd_sum, \n            mapping = aes(x = year, \n                          y = diff, \n                          fill = hi_lo))\n\np_out &lt;- p + geom_col() + \n  geom_hline(yintercept = 0, linewidth = 1.2) + \n  guides(fill = \"none\") + \n  labs(x = NULL, \n       y = \"Difference in Years\", \n       title = \"The U.S. Life Expectancy Gap\", \n       subtitle = \"Difference between U.S. and \n       OECD average life expectancies, 1960-2015\",\n       caption = \"Data: OECD.\")\n\n\n\ngeom_hline() doesn’t take any data argument. It just draws a horizontal line with a given y-intercept.\nx = NULL means “Don’t label the x-axis (not even with the default value, the variable name)."
+    "text": "Using geom_col() for thresholds\n\np &lt;- ggplot(data = oecd_sum, \n            mapping = aes(x = year, \n                          y = diff, \n                          fill = hi_lo))\n\np_out &lt;- p + geom_col() + \n  geom_hline(yintercept = 0, linewidth = 1.2) + \n  guides(fill = \"none\") + \n  labs(x = NULL, \n       y = \"Difference in Years\", \n       title = \"The U.S. Life Expectancy Gap\", \n       subtitle = \"Difference between U.S. and \n       OECD average life expectancies, 1960-2015\",\n       caption = \"Data: OECD.\")\n\n\ngeom_hline() doesn’t take any data argument. It just draws a horizontal line with a given y-intercept.\nx = NULL means “Don’t label the x-axis (not even with the default value, the variable name)."
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#using-geom_col-for-thresholds-2",

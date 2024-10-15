@@ -1276,16 +1276,16 @@ Kieran Healy
 <pre data-code-line-numbers=""><code># A tibble: 10 × 5
    id    name              state pop_dens      pct_black  
    &lt;chr&gt; &lt;chr&gt;             &lt;fct&gt; &lt;fct&gt;         &lt;fct&gt;      
- 1 39083 Knox County       OH    [  100,  500) [ 0.0, 2.0)
- 2 19149 Plymouth County   IA    [   10,   50) [ 0.0, 2.0)
- 3 36043 Herkimer County   NY    [   10,   50) [ 0.0, 2.0)
- 4 01091 Marengo County    AL    [   10,   50) [50.0,85.3]
- 5 48231 Hunt County       TX    [  100,  500) [ 5.0,10.0)
- 6 16083 Twin Falls County ID    [   10,   50) [ 0.0, 2.0)
- 7 48441 Taylor County     TX    [  100,  500) [ 5.0,10.0)
- 8 47007 Bledsoe County    TN    [   10,   50) [ 2.0, 5.0)
- 9 28053 Humphreys County  MS    [   10,   50) [50.0,85.3]
-10 01051 Elmore County     AL    [  100,  500) [15.0,25.0)</code></pre>
+ 1 35027 Lincoln County    NM    [    0,   10) [ 0.0, 2.0)
+ 2 05075 Lawrence County   AR    [   10,   50) [ 0.0, 2.0)
+ 3 20067 Grant County      KS    [   10,   50) [ 0.0, 2.0)
+ 4 48095 Concho County     TX    [    0,   10) [ 2.0, 5.0)
+ 5 47149 Rutherford County TN    [  100,  500) [10.0,15.0)
+ 6 17029 Coles County      IL    [  100,  500) [ 2.0, 5.0)
+ 7 12051 Hendry County     FL    [   10,   50) [10.0,15.0)
+ 8 16059 Lemhi County      ID    [    0,   10) [ 0.0, 2.0)
+ 9 46113 Shannon County    SD    [    0,   10) [ 0.0, 2.0)
+10 21059 Daviess County    KY    [  100,  500) [ 2.0, 5.0)</code></pre>
 </div>
 </div>
 </section>
@@ -2640,7 +2640,6 @@ Kieran Healy
   <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-spotlight/spotlight.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -2662,7 +2661,6 @@ Kieran Healy
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'spotlight': {"size":60,"lockPointerInsideCanvas":false,"toggleSpotlightOnMouseDown":true,"spotlightOnKeyPressAndHold":false,"spotlightCursor":"none","presentingCursor":"none","initialPresentationMode":true,"disablingUserSelect":true,"fadeInAndOut":100,"useAsPointer":false,"pointerColor":"red"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -2833,7 +2831,7 @@ Kieran Healy
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealSpotlight, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
           RevealNotes,

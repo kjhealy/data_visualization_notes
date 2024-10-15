@@ -807,8 +807,7 @@ Kieran Healy
 <span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">%in%</span> oh_wi) <span class="sc">|&gt;</span> </span>
 <span id="cb20-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> percollege, </span>
 <span id="cb20-7"><a aria-hidden="true" tabindex="-1"></a>                       <span class="at">fill =</span> state)) <span class="sc">+</span> </span>
-<span id="cb20-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb20-9"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">position =</span> <span class="st">"identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -820,7 +819,7 @@ Kieran Healy
 </div></div>
 <ul>
 <li>Here we do the whole thing in a <span class="fg-red">pipeline</span> using the pipe and the <code>dplyr</code> verb <span class="fg-green"><code>filter()</code></span> to subset rows of the data by some condition.</li>
-<li>Experiment with leaving the <code>position</code> argument out, or changing it to <code>"dodge"</code>.</li>
+<li>Experiment with changing the <code>position</code> argument to <code>"dodge"</code>.</li>
 </ul>
 </section>
 <section id="geom_density" class="slide level2">
@@ -881,7 +880,7 @@ Kieran Healy
 </div>
 </div></div>
 <ul>
-<li><code>ndensity</code> here is not in our data! It’s <em>computed</em>. Histogram and density geoms have default statistics, but you can ask them to do more. The <code>after_stat</code> functions can do this work for us.</li>
+<li><code>ndensity</code> here is <em>computed</em>. Histogram and density geoms have default statistics, but you can ask them to do more. The <code>after_stat</code> functions can do this work for us.</li>
 </ul>
 </section></section>
 <section>
@@ -892,24 +891,24 @@ Kieran Healy
 <section id="some-made-up-data" class="slide level2">
 <h2>Some made-up data</h2>
 <ul>
-<li>Consider 3,000 observations of some unit (e.g., a county) with summary measures for each group, and the population average.</li>
+<li>Consider 3,000 observations of some unit (e.g., a county) with summary measures for each group, and the mean weighted by subgroup population within unit.</li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb24" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code># A tibble: 3,000 × 5
-    unit   pop_a pop_b   pop_c pop_total
-   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
- 1     1  1.29   1.93  -0.0869     1.09 
- 2     2  0.522  0.536 -0.762      0.190
- 3     3  2.14   1.47  -0.616      1.15 
- 4     4  1.13   0.673 -0.242      0.575
- 5     5  1.04   1.30   1.18       1.12 
- 6     6  1.80   0.140  2.05       1.33 
- 7     7  0.186  1.30  -0.709      0.476
- 8     8 -0.953  0.520 -2.44      -0.767
- 9     9  0.700  1.66  -1.09       0.749
-10    10  0.0416 0.484 -0.180      0.177
+<pre data-code-line-numbers=""><code># A tibble: 3,000 × 8
+    unit pop_a pop_b pop_c   a_n   b_n   c_n pop_total
+   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;
+ 1     1 0.251 0.579 0.632    40     2    45     0.456
+ 2     2 0.376 0.300 0.445     7    29     6     0.333
+ 3     3 0.326 0.693 0.511    36    49    13     0.534
+ 4     4 0.349 0.596 0.566    37    10    40     0.477
+ 5     5 0.294 0.410 0.320    13    12    35     0.332
+ 6     6 0.259 0.297 0.583    48    49    44     0.373
+ 7     7 0.316 0.574 0.457    19    15    36     0.444
+ 8     8 0.344 0.552 0.537    10    13    49     0.513
+ 9     9 0.441 0.580 0.818    19    45    43     0.651
+10    10 0.264 0.388 0.630    11    25    10     0.411
 # ℹ 2,990 more rows</code></pre>
 </div>
 </div>
@@ -924,19 +923,19 @@ Kieran Healy
 </div><div class="column" style="width:65%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code># A tibble: 3,000 × 5
-    unit   pop_a pop_b   pop_c pop_total
-   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
- 1     1  1.29   1.93  -0.0869     1.09 
- 2     2  0.522  0.536 -0.762      0.190
- 3     3  2.14   1.47  -0.616      1.15 
- 4     4  1.13   0.673 -0.242      0.575
- 5     5  1.04   1.30   1.18       1.12 
- 6     6  1.80   0.140  2.05       1.33 
- 7     7  0.186  1.30  -0.709      0.476
- 8     8 -0.953  0.520 -2.44      -0.767
- 9     9  0.700  1.66  -1.09       0.749
-10    10  0.0416 0.484 -0.180      0.177
+<pre data-code-line-numbers=""><code># A tibble: 3,000 × 8
+    unit pop_a pop_b pop_c   a_n   b_n   c_n pop_total
+   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;
+ 1     1 0.251 0.579 0.632    40     2    45     0.456
+ 2     2 0.376 0.300 0.445     7    29     6     0.333
+ 3     3 0.326 0.693 0.511    36    49    13     0.534
+ 4     4 0.349 0.596 0.566    37    10    40     0.477
+ 5     5 0.294 0.410 0.320    13    12    35     0.332
+ 6     6 0.259 0.297 0.583    48    49    44     0.373
+ 7     7 0.316 0.574 0.457    19    15    36     0.444
+ 8     8 0.344 0.552 0.537    10    13    49     0.513
+ 9     9 0.441 0.580 0.818    19    45    43     0.651
+10    10 0.264 0.388 0.630    11    25    10     0.411
 # ℹ 2,990 more rows</code></pre>
 </div>
 </div>
@@ -948,24 +947,54 @@ Kieran Healy
 <div class="column" style="width:35%;">
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb28" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a> df <span class="sc">|&gt;</span></span>
-<span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> pop_a<span class="sc">:</span>pop_total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(unit<span class="sc">:</span>pop_c, pop_total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:65%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code># A tibble: 3,000 × 5
+    unit pop_a pop_b pop_c pop_total
+   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
+ 1     1 0.251 0.579 0.632     0.456
+ 2     2 0.376 0.300 0.445     0.333
+ 3     3 0.326 0.693 0.511     0.534
+ 4     4 0.349 0.596 0.566     0.477
+ 5     5 0.294 0.410 0.320     0.332
+ 6     6 0.259 0.297 0.583     0.373
+ 7     7 0.316 0.574 0.457     0.444
+ 8     8 0.344 0.552 0.537     0.513
+ 9     9 0.441 0.580 0.818     0.651
+10    10 0.264 0.388 0.630     0.411
+# ℹ 2,990 more rows</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="get-the-data-into-long-format-2" class="slide level2">
+<h2>Get the data into long format!</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb30" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a> df <span class="sc">|&gt;</span></span>
+<span id="cb30-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(unit<span class="sc">:</span>pop_c, pop_total) <span class="sc">|&gt;</span></span>
+<span id="cb30-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> pop_a<span class="sc">:</span>pop_total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:65%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code># A tibble: 12,000 × 3
-    unit name        value
-   &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1     1 pop_a      1.29  
- 2     1 pop_b      1.93  
- 3     1 pop_c     -0.0869
- 4     1 pop_total  1.09  
- 5     2 pop_a      0.522 
- 6     2 pop_b      0.536 
- 7     2 pop_c     -0.762 
- 8     2 pop_total  0.190 
- 9     3 pop_a      2.14  
-10     3 pop_b      1.47  
+    unit name      value
+   &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt;
+ 1     1 pop_a     0.251
+ 2     1 pop_b     0.579
+ 3     1 pop_c     0.632
+ 4     1 pop_total 0.456
+ 5     2 pop_a     0.376
+ 6     2 pop_b     0.300
+ 7     2 pop_c     0.445
+ 8     2 pop_total 0.333
+ 9     3 pop_a     0.326
+10     3 pop_b     0.693
 # ℹ 11,990 more rows</code></pre>
 </div>
 </div>
@@ -975,18 +1004,19 @@ Kieran Healy
 <h2>First effort: Hard to read</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="sourceCode cell-code" id="cb30" data-source-line-numbers="nil" data-code-line-numbers="5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
-<span id="cb30-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> pop_a<span class="sc">:</span>pop_total)  <span class="sc">|&gt;</span> </span>
-<span id="cb30-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb30-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> value, </span>
-<span id="cb30-5"><a aria-hidden="true" tabindex="-1"></a>                               <span class="at">y =</span> <span class="fu">after_stat</span>(ncount), </span>
-<span id="cb30-6"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">color =</span> name, <span class="at">fill =</span> name), </span>
-<span id="cb30-7"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">stat =</span> <span class="st">"bin"</span>, <span class="at">bins =</span> <span class="dv">20</span>, </span>
-<span id="cb30-8"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">linewidth =</span> <span class="fl">0.5</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
-<span id="cb30-9"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span> </span>
-<span id="cb30-10"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Measure"</span>, <span class="at">y =</span> <span class="st">"Scaled Count"</span>, <span class="at">color =</span> <span class="st">"Group"</span>, </span>
-<span id="cb30-11"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Group"</span>,</span>
-<span id="cb30-12"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Comparing Subgroups: Histograms"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32" data-source-line-numbers="nil" data-code-line-numbers="6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a> df <span class="sc">|&gt;</span> </span>
+<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(unit<span class="sc">:</span>pop_c, pop_total) <span class="sc">|&gt;</span> </span>
+<span id="cb32-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> pop_a<span class="sc">:</span>pop_total)  <span class="sc">|&gt;</span> </span>
+<span id="cb32-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb32-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> value, </span>
+<span id="cb32-6"><a aria-hidden="true" tabindex="-1"></a>                               <span class="at">y =</span> <span class="fu">after_stat</span>(ncount), </span>
+<span id="cb32-7"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">color =</span> name, <span class="at">fill =</span> name), </span>
+<span id="cb32-8"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">stat =</span> <span class="st">"bin"</span>, <span class="at">bins =</span> <span class="dv">20</span>, </span>
+<span id="cb32-9"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">linewidth =</span> <span class="fl">0.5</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
+<span id="cb32-10"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span> </span>
+<span id="cb32-11"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Measure"</span>, <span class="at">y =</span> <span class="st">"Scaled Count"</span>, <span class="at">color =</span> <span class="st">"Group"</span>, </span>
+<span id="cb32-12"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Group"</span>,</span>
+<span id="cb32-13"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Comparing Subgroups: Histograms"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1005,25 +1035,25 @@ Kieran Healy
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Treat pop_a to pop_total as a single variable</span></span>
-<span id="cb31-2"><a aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Treat pop_a to pop_total as a single variable</span></span>
+<span id="cb33-2"><a aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code># A tibble: 3,000 × 5
-    unit   pop_a pop_b   pop_c pop_total
-   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
- 1     1  1.29   1.93  -0.0869     1.09 
- 2     2  0.522  0.536 -0.762      0.190
- 3     3  2.14   1.47  -0.616      1.15 
- 4     4  1.13   0.673 -0.242      0.575
- 5     5  1.04   1.30   1.18       1.12 
- 6     6  1.80   0.140  2.05       1.33 
- 7     7  0.186  1.30  -0.709      0.476
- 8     8 -0.953  0.520 -2.44      -0.767
- 9     9  0.700  1.66  -1.09       0.749
-10    10  0.0416 0.484 -0.180      0.177
+<pre data-code-line-numbers=""><code># A tibble: 3,000 × 8
+    unit pop_a pop_b pop_c   a_n   b_n   c_n pop_total
+   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;
+ 1     1 0.251 0.579 0.632    40     2    45     0.456
+ 2     2 0.376 0.300 0.445     7    29     6     0.333
+ 3     3 0.326 0.693 0.511    36    49    13     0.534
+ 4     4 0.349 0.596 0.566    37    10    40     0.477
+ 5     5 0.294 0.410 0.320    13    12    35     0.332
+ 6     6 0.259 0.297 0.583    48    49    44     0.373
+ 7     7 0.316 0.574 0.457    19    15    36     0.444
+ 8     8 0.344 0.552 0.537    10    13    49     0.513
+ 9     9 0.441 0.580 0.818    19    45    43     0.651
+10    10 0.264 0.388 0.630    11    25    10     0.411
 # ℹ 2,990 more rows</code></pre>
 </div>
 </div>
@@ -1034,27 +1064,27 @@ Kieran Healy
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Treat pop_a to pop_total as a single variable</span></span>
-<span id="cb33-2"><a aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
-<span id="cb33-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> pop_a<span class="sc">:</span>pop_total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Treat pop_a to pop_total as a single variable</span></span>
+<span id="cb35-2"><a aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb35-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(unit<span class="sc">:</span>pop_c, pop_total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code># A tibble: 12,000 × 3
-    unit name        value
-   &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1     1 pop_a      1.29  
- 2     1 pop_b      1.93  
- 3     1 pop_c     -0.0869
- 4     1 pop_total  1.09  
- 5     2 pop_a      0.522 
- 6     2 pop_b      0.536 
- 7     2 pop_c     -0.762 
- 8     2 pop_total  0.190 
- 9     3 pop_a      2.14  
-10     3 pop_b      1.47  
-# ℹ 11,990 more rows</code></pre>
+<pre data-code-line-numbers=""><code># A tibble: 3,000 × 5
+    unit pop_a pop_b pop_c pop_total
+   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
+ 1     1 0.251 0.579 0.632     0.456
+ 2     2 0.376 0.300 0.445     0.333
+ 3     3 0.326 0.693 0.511     0.534
+ 4     4 0.349 0.596 0.566     0.477
+ 5     5 0.294 0.410 0.320     0.332
+ 6     6 0.259 0.297 0.583     0.373
+ 7     7 0.316 0.574 0.457     0.444
+ 8     8 0.344 0.552 0.537     0.513
+ 9     9 0.441 0.580 0.818     0.651
+10    10 0.264 0.388 0.630     0.411
+# ℹ 2,990 more rows</code></pre>
 </div>
 </div>
 </div></div>
@@ -1064,27 +1094,28 @@ Kieran Healy
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb35" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Just treat pop_a to pop_c as the single variable.</span></span>
-<span id="cb35-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Notice that pop_total just gets repeated.</span></span>
-<span id="cb35-3"><a aria-hidden="true" tabindex="-1"></a> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Treat pop_a to pop_total as a single variable</span></span>
+<span id="cb37-2"><a aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
+<span id="cb37-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(unit<span class="sc">:</span>pop_c, pop_total) <span class="sc">|&gt;</span></span>
+<span id="cb37-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> pop_a<span class="sc">:</span>pop_total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code># A tibble: 3,000 × 5
-    unit   pop_a pop_b   pop_c pop_total
-   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
- 1     1  1.29   1.93  -0.0869     1.09 
- 2     2  0.522  0.536 -0.762      0.190
- 3     3  2.14   1.47  -0.616      1.15 
- 4     4  1.13   0.673 -0.242      0.575
- 5     5  1.04   1.30   1.18       1.12 
- 6     6  1.80   0.140  2.05       1.33 
- 7     7  0.186  1.30  -0.709      0.476
- 8     8 -0.953  0.520 -2.44      -0.767
- 9     9  0.700  1.66  -1.09       0.749
-10    10  0.0416 0.484 -0.180      0.177
-# ℹ 2,990 more rows</code></pre>
+<pre data-code-line-numbers=""><code># A tibble: 12,000 × 3
+    unit name      value
+   &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt;
+ 1     1 pop_a     0.251
+ 2     1 pop_b     0.579
+ 3     1 pop_c     0.632
+ 4     1 pop_total 0.456
+ 5     2 pop_a     0.376
+ 6     2 pop_b     0.300
+ 7     2 pop_c     0.445
+ 8     2 pop_total 0.333
+ 9     3 pop_a     0.326
+10     3 pop_b     0.693
+# ℹ 11,990 more rows</code></pre>
 </div>
 </div>
 </div></div>
@@ -1094,27 +1125,89 @@ Kieran Healy
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb37" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Just treat pop_a to pop_c as the single variable.</span></span>
-<span id="cb37-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Notice that pop_total just gets repeated.</span></span>
-<span id="cb37-3"><a aria-hidden="true" tabindex="-1"></a> df <span class="sc">|&gt;</span></span>
-<span id="cb37-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> pop_a<span class="sc">:</span>pop_c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Just treat pop_a to pop_c as the single variable.</span></span>
+<span id="cb39-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Notice that pop_total just gets repeated.</span></span>
+<span id="cb39-3"><a aria-hidden="true" tabindex="-1"></a> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:55%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code># A tibble: 3,000 × 8
+    unit pop_a pop_b pop_c   a_n   b_n   c_n pop_total
+   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;
+ 1     1 0.251 0.579 0.632    40     2    45     0.456
+ 2     2 0.376 0.300 0.445     7    29     6     0.333
+ 3     3 0.326 0.693 0.511    36    49    13     0.534
+ 4     4 0.349 0.596 0.566    37    10    40     0.477
+ 5     5 0.294 0.410 0.320    13    12    35     0.332
+ 6     6 0.259 0.297 0.583    48    49    44     0.373
+ 7     7 0.316 0.574 0.457    19    15    36     0.444
+ 8     8 0.344 0.552 0.537    10    13    49     0.513
+ 9     9 0.441 0.580 0.818    19    45    43     0.651
+10    10 0.264 0.388 0.630    11    25    10     0.411
+# ℹ 2,990 more rows</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="a-little-pivot-trick-4" class="slide level2">
+<h2>A little pivot trick</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb41" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Just treat pop_a to pop_c as the single variable.</span></span>
+<span id="cb41-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Notice that pop_total just gets repeated.</span></span>
+<span id="cb41-3"><a aria-hidden="true" tabindex="-1"></a> df <span class="sc">|&gt;</span></span>
+<span id="cb41-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(unit, pop_a<span class="sc">:</span>pop_c, pop_total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:55%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code># A tibble: 3,000 × 5
+    unit pop_a pop_b pop_c pop_total
+   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
+ 1     1 0.251 0.579 0.632     0.456
+ 2     2 0.376 0.300 0.445     0.333
+ 3     3 0.326 0.693 0.511     0.534
+ 4     4 0.349 0.596 0.566     0.477
+ 5     5 0.294 0.410 0.320     0.332
+ 6     6 0.259 0.297 0.583     0.373
+ 7     7 0.316 0.574 0.457     0.444
+ 8     8 0.344 0.552 0.537     0.513
+ 9     9 0.441 0.580 0.818     0.651
+10    10 0.264 0.388 0.630     0.411
+# ℹ 2,990 more rows</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="a-little-pivot-trick-5" class="slide level2">
+<h2>A little pivot trick</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb43" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Just treat pop_a to pop_c as the single variable.</span></span>
+<span id="cb43-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Notice that pop_total just gets repeated.</span></span>
+<span id="cb43-3"><a aria-hidden="true" tabindex="-1"></a> df <span class="sc">|&gt;</span></span>
+<span id="cb43-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(unit, pop_a<span class="sc">:</span>pop_c, pop_total) <span class="sc">|&gt;</span></span>
+<span id="cb43-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> pop_a<span class="sc">:</span>pop_c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:55%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code># A tibble: 9,000 × 4
-    unit pop_total name    value
-   &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;
- 1     1     1.09  pop_a  1.29  
- 2     1     1.09  pop_b  1.93  
- 3     1     1.09  pop_c -0.0869
- 4     2     0.190 pop_a  0.522 
- 5     2     0.190 pop_b  0.536 
- 6     2     0.190 pop_c -0.762 
- 7     3     1.15  pop_a  2.14  
- 8     3     1.15  pop_b  1.47  
- 9     3     1.15  pop_c -0.616 
-10     4     0.575 pop_a  1.13  
+    unit pop_total name  value
+   &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+ 1     1     0.456 pop_a 0.251
+ 2     1     0.456 pop_b 0.579
+ 3     1     0.456 pop_c 0.632
+ 4     2     0.333 pop_a 0.376
+ 5     2     0.333 pop_b 0.300
+ 6     2     0.333 pop_c 0.445
+ 7     3     0.534 pop_a 0.326
+ 8     3     0.534 pop_b 0.693
+ 9     3     0.534 pop_c 0.511
+10     4     0.477 pop_a 0.349
 # ℹ 8,990 more rows</code></pre>
 </div>
 </div>
@@ -1125,23 +1218,24 @@ Kieran Healy
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb39" data-source-line-numbers="nil" data-code-line-numbers="4,8,13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-hidden="true" tabindex="-1"></a>p_out <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb39-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> pop_a<span class="sc">:</span>pop_c) <span class="sc">|&gt;</span></span>
-<span id="cb39-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb39-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> pop_total, </span>
-<span id="cb39-5"><a aria-hidden="true" tabindex="-1"></a>                               <span class="at">y =</span> <span class="fu">after_stat</span>(ncount)), </span>
-<span id="cb39-6"><a aria-hidden="true" tabindex="-1"></a>                <span class="at">bins =</span> <span class="dv">20</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
-<span id="cb39-7"><a aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"gray40"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb39-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> value, </span>
-<span id="cb39-9"><a aria-hidden="true" tabindex="-1"></a>                               <span class="at">y =</span> <span class="fu">after_stat</span>(ncount), </span>
-<span id="cb39-10"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">color =</span> name, <span class="at">fill =</span> name), </span>
-<span id="cb39-11"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">stat =</span> <span class="st">"bin"</span>, <span class="at">bins =</span> <span class="dv">20</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>,</span>
-<span id="cb39-12"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb39-13"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">"none"</span>, <span class="at">fill =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
-<span id="cb39-14"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Measure"</span>, <span class="at">y =</span> <span class="st">"Scaled Count"</span>, </span>
-<span id="cb39-15"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Comparing Subgroups: Histograms"</span>, </span>
-<span id="cb39-16"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Reference distribution shown in gray"</span>) <span class="sc">+</span> </span>
-<span id="cb39-17"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> name, <span class="at">nrow =</span> <span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45" data-source-line-numbers="nil" data-code-line-numbers="5,9,14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-hidden="true" tabindex="-1"></a>p_out <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb45-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(unit, pop_a<span class="sc">:</span>pop_c, pop_total) <span class="sc">|&gt;</span> </span>
+<span id="cb45-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(pop_a<span class="sc">:</span>pop_c) <span class="sc">|&gt;</span></span>
+<span id="cb45-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb45-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> pop_total, </span>
+<span id="cb45-6"><a aria-hidden="true" tabindex="-1"></a>                               <span class="at">y =</span> <span class="fu">after_stat</span>(ncount)), </span>
+<span id="cb45-7"><a aria-hidden="true" tabindex="-1"></a>                <span class="at">bins =</span> <span class="dv">20</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
+<span id="cb45-8"><a aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"gray40"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb45-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> value, </span>
+<span id="cb45-10"><a aria-hidden="true" tabindex="-1"></a>                               <span class="at">y =</span> <span class="fu">after_stat</span>(ncount), </span>
+<span id="cb45-11"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">color =</span> name, <span class="at">fill =</span> name), </span>
+<span id="cb45-12"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">stat =</span> <span class="st">"bin"</span>, <span class="at">bins =</span> <span class="dv">20</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>,</span>
+<span id="cb45-13"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb45-14"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">"none"</span>, <span class="at">fill =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
+<span id="cb45-15"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Measure"</span>, <span class="at">y =</span> <span class="st">"Scaled Count"</span>, </span>
+<span id="cb45-16"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Comparing Subgroups: Histograms"</span>, </span>
+<span id="cb45-17"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Reference distribution shown in gray"</span>) <span class="sc">+</span> </span>
+<span id="cb45-18"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> name, <span class="at">nrow =</span> <span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column right" style="width:40%;">
 <ul>
@@ -1162,7 +1256,7 @@ Kieran Healy
 <section id="sometimes-no-counting-is-needed" class="slide level2">
 <h2>Sometimes no counting is needed</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb40" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-hidden="true" tabindex="-1"></a>titanic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-hidden="true" tabindex="-1"></a>titanic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>      fate    sex    n percent
 1 perished   male 1364    62.0
@@ -1177,36 +1271,34 @@ Kieran Healy
 </section>
 <section id="geom_bar-wants-to-count-up" class="slide level2">
 <h2><span class="fg-green"><code>geom_bar()</code></span> wants to count up</h2>
-<ul>
-<li>By default <span class="fg-green"><code>geom_bar()</code></span> tries to count up data by category. (Really it’s the <span class="fg-green"><code>stat_count()</code></span> function that does this behind the scenes.) By saying <code>stat="identity"</code> we explicitly tell it not to do that. This also allows us to use a <code>y</code> mapping. Normally this would be the result of the counting up.</li>
-</ul>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="sourceCode cell-code" id="cb42" data-source-line-numbers="nil" data-code-line-numbers="5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic,</span>
-<span id="cb42-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fate, </span>
-<span id="cb42-3"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> percent, </span>
-<span id="cb42-4"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> sex))</span>
-<span id="cb42-5"><a aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48" data-source-line-numbers="nil" data-code-line-numbers="5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic,</span>
+<span id="cb48-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fate, </span>
+<span id="cb48-3"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> percent, </span>
+<span id="cb48-4"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> sex))</span>
+<span id="cb48-5"><a aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="04-show-the-right-numbers_files/figure-revealjs/codefig-titanic1-1.png" class="quarto-figure quarto-figure-center" width="460"></p>
+<p><img data-src="04-show-the-right-numbers_files/figure-revealjs/codefig-titanic1-1.png" class="quarto-figure quarto-figure-center" width="268"></p>
 </figure>
 </div>
 </div>
 </div></div>
+<p>By default <span class="fg-green"><code>geom_bar()</code></span> tries to count up data by category. (Really it’s the <span class="fg-green"><code>stat_count()</code></span> function that does this behind the scenes.) By saying <code>stat="identity"</code> we explicitly tell it not to do that. This also allows us to use a <code>y</code> mapping. Normally this would be the result of the counting up.</p>
 </section>
 <section id="geom_bar-stacks-by-default" class="slide level2">
 <h2><span class="fg-green"><code>geom_bar()</code></span> stacks by default</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="sourceCode cell-code" id="cb43" data-source-line-numbers="nil" data-code-line-numbers="6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic,</span>
-<span id="cb43-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fate, </span>
-<span id="cb43-3"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> percent, </span>
-<span id="cb43-4"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> sex))</span>
-<span id="cb43-5"><a aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, </span>
-<span id="cb43-6"><a aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="st">"dodge"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49" data-source-line-numbers="nil" data-code-line-numbers="6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic,</span>
+<span id="cb49-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fate, </span>
+<span id="cb49-3"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> percent, </span>
+<span id="cb49-4"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> sex))</span>
+<span id="cb49-5"><a aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, </span>
+<span id="cb49-6"><a aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="st">"dodge"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1222,16 +1314,15 @@ Kieran Healy
 </section>
 <section id="a-quick-theme-adjustment" class="slide level2">
 <h2>A quick <span class="fg-green"><code>theme()</code></span> adjustment</h2>
-<p>The <span class="fg-green"><code>theme()</code></span> function controls the styling of parts of the plot that don’t belong to its “grammatical” structure. That is, that are not contributing to directly representing data.</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="sourceCode cell-code" id="cb44" data-source-line-numbers="nil" data-code-line-numbers="7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic,</span>
-<span id="cb44-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fate, </span>
-<span id="cb44-3"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> percent, </span>
-<span id="cb44-4"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> sex))</span>
-<span id="cb44-5"><a aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, </span>
-<span id="cb44-6"><a aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb44-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50" data-source-line-numbers="nil" data-code-line-numbers="7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic,</span>
+<span id="cb50-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fate, </span>
+<span id="cb50-3"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> percent, </span>
+<span id="cb50-4"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> sex))</span>
+<span id="cb50-5"><a aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, </span>
+<span id="cb50-6"><a aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb50-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1241,17 +1332,18 @@ Kieran Healy
 </div>
 </div>
 </div></div>
+<p>The <span class="fg-green"><code>theme()</code></span> function controls the styling of parts of the plot that don’t belong to its “grammatical” structure. That is, that are not contributing to directly representing data.</p>
 </section>
 <section id="for-convenience-use-geom_col" class="slide level2">
 <h2>For convenience, use <span class="fg-green"><code>geom_col()</code></span></h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="sourceCode cell-code" id="cb45" data-source-line-numbers="nil" data-code-line-numbers="5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic,</span>
-<span id="cb45-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fate, </span>
-<span id="cb45-3"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> percent, </span>
-<span id="cb45-4"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> sex))</span>
-<span id="cb45-5"><a aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span> </span>
-<span id="cb45-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51" data-source-line-numbers="nil" data-code-line-numbers="5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> titanic,</span>
+<span id="cb51-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fate, </span>
+<span id="cb51-3"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> percent, </span>
+<span id="cb51-4"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> sex))</span>
+<span id="cb51-5"><a aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span> </span>
+<span id="cb51-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1270,7 +1362,7 @@ Kieran Healy
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb46" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-hidden="true" tabindex="-1"></a>oecd_sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a aria-hidden="true" tabindex="-1"></a>oecd_sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code># A tibble: 57 × 5
 # Groups:   year [57]
@@ -1299,30 +1391,26 @@ Kieran Healy
 </section>
 <section id="using-geom_col-for-thresholds-1" class="slide level2">
 <h2>Using <span class="fg-green">geom_col()</span> for thresholds</h2>
-<div class="columns">
-<div class="column" style="width:45%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb48" data-source-line-numbers="nil" data-code-line-numbers="7,9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> oecd_sum, </span>
-<span id="cb48-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, </span>
-<span id="cb48-3"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> diff, </span>
-<span id="cb48-4"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> hi_lo))</span>
-<span id="cb48-5"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-6"><a aria-hidden="true" tabindex="-1"></a>p_out <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
-<span id="cb48-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span> </span>
-<span id="cb48-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
-<span id="cb48-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, </span>
-<span id="cb48-10"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Difference in Years"</span>, </span>
-<span id="cb48-11"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"The U.S. Life Expectancy Gap"</span>, </span>
-<span id="cb48-12"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Difference between U.S. and </span></span>
-<span id="cb48-13"><a aria-hidden="true" tabindex="-1"></a><span class="st">       OECD average life expectancies, 1960-2015"</span>,</span>
-<span id="cb48-14"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Data: OECD."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54" data-source-line-numbers="nil" data-code-line-numbers="7,9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> oecd_sum, </span>
+<span id="cb54-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, </span>
+<span id="cb54-3"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> diff, </span>
+<span id="cb54-4"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">fill =</span> hi_lo))</span>
+<span id="cb54-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-6"><a aria-hidden="true" tabindex="-1"></a>p_out <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb54-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span> </span>
+<span id="cb54-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
+<span id="cb54-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, </span>
+<span id="cb54-10"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Difference in Years"</span>, </span>
+<span id="cb54-11"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"The U.S. Life Expectancy Gap"</span>, </span>
+<span id="cb54-12"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Difference between U.S. and </span></span>
+<span id="cb54-13"><a aria-hidden="true" tabindex="-1"></a><span class="st">       OECD average life expectancies, 1960-2015"</span>,</span>
+<span id="cb54-14"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Data: OECD."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div><div class="column right" style="width:55%;">
 <ul>
 <li><span class="fg-green"><code>geom_hline()</code></span> doesn’t take any data argument. It just draws a horizontal line with a given y-intercept.</li>
 <li><code>x = NULL</code> means “Don’t label the x-axis (not even with the default value, the variable name).</li>
 </ul>
-</div></div>
 </section>
 <section id="using-geom_col-for-thresholds-2" class="slide level2">
 <h2>Using <span class="fg-green"><code>geom_col()</code></span> for thresholds</h2>
@@ -1344,7 +1432,6 @@ Kieran Healy
   <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-spotlight/spotlight.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -1366,7 +1453,6 @@ Kieran Healy
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'spotlight': {"size":60,"lockPointerInsideCanvas":false,"toggleSpotlightOnMouseDown":true,"spotlightOnKeyPressAndHold":false,"spotlightCursor":"none","presentingCursor":"none","initialPresentationMode":true,"disablingUserSelect":true,"fadeInAndOut":100,"useAsPointer":false,"pointerColor":"red"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1537,7 +1623,7 @@ Kieran Healy
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealSpotlight, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
           RevealNotes,

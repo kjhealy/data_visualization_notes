@@ -1371,12 +1371,12 @@ Kieran Healy
 <!-- preamble start -->
 
     <script>
-      function styleCell_9brwqw53ubx24y99fw4a(i, j, css_id) {
-        var table = document.getElementById("tinytable_9brwqw53ubx24y99fw4a");
+      function styleCell_q1duzcmrgz3r7cugksi7(i, j, css_id) {
+        var table = document.getElementById("tinytable_q1duzcmrgz3r7cugksi7");
         table.rows[i].cells[j].classList.add(css_id);
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_9brwqw53ubx24y99fw4a');
+        var table = document.getElementById('tinytable_q1duzcmrgz3r7cugksi7');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -1384,8 +1384,8 @@ Kieran Healy
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_9brwqw53ubx24y99fw4a(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_9brwqw53ubx24y99fw4a");
+      function spanCell_q1duzcmrgz3r7cugksi7(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_q1duzcmrgz3r7cugksi7");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -1411,18 +1411,18 @@ Kieran Healy
         targetCell.rowSpan = rowspan;
         targetCell.colSpan = colspan;
       }
-window.addEventListener('load', function () { styleCell_9brwqw53ubx24y99fw4a(0, 0, 'tinytable_css_idyc2qrg88hdlo73t7pj10') })
-window.addEventListener('load', function () { styleCell_9brwqw53ubx24y99fw4a(0, 1, 'tinytable_css_idyc2qrg88hdlo73t7pj10') })
-window.addEventListener('load', function () { styleCell_9brwqw53ubx24y99fw4a(0, 2, 'tinytable_css_idyc2qrg88hdlo73t7pj10') })
-window.addEventListener('load', function () { styleCell_9brwqw53ubx24y99fw4a(0, 3, 'tinytable_css_idyc2qrg88hdlo73t7pj10') })
-window.addEventListener('load', function () { styleCell_9brwqw53ubx24y99fw4a(0, 4, 'tinytable_css_idyc2qrg88hdlo73t7pj10') })
+window.addEventListener('load', function () { styleCell_q1duzcmrgz3r7cugksi7(0, 0, 'tinytable_css_id2u76dx0xwtlenupch9be') })
+window.addEventListener('load', function () { styleCell_q1duzcmrgz3r7cugksi7(0, 1, 'tinytable_css_id2u76dx0xwtlenupch9be') })
+window.addEventListener('load', function () { styleCell_q1duzcmrgz3r7cugksi7(0, 2, 'tinytable_css_id2u76dx0xwtlenupch9be') })
+window.addEventListener('load', function () { styleCell_q1duzcmrgz3r7cugksi7(0, 3, 'tinytable_css_id2u76dx0xwtlenupch9be') })
+window.addEventListener('load', function () { styleCell_q1duzcmrgz3r7cugksi7(0, 4, 'tinytable_css_id2u76dx0xwtlenupch9be') })
     </script>
 
     <style>
-    .table td.tinytable_css_idyc2qrg88hdlo73t7pj10, .table th.tinytable_css_idyc2qrg88hdlo73t7pj10 {  border-bottom: solid 0.1em #d3d8dc; }
+    .table td.tinytable_css_id2u76dx0xwtlenupch9be, .table th.tinytable_css_id2u76dx0xwtlenupch9be {  border-bottom: solid 0.1em #d3d8dc; }
     </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_9brwqw53ubx24y99fw4a" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_q1duzcmrgz3r7cugksi7" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
@@ -2379,7 +2379,6 @@ $class
   <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-spotlight/spotlight.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -2401,7 +2400,6 @@ $class
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'spotlight': {"size":60,"lockPointerInsideCanvas":false,"toggleSpotlightOnMouseDown":true,"spotlightOnKeyPressAndHold":false,"spotlightCursor":"none","presentingCursor":"none","initialPresentationMode":true,"disablingUserSelect":true,"fadeInAndOut":100,"useAsPointer":false,"pointerColor":"red"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -2572,7 +2570,7 @@ $class
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealSpotlight, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
           RevealNotes,
