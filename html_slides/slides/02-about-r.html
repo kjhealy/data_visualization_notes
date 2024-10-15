@@ -1371,12 +1371,12 @@ Kieran Healy
 <!-- preamble start -->
 
     <script>
-      function styleCell_42k5nn8uojog81a3cfsd(i, j, css_id) {
-        var table = document.getElementById("tinytable_42k5nn8uojog81a3cfsd");
+      function styleCell_9brwqw53ubx24y99fw4a(i, j, css_id) {
+        var table = document.getElementById("tinytable_9brwqw53ubx24y99fw4a");
         table.rows[i].cells[j].classList.add(css_id);
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_42k5nn8uojog81a3cfsd');
+        var table = document.getElementById('tinytable_9brwqw53ubx24y99fw4a');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -1384,8 +1384,8 @@ Kieran Healy
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_42k5nn8uojog81a3cfsd(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_42k5nn8uojog81a3cfsd");
+      function spanCell_9brwqw53ubx24y99fw4a(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_9brwqw53ubx24y99fw4a");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -1411,18 +1411,18 @@ Kieran Healy
         targetCell.rowSpan = rowspan;
         targetCell.colSpan = colspan;
       }
-window.addEventListener('load', function () { styleCell_42k5nn8uojog81a3cfsd(0, 0, 'tinytable_css_idtth2pjjw50xt7r9duoic') })
-window.addEventListener('load', function () { styleCell_42k5nn8uojog81a3cfsd(0, 1, 'tinytable_css_idtth2pjjw50xt7r9duoic') })
-window.addEventListener('load', function () { styleCell_42k5nn8uojog81a3cfsd(0, 2, 'tinytable_css_idtth2pjjw50xt7r9duoic') })
-window.addEventListener('load', function () { styleCell_42k5nn8uojog81a3cfsd(0, 3, 'tinytable_css_idtth2pjjw50xt7r9duoic') })
-window.addEventListener('load', function () { styleCell_42k5nn8uojog81a3cfsd(0, 4, 'tinytable_css_idtth2pjjw50xt7r9duoic') })
+window.addEventListener('load', function () { styleCell_9brwqw53ubx24y99fw4a(0, 0, 'tinytable_css_idyc2qrg88hdlo73t7pj10') })
+window.addEventListener('load', function () { styleCell_9brwqw53ubx24y99fw4a(0, 1, 'tinytable_css_idyc2qrg88hdlo73t7pj10') })
+window.addEventListener('load', function () { styleCell_9brwqw53ubx24y99fw4a(0, 2, 'tinytable_css_idyc2qrg88hdlo73t7pj10') })
+window.addEventListener('load', function () { styleCell_9brwqw53ubx24y99fw4a(0, 3, 'tinytable_css_idyc2qrg88hdlo73t7pj10') })
+window.addEventListener('load', function () { styleCell_9brwqw53ubx24y99fw4a(0, 4, 'tinytable_css_idyc2qrg88hdlo73t7pj10') })
     </script>
 
     <style>
-    .table td.tinytable_css_idtth2pjjw50xt7r9duoic, .table th.tinytable_css_idtth2pjjw50xt7r9duoic {  border-bottom: solid 0.1em #d3d8dc; }
+    .table td.tinytable_css_idyc2qrg88hdlo73t7pj10, .table th.tinytable_css_idyc2qrg88hdlo73t7pj10 {  border-bottom: solid 0.1em #d3d8dc; }
     </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_42k5nn8uojog81a3cfsd" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_9brwqw53ubx24y99fw4a" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
@@ -1566,7 +1566,7 @@ window.addEventListener('load', function () { styleCell_42k5nn8uojog81a3cfsd(0, 
 </section>
 <section id="vector-types-object-classes-1" class="slide level2">
 <h2>5. Vector <span class="fg-yellow">types</span>; Object <span class="fg-yellow">classes</span></h2>
-<p>Objects are made of one or more vectors. A vector can, in effect, have a single type: integer, double, logical, character, factor, date, etc. That is, vectors are “atomic”. Complex objects are mostly lists of vectors of different sorts, or nested lists of other simpler objects that are themselves ultimately made up of vectors of</p>
+<p>Objects are made of one or more <strong>vectors</strong>. A vector can, in effect, only have a single type: <span class="fg-lblue">integer</span>, <span class="fg-green">double</span>, <span class="fg-orange">logical</span>, <span class="fg-pink">character</span>, <span class="fg-blue">factor</span>, date, etc. That is, vectors are “atomic”. Complex objects are mostly made of lists of vectors of different sorts. Or they are made of <em>nested</em> lists of other simpler objects that are themselves ultimately made up of vectors.</p>
 </section>
 <section id="vector-types-object-classes-2" class="slide level2">
 <h2>5. Vector <span class="fg-yellow">types</span>; Object <span class="fg-yellow">classes</span></h2>
@@ -2055,10 +2055,9 @@ shorter object length</code></pre>
 # ℹ 1,694 more rows</code></pre>
 </div>
 </div>
-</section></section>
-<section>
-<section id="like-before" class="title-slide slide level1 inv-title center" data-background-color="#252F3E">
-<h1>Like before</h1>
+</section>
+<section id="like-before" class="slide level2">
+<h2>Like before</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
 <div class="sourceCode cell-code" id="cb198" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb198-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -2095,7 +2094,6 @@ shorter object length</code></pre>
 <span id="cb200-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, </span>
 <span id="cb200-3"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> lifeExp)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>]</p>
 <ul>
 <li>New object named <span class="fg-lblue"><strong><code>p</code></strong></span> <span class="fg-pink"><code>gets</code></span> the output of the <span class="fg-green"><code>ggplot()</code> <em>function</em></span>, given these <span class="fg-orange"><em>arguments</em></span></li>
 <li>Notice how one of the arguments, <span class="fg-orange"><code>mapping</code></span>, is itself taking the output of a function named <span class="fg-green"><code>aes()</code></span></li>

@@ -2811,7 +2811,7 @@
     "href": "slides/02-about-r.html#vector-types-object-classes-1",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "5. Vector types; Object classes",
-    "text": "5. Vector types; Object classes\nObjects are made of one or more vectors. A vector can, in effect, have a single type: integer, double, logical, character, factor, date, etc. That is, vectors are “atomic”. Complex objects are mostly lists of vectors of different sorts, or nested lists of other simpler objects that are themselves ultimately made up of vectors of"
+    "text": "5. Vector types; Object classes\nObjects are made of one or more vectors. A vector can, in effect, only have a single type: integer, double, logical, character, factor, date, etc. That is, vectors are “atomic”. Complex objects are mostly made of lists of vectors of different sorts. Or they are made of nested lists of other simpler objects that are themselves ultimately made up of vectors."
   },
   {
     "objectID": "slides/02-about-r.html#vector-types-object-classes-2",
@@ -2968,6 +2968,13 @@
     "text": "Time to make a plot\nLike before:\n\ngapminder\n\n# A tibble: 1,704 × 6\n   country     continent  year lifeExp      pop gdpPercap\n   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n 1 Afghanistan Asia       1952    28.8  8425333      779.\n 2 Afghanistan Asia       1957    30.3  9240934      821.\n 3 Afghanistan Asia       1962    32.0 10267083      853.\n 4 Afghanistan Asia       1967    34.0 11537966      836.\n 5 Afghanistan Asia       1972    36.1 13079460      740.\n 6 Afghanistan Asia       1977    38.4 14880372      786.\n 7 Afghanistan Asia       1982    39.9 12881816      978.\n 8 Afghanistan Asia       1987    40.8 13867957      852.\n 9 Afghanistan Asia       1992    41.7 16317921      649.\n10 Afghanistan Asia       1997    41.8 22227415      635.\n# ℹ 1,694 more rows"
   },
   {
+    "objectID": "slides/02-about-r.html#like-before",
+    "href": "slides/02-about-r.html#like-before",
+    "title": "Data Visualization - 2. Finding your way in R",
+    "section": "Like before",
+    "text": "Like before\n\n\nlibrary(tidyverse)\nlibrary(gapminder)\n\np &lt;- ggplot(data = gapminder, \n            mapping = aes(x = gdpPercap, \n                          y = lifeExp)) \n\np + geom_point()"
+  },
+  {
     "objectID": "slides/02-about-r.html#what-we-did",
     "href": "slides/02-about-r.html#what-we-did",
     "title": "Data Visualization - 2. Finding your way in R",
@@ -2979,7 +2986,7 @@
     "href": "slides/02-about-r.html#what-we-did-1",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "What we did",
-    "text": "What we did\n\np &lt;- ggplot(data = gapminder, \n            mapping = aes(x = gdpPercap, \n                          y = lifeExp)) \n\n]\n\nNew object named p gets the output of the ggplot() function, given these arguments\nNotice how one of the arguments, mapping, is itself taking the output of a function named aes()"
+    "text": "What we did\n\np &lt;- ggplot(data = gapminder, \n            mapping = aes(x = gdpPercap, \n                          y = lifeExp)) \n\n\nNew object named p gets the output of the ggplot() function, given these arguments\nNotice how one of the arguments, mapping, is itself taking the output of a function named aes()"
   },
   {
     "objectID": "slides/02-about-r.html#what-we-did-2",
