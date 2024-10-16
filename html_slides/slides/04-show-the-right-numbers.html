@@ -1218,7 +1218,7 @@ Kieran Healy
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb45" data-source-line-numbers="nil" data-code-line-numbers="5,9,14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-hidden="true" tabindex="-1"></a>p_out <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb45" data-source-line-numbers="nil" data-code-line-numbers="5,9,14,18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-hidden="true" tabindex="-1"></a>p_out <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
 <span id="cb45-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(unit, pop_a<span class="sc">:</span>pop_c, pop_total) <span class="sc">|&gt;</span> </span>
 <span id="cb45-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(pop_a<span class="sc">:</span>pop_c) <span class="sc">|&gt;</span></span>
 <span id="cb45-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>

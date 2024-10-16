@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="Kieran Healy">
-  <title>Data Visualization with R and the Tidyverse – Data Visualization - 5. Dplyr and Geoms</title>
+  <title>Data Visualization with R and the Tidyverse – Data Visualization - 5. dplyr and Geoms</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#252F3E" class="quarto-title-block center">
-  <h1 class="title">Data Visualization - 5. Dplyr and Geoms</h1>
+  <h1 class="title">Data Visualization - 5. <code>dplyr</code> and Geoms</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -533,57 +533,117 @@ Kieran Healy
 <h2>Two-way tables: Row percents</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">bigregion</th>
-<th style="text-align: left;">Protestant</th>
-<th style="text-align: left;">Catholic</th>
-<th style="text-align: left;">Jewish</th>
-<th style="text-align: left;">None</th>
-<th style="text-align: left;">Other</th>
-<th style="text-align: left;">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Northeast</td>
-<td style="text-align: left;">32.4</td>
-<td style="text-align: left;">33.3</td>
-<td style="text-align: left;">5.5</td>
-<td style="text-align: left;">23.0</td>
-<td style="text-align: left;">5.7</td>
-<td style="text-align: left;">100.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Midwest</td>
-<td style="text-align: left;">47.1</td>
-<td style="text-align: left;">24.9</td>
-<td style="text-align: left;">0.4</td>
-<td style="text-align: left;">22.8</td>
-<td style="text-align: left;">4.8</td>
-<td style="text-align: left;">100.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">South</td>
-<td style="text-align: left;">62.4</td>
-<td style="text-align: left;">15.4</td>
-<td style="text-align: left;">1.1</td>
-<td style="text-align: left;">16.3</td>
-<td style="text-align: left;">4.8</td>
-<td style="text-align: left;">100.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">West</td>
-<td style="text-align: left;">37.7</td>
-<td style="text-align: left;">24.6</td>
-<td style="text-align: left;">1.6</td>
-<td style="text-align: left;">28.5</td>
-<td style="text-align: left;">7.6</td>
-<td style="text-align: left;">100.0</td>
-</tr>
-</tbody>
-</table>
+<!-- preamble start -->
+
+    <script>
+      function styleCell_d6px56wpo0a22jhb2uo8(i, j, css_id) {
+        var table = document.getElementById("tinytable_d6px56wpo0a22jhb2uo8");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_d6px56wpo0a22jhb2uo8');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_d6px56wpo0a22jhb2uo8(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_d6px56wpo0a22jhb2uo8");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+window.addEventListener('load', function () { styleCell_d6px56wpo0a22jhb2uo8(0, 0, 'tinytable_css_idraon85vhx5p5pp7vlzxz') })
+window.addEventListener('load', function () { styleCell_d6px56wpo0a22jhb2uo8(0, 1, 'tinytable_css_idraon85vhx5p5pp7vlzxz') })
+window.addEventListener('load', function () { styleCell_d6px56wpo0a22jhb2uo8(0, 2, 'tinytable_css_idraon85vhx5p5pp7vlzxz') })
+window.addEventListener('load', function () { styleCell_d6px56wpo0a22jhb2uo8(0, 3, 'tinytable_css_idraon85vhx5p5pp7vlzxz') })
+window.addEventListener('load', function () { styleCell_d6px56wpo0a22jhb2uo8(0, 4, 'tinytable_css_idraon85vhx5p5pp7vlzxz') })
+window.addEventListener('load', function () { styleCell_d6px56wpo0a22jhb2uo8(0, 5, 'tinytable_css_idraon85vhx5p5pp7vlzxz') })
+window.addEventListener('load', function () { styleCell_d6px56wpo0a22jhb2uo8(0, 6, 'tinytable_css_idraon85vhx5p5pp7vlzxz') })
+    </script>
+
+    <style>
+    .table td.tinytable_css_idraon85vhx5p5pp7vlzxz, .table th.tinytable_css_idraon85vhx5p5pp7vlzxz {  border-bottom: solid 0.1em #d3d8dc; }
+    </style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_d6px56wpo0a22jhb2uo8" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">bigregion</th>
+                <th scope="col">Protestant</th>
+                <th scope="col">Catholic</th>
+                <th scope="col">Jewish</th>
+                <th scope="col">None</th>
+                <th scope="col">Other</th>
+                <th scope="col">Total</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>Northeast</td>
+                  <td>32.4</td>
+                  <td>33.3</td>
+                  <td>5.5</td>
+                  <td>23.0</td>
+                  <td>5.7</td>
+                  <td>100.0</td>
+                </tr>
+                <tr>
+                  <td>Midwest  </td>
+                  <td>47.1</td>
+                  <td>24.9</td>
+                  <td>0.4</td>
+                  <td>22.8</td>
+                  <td>4.8</td>
+                  <td>100.0</td>
+                </tr>
+                <tr>
+                  <td>South    </td>
+                  <td>62.4</td>
+                  <td>15.4</td>
+                  <td>1.1</td>
+                  <td>16.3</td>
+                  <td>4.8</td>
+                  <td>100.0</td>
+                </tr>
+                <tr>
+                  <td>West     </td>
+                  <td>37.7</td>
+                  <td>24.6</td>
+                  <td>1.6</td>
+                  <td>28.5</td>
+                  <td>7.6</td>
+                  <td>100.0</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 </section>
@@ -591,60 +651,119 @@ Kieran Healy
 <h2>Two-way tables: Column percents</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">bigregion</th>
-<th style="text-align: left;">Protestant</th>
-<th style="text-align: left;">Catholic</th>
-<th style="text-align: left;">Jewish</th>
-<th style="text-align: left;">None</th>
-<th style="text-align: left;">Other</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Northeast</td>
-<td style="text-align: left;">11.5</td>
-<td style="text-align: left;">25.0</td>
-<td style="text-align: left;">52.9</td>
-<td style="text-align: left;">18.1</td>
-<td style="text-align: left;">17.6</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Midwest</td>
-<td style="text-align: left;">23.7</td>
-<td style="text-align: left;">26.5</td>
-<td style="text-align: left;">5.9</td>
-<td style="text-align: left;">25.4</td>
-<td style="text-align: left;">20.8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">South</td>
-<td style="text-align: left;">47.4</td>
-<td style="text-align: left;">24.7</td>
-<td style="text-align: left;">21.6</td>
-<td style="text-align: left;">27.5</td>
-<td style="text-align: left;">31.4</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">West</td>
-<td style="text-align: left;">17.4</td>
-<td style="text-align: left;">23.9</td>
-<td style="text-align: left;">19.6</td>
-<td style="text-align: left;">29.1</td>
-<td style="text-align: left;">30.2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Total</td>
-<td style="text-align: left;">100.0</td>
-<td style="text-align: left;">100.0</td>
-<td style="text-align: left;">100.0</td>
-<td style="text-align: left;">100.0</td>
-<td style="text-align: left;">100.0</td>
-</tr>
-</tbody>
-</table>
+<!-- preamble start -->
+
+    <script>
+      function styleCell_yk4xkoe5vugiqizxyl37(i, j, css_id) {
+        var table = document.getElementById("tinytable_yk4xkoe5vugiqizxyl37");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_yk4xkoe5vugiqizxyl37');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_yk4xkoe5vugiqizxyl37(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_yk4xkoe5vugiqizxyl37");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+window.addEventListener('load', function () { styleCell_yk4xkoe5vugiqizxyl37(0, 0, 'tinytable_css_ide3pzj6kzfuwm0l00fmkd') })
+window.addEventListener('load', function () { styleCell_yk4xkoe5vugiqizxyl37(0, 1, 'tinytable_css_ide3pzj6kzfuwm0l00fmkd') })
+window.addEventListener('load', function () { styleCell_yk4xkoe5vugiqizxyl37(0, 2, 'tinytable_css_ide3pzj6kzfuwm0l00fmkd') })
+window.addEventListener('load', function () { styleCell_yk4xkoe5vugiqizxyl37(0, 3, 'tinytable_css_ide3pzj6kzfuwm0l00fmkd') })
+window.addEventListener('load', function () { styleCell_yk4xkoe5vugiqizxyl37(0, 4, 'tinytable_css_ide3pzj6kzfuwm0l00fmkd') })
+window.addEventListener('load', function () { styleCell_yk4xkoe5vugiqizxyl37(0, 5, 'tinytable_css_ide3pzj6kzfuwm0l00fmkd') })
+    </script>
+
+    <style>
+    .table td.tinytable_css_ide3pzj6kzfuwm0l00fmkd, .table th.tinytable_css_ide3pzj6kzfuwm0l00fmkd {  border-bottom: solid 0.1em #d3d8dc; }
+    </style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_yk4xkoe5vugiqizxyl37" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">bigregion</th>
+                <th scope="col">Protestant</th>
+                <th scope="col">Catholic</th>
+                <th scope="col">Jewish</th>
+                <th scope="col">None</th>
+                <th scope="col">Other</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>Northeast</td>
+                  <td>11.5 </td>
+                  <td>25.0 </td>
+                  <td>52.9 </td>
+                  <td>18.1 </td>
+                  <td>17.6 </td>
+                </tr>
+                <tr>
+                  <td>Midwest  </td>
+                  <td>23.7 </td>
+                  <td>26.5 </td>
+                  <td>5.9  </td>
+                  <td>25.4 </td>
+                  <td>20.8 </td>
+                </tr>
+                <tr>
+                  <td>South    </td>
+                  <td>47.4 </td>
+                  <td>24.7 </td>
+                  <td>21.6 </td>
+                  <td>27.5 </td>
+                  <td>31.4 </td>
+                </tr>
+                <tr>
+                  <td>West     </td>
+                  <td>17.4 </td>
+                  <td>23.9 </td>
+                  <td>19.6 </td>
+                  <td>29.1 </td>
+                  <td>30.2 </td>
+                </tr>
+                <tr>
+                  <td>Total    </td>
+                  <td>100.0</td>
+                  <td>100.0</td>
+                  <td>100.0</td>
+                  <td>100.0</td>
+                  <td>100.0</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 </section>
@@ -652,52 +771,327 @@ Kieran Healy
 <h2>Two-way tables: Full marginals</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">bigregion</th>
-<th style="text-align: left;">Protestant</th>
-<th style="text-align: left;">Catholic</th>
-<th style="text-align: left;">Jewish</th>
-<th style="text-align: left;">None</th>
-<th style="text-align: left;">Other</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Northeast</td>
-<td style="text-align: left;">5.5</td>
-<td style="text-align: left;">5.7</td>
-<td style="text-align: left;">0.9</td>
-<td style="text-align: left;">3.9</td>
-<td style="text-align: left;">1.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Midwest</td>
-<td style="text-align: left;">11.4</td>
-<td style="text-align: left;">6.0</td>
-<td style="text-align: left;">0.1</td>
-<td style="text-align: left;">5.5</td>
-<td style="text-align: left;">1.2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">South</td>
-<td style="text-align: left;">22.8</td>
-<td style="text-align: left;">5.6</td>
-<td style="text-align: left;">0.4</td>
-<td style="text-align: left;">6.0</td>
-<td style="text-align: left;">1.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">West</td>
-<td style="text-align: left;">8.4</td>
-<td style="text-align: left;">5.4</td>
-<td style="text-align: left;">0.4</td>
-<td style="text-align: left;">6.3</td>
-<td style="text-align: left;">1.7</td>
-</tr>
-</tbody>
-</table>
+<!-- preamble start -->
+
+    <script>
+      function styleCell_q9mx4catvzzk3dqi7mc7(i, j, css_id) {
+        var table = document.getElementById("tinytable_q9mx4catvzzk3dqi7mc7");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_q9mx4catvzzk3dqi7mc7');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_q9mx4catvzzk3dqi7mc7(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_q9mx4catvzzk3dqi7mc7");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+window.addEventListener('load', function () { styleCell_q9mx4catvzzk3dqi7mc7(0, 0, 'tinytable_css_idj3jg2ibl1ljl66n2ii6o') })
+window.addEventListener('load', function () { styleCell_q9mx4catvzzk3dqi7mc7(0, 1, 'tinytable_css_idj3jg2ibl1ljl66n2ii6o') })
+window.addEventListener('load', function () { styleCell_q9mx4catvzzk3dqi7mc7(0, 2, 'tinytable_css_idj3jg2ibl1ljl66n2ii6o') })
+window.addEventListener('load', function () { styleCell_q9mx4catvzzk3dqi7mc7(0, 3, 'tinytable_css_idj3jg2ibl1ljl66n2ii6o') })
+window.addEventListener('load', function () { styleCell_q9mx4catvzzk3dqi7mc7(0, 4, 'tinytable_css_idj3jg2ibl1ljl66n2ii6o') })
+window.addEventListener('load', function () { styleCell_q9mx4catvzzk3dqi7mc7(0, 5, 'tinytable_css_idj3jg2ibl1ljl66n2ii6o') })
+    </script>
+
+    <style>
+    .table td.tinytable_css_idj3jg2ibl1ljl66n2ii6o, .table th.tinytable_css_idj3jg2ibl1ljl66n2ii6o {  border-bottom: solid 0.1em #d3d8dc; }
+    </style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_q9mx4catvzzk3dqi7mc7" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">bigregion</th>
+                <th scope="col">Protestant</th>
+                <th scope="col">Catholic</th>
+                <th scope="col">Jewish</th>
+                <th scope="col">None</th>
+                <th scope="col">Other</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>Northeast</td>
+                  <td>5.5 </td>
+                  <td>5.7</td>
+                  <td>0.9</td>
+                  <td>3.9</td>
+                  <td>1.0</td>
+                </tr>
+                <tr>
+                  <td>Midwest  </td>
+                  <td>11.4</td>
+                  <td>6.0</td>
+                  <td>0.1</td>
+                  <td>5.5</td>
+                  <td>1.2</td>
+                </tr>
+                <tr>
+                  <td>South    </td>
+                  <td>22.8</td>
+                  <td>5.6</td>
+                  <td>0.4</td>
+                  <td>6.0</td>
+                  <td>1.8</td>
+                </tr>
+                <tr>
+                  <td>West     </td>
+                  <td>8.4 </td>
+                  <td>5.4</td>
+                  <td>0.4</td>
+                  <td>6.3</td>
+                  <td>1.7</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+</section>
+<section id="n-way-tables" class="slide level2">
+<h2>n-way tables</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script>
+      function styleCell_227zgy83k2gnbxmvjzd7(i, j, css_id) {
+        var table = document.getElementById("tinytable_227zgy83k2gnbxmvjzd7");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_227zgy83k2gnbxmvjzd7');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_227zgy83k2gnbxmvjzd7(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_227zgy83k2gnbxmvjzd7");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+window.addEventListener('load', function () { styleCell_227zgy83k2gnbxmvjzd7(0, 0, 'tinytable_css_idafdc5t6axn74nq1zakb1') })
+window.addEventListener('load', function () { styleCell_227zgy83k2gnbxmvjzd7(0, 1, 'tinytable_css_idafdc5t6axn74nq1zakb1') })
+window.addEventListener('load', function () { styleCell_227zgy83k2gnbxmvjzd7(0, 2, 'tinytable_css_idafdc5t6axn74nq1zakb1') })
+window.addEventListener('load', function () { styleCell_227zgy83k2gnbxmvjzd7(0, 3, 'tinytable_css_idafdc5t6axn74nq1zakb1') })
+window.addEventListener('load', function () { styleCell_227zgy83k2gnbxmvjzd7(0, 4, 'tinytable_css_idafdc5t6axn74nq1zakb1') })
+window.addEventListener('load', function () { styleCell_227zgy83k2gnbxmvjzd7(0, 5, 'tinytable_css_idafdc5t6axn74nq1zakb1') })
+    </script>
+
+    <style>
+    .table td.tinytable_css_idafdc5t6axn74nq1zakb1, .table th.tinytable_css_idafdc5t6axn74nq1zakb1 {  border-bottom: solid 0.1em #d3d8dc; }
+    </style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_227zgy83k2gnbxmvjzd7" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">Race</th>
+                <th scope="col">Religion</th>
+                <th scope="col">Northeast</th>
+                <th scope="col">Midwest</th>
+                <th scope="col">South</th>
+                <th scope="col">West</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>White</td>
+                  <td>Protestant</td>
+                  <td>112</td>
+                  <td>260</td>
+                  <td>415</td>
+                  <td>180</td>
+                </tr>
+                <tr>
+                  <td>     </td>
+                  <td>Catholic  </td>
+                  <td>142</td>
+                  <td>148</td>
+                  <td>116</td>
+                  <td>94 </td>
+                </tr>
+                <tr>
+                  <td>     </td>
+                  <td>Jewish    </td>
+                  <td>26 </td>
+                  <td>3  </td>
+                  <td>11 </td>
+                  <td>10 </td>
+                </tr>
+                <tr>
+                  <td>     </td>
+                  <td>None      </td>
+                  <td>85 </td>
+                  <td>126</td>
+                  <td>123</td>
+                  <td>147</td>
+                </tr>
+                <tr>
+                  <td>     </td>
+                  <td>Other     </td>
+                  <td>16 </td>
+                  <td>19 </td>
+                  <td>26 </td>
+                  <td>31 </td>
+                </tr>
+                <tr>
+                  <td>     </td>
+                  <td>(Missing) </td>
+                  <td>1  </td>
+                  <td>3  </td>
+                  <td>6  </td>
+                  <td>-  </td>
+                </tr>
+                <tr>
+                  <td>Black</td>
+                  <td>Protestant</td>
+                  <td>36 </td>
+                  <td>50 </td>
+                  <td>209</td>
+                  <td>32 </td>
+                </tr>
+                <tr>
+                  <td>     </td>
+                  <td>Catholic  </td>
+                  <td>6  </td>
+                  <td>5  </td>
+                  <td>23 </td>
+                  <td>8  </td>
+                </tr>
+                <tr>
+                  <td>     </td>
+                  <td>Jewish    </td>
+                  <td>1  </td>
+                  <td>-  </td>
+                  <td>-  </td>
+                  <td>-  </td>
+                </tr>
+                <tr>
+                  <td>     </td>
+                  <td>None      </td>
+                  <td>14 </td>
+                  <td>25 </td>
+                  <td>33 </td>
+                  <td>17 </td>
+                </tr>
+                <tr>
+                  <td>     </td>
+                  <td>Other     </td>
+                  <td>3  </td>
+                  <td>8  </td>
+                  <td>14 </td>
+                  <td>1  </td>
+                </tr>
+                <tr>
+                  <td>Other</td>
+                  <td>Protestant</td>
+                  <td>10 </td>
+                  <td>15 </td>
+                  <td>26 </td>
+                  <td>26 </td>
+                </tr>
+                <tr>
+                  <td>     </td>
+                  <td>Catholic  </td>
+                  <td>14 </td>
+                  <td>19 </td>
+                  <td>21 </td>
+                  <td>53 </td>
+                </tr>
+                <tr>
+                  <td>     </td>
+                  <td>None      </td>
+                  <td>13 </td>
+                  <td>6  </td>
+                  <td>14 </td>
+                  <td>16 </td>
+                </tr>
+                <tr>
+                  <td>     </td>
+                  <td>Other     </td>
+                  <td>9  </td>
+                  <td>6  </td>
+                  <td>10 </td>
+                  <td>16 </td>
+                </tr>
+                <tr>
+                  <td>Black</td>
+                  <td>(Missing) </td>
+                  <td>-  </td>
+                  <td>1  </td>
+                  <td>3  </td>
+                  <td>1  </td>
+                </tr>
+                <tr>
+                  <td>Other</td>
+                  <td>(Missing) </td>
+                  <td>-  </td>
+                  <td>1  </td>
+                  <td>2  </td>
+                  <td>-  </td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 </section>
@@ -1364,69 +1758,127 @@ Kieran Healy
 <div class="sourceCode cell-code" id="cb42" data-source-line-numbers="nil" data-code-line-numbers="3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-hidden="true" tabindex="-1"></a>gss_sm <span class="sc">|&gt;</span> </span>
 <span id="cb42-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(bigregion, religion) <span class="sc">|&gt;</span> </span>
 <span id="cb42-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> bigregion, <span class="at">values_from =</span> n) <span class="sc">|&gt;</span>  </span>
-<span id="cb42-4"><a aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-4"><a aria-hidden="true" tabindex="-1"></a>  tinytable<span class="sc">::</span><span class="fu">tt</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">religion</th>
-<th style="text-align: right;">Northeast</th>
-<th style="text-align: right;">Midwest</th>
-<th style="text-align: right;">South</th>
-<th style="text-align: right;">West</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Protestant</td>
-<td style="text-align: right;">158</td>
-<td style="text-align: right;">325</td>
-<td style="text-align: right;">650</td>
-<td style="text-align: right;">238</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Catholic</td>
-<td style="text-align: right;">162</td>
-<td style="text-align: right;">172</td>
-<td style="text-align: right;">160</td>
-<td style="text-align: right;">155</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Jewish</td>
-<td style="text-align: right;">27</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">10</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">None</td>
-<td style="text-align: right;">112</td>
-<td style="text-align: right;">157</td>
-<td style="text-align: right;">170</td>
-<td style="text-align: right;">180</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Other</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">48</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">1</td>
-</tr>
-</tbody>
-</table>
+<!-- preamble start -->
+
+    <script>
+      function styleCell_6sfua4drc9qokoafaghz(i, j, css_id) {
+        var table = document.getElementById("tinytable_6sfua4drc9qokoafaghz");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_6sfua4drc9qokoafaghz');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_6sfua4drc9qokoafaghz(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_6sfua4drc9qokoafaghz");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+window.addEventListener('load', function () { styleCell_6sfua4drc9qokoafaghz(0, 0, 'tinytable_css_idf5pbi2bznzou57566358') })
+window.addEventListener('load', function () { styleCell_6sfua4drc9qokoafaghz(0, 1, 'tinytable_css_idf5pbi2bznzou57566358') })
+window.addEventListener('load', function () { styleCell_6sfua4drc9qokoafaghz(0, 2, 'tinytable_css_idf5pbi2bznzou57566358') })
+window.addEventListener('load', function () { styleCell_6sfua4drc9qokoafaghz(0, 3, 'tinytable_css_idf5pbi2bznzou57566358') })
+window.addEventListener('load', function () { styleCell_6sfua4drc9qokoafaghz(0, 4, 'tinytable_css_idf5pbi2bznzou57566358') })
+    </script>
+
+    <style>
+    .table td.tinytable_css_idf5pbi2bznzou57566358, .table th.tinytable_css_idf5pbi2bznzou57566358 {  border-bottom: solid 0.1em #d3d8dc; }
+    </style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_6sfua4drc9qokoafaghz" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">religion</th>
+                <th scope="col">Northeast</th>
+                <th scope="col">Midwest</th>
+                <th scope="col">South</th>
+                <th scope="col">West</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>Protestant</td>
+                  <td>158</td>
+                  <td>325</td>
+                  <td>650</td>
+                  <td>238</td>
+                </tr>
+                <tr>
+                  <td>Catholic  </td>
+                  <td>162</td>
+                  <td>172</td>
+                  <td>160</td>
+                  <td>155</td>
+                </tr>
+                <tr>
+                  <td>Jewish    </td>
+                  <td> 27</td>
+                  <td>  3</td>
+                  <td> 11</td>
+                  <td> 10</td>
+                </tr>
+                <tr>
+                  <td>None      </td>
+                  <td>112</td>
+                  <td>157</td>
+                  <td>170</td>
+                  <td>180</td>
+                </tr>
+                <tr>
+                  <td>Other     </td>
+                  <td> 28</td>
+                  <td> 33</td>
+                  <td> 50</td>
+                  <td> 48</td>
+                </tr>
+                <tr>
+                  <td>NA        </td>
+                  <td>  1</td>
+                  <td>  5</td>
+                  <td> 11</td>
+                  <td>  1</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 <ul>
-<li>More on <span class="fg-green"><strong><code>pivot_wider()</code></strong></span> and <span class="fg-green"><strong><code>kable()</code></strong></span> soon …</li>
+<li>More on <span class="fg-green"><strong><code>pivot_wider()</code></strong></span> and soon …</li>
 </ul>
 </section>
 <section id="pass-results-on-to-a-graph" class="slide level2">
@@ -2060,7 +2512,7 @@ Kieran Healy
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="05-work-with-dplyr-and-geoms_files/figure-revealjs/codefig-consent2-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
+<p><img data-src="05-work-with-dplyr-and-geoms_files/figure-revealjs/codefig-consent2-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2068,7 +2520,6 @@ Kieran Healy
 </section>
 <section id="what-about-faceting-it-instead-1" class="slide level2">
 <h2>What about faceting it instead?</h2>
-<p>Restricting to one column doesn’t fix it.</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
 <div class="sourceCode cell-code" id="cb86" data-source-line-numbers="nil" data-code-line-numbers="8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a aria-hidden="true" tabindex="-1"></a>by_country <span class="sc">|&gt;</span> </span>
@@ -2091,6 +2542,7 @@ Kieran Healy
 </div>
 </div>
 </div></div>
+<p>Restricting to one column doesn’t fix it.</p>
 </section>
 <section id="allow-the-y-scale-to-vary" class="slide level2">
 <h2>Allow the y-scale to vary</h2>
@@ -2114,7 +2566,7 @@ Kieran Healy
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="05-work-with-dplyr-and-geoms_files/figure-revealjs/codefig-consent3-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
+<p><img data-src="05-work-with-dplyr-and-geoms_files/figure-revealjs/codefig-consent3-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2143,7 +2595,7 @@ Kieran Healy
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="05-work-with-dplyr-and-geoms_files/figure-revealjs/codefig-consent4-1.png" class="quarto-figure quarto-figure-center" width="768"></p>
+<p><img data-src="05-work-with-dplyr-and-geoms_files/figure-revealjs/codefig-consent4-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
 </figure>
 </div>
 </div>

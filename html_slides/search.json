@@ -912,665 +912,672 @@
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#load-our-libraries",
     "href": "slides/05-work-with-dplyr-and-geoms.html#load-our-libraries",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Load our libraries",
     "text": "Load our libraries\n\nlibrary(here)      # manage file paths\nlibrary(socviz)    # data and some useful functions\nlibrary(tidyverse) # your friend and mine"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#tidyverse-components",
     "href": "slides/05-work-with-dplyr-and-geoms.html#tidyverse-components",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Tidyverse components",
     "text": "Tidyverse components\n\n\n\nlibrary(tidyverse)\nLoading tidyverse: ggplot2\nLoading tidyverse: tibble\nLoading tidyverse: tidyr\nLoading tidyverse: readr\nLoading tidyverse: purrr\nLoading tidyverse: dplyr\n\n\n\nLoad the package and …\n&lt;| Draw graphs\n&lt;| Nicer data tables\n&lt;| Tidy your data\n&lt;| Get data into R\n&lt;| Fancy Iteration\n&lt;| Action verbs for tables"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#other-tidyverse-components",
     "href": "slides/05-work-with-dplyr-and-geoms.html#other-tidyverse-components",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Other tidyverse components",
     "text": "Other tidyverse components\n\n\n\nforcats\nhaven\nlubridate\nreadxl\nstringr\nreprex\n\n\n\n&lt;| Deal with factors\n&lt;| Import Stata, SPSS, etc\n&lt;| Dates, Durations, Times\n&lt;| Import from spreadsheets\n&lt;| Strings and Regular Expressions\n&lt;| Make reproducible examples\n\n\nNot all of these are attached when we do library(tidyverse)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#u.s.-general-social-survey-data-gss_sm",
     "href": "slides/05-work-with-dplyr-and-geoms.html#u.s.-general-social-survey-data-gss_sm",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "U.S. General Social Survey data: gss_sm",
     "text": "U.S. General Social Survey data: gss_sm\n\ngss_sm  \n\n# A tibble: 2,867 × 32\n    year    id ballot       age childs sibs   degree race  sex   region income16\n   &lt;dbl&gt; &lt;dbl&gt; &lt;labelled&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;labe&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt;   \n 1  2016     1 1             47      3 2      Bache… White Male  New E… $170000…\n 2  2016     2 2             61      0 3      High … White Male  New E… $50000 …\n 3  2016     3 3             72      2 3      Bache… White Male  New E… $75000 …\n 4  2016     4 1             43      4 3      High … White Fema… New E… $170000…\n 5  2016     5 3             55      2 2      Gradu… White Fema… New E… $170000…\n 6  2016     6 2             53      2 2      Junio… White Fema… New E… $60000 …\n 7  2016     7 1             50      2 2      High … White Male  New E… $170000…\n 8  2016     8 3             23      3 6      High … Other Fema… Middl… $30000 …\n 9  2016     9 1             45      3 5      High … Black Male  Middl… $60000 …\n10  2016    10 3             71      4 1      Junio… White Male  Middl… $60000 …\n# ℹ 2,857 more rows\n# ℹ 21 more variables: relig &lt;fct&gt;, marital &lt;fct&gt;, padeg &lt;fct&gt;, madeg &lt;fct&gt;,\n#   partyid &lt;fct&gt;, polviews &lt;fct&gt;, happy &lt;fct&gt;, partners &lt;fct&gt;, grass &lt;fct&gt;,\n#   zodiac &lt;fct&gt;, pres12 &lt;labelled&gt;, wtssall &lt;dbl&gt;, income_rc &lt;fct&gt;,\n#   agegrp &lt;fct&gt;, ageq &lt;fct&gt;, siblings &lt;fct&gt;, kids &lt;fct&gt;, religion &lt;fct&gt;,\n#   bigregion &lt;fct&gt;, partners_rc &lt;fct&gt;, obama &lt;dbl&gt;\n\n\nWe often want summary tables or graphs of data like this."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#two-way-tables-row-percents",
     "href": "slides/05-work-with-dplyr-and-geoms.html#two-way-tables-row-percents",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Two-way tables: Row percents",
-    "text": "Two-way tables: Row percents\n\n\n\n\n\nbigregion\nProtestant\nCatholic\nJewish\nNone\nOther\nTotal\n\n\n\n\nNortheast\n32.4\n33.3\n5.5\n23.0\n5.7\n100.0\n\n\nMidwest\n47.1\n24.9\n0.4\n22.8\n4.8\n100.0\n\n\nSouth\n62.4\n15.4\n1.1\n16.3\n4.8\n100.0\n\n\nWest\n37.7\n24.6\n1.6\n28.5\n7.6\n100.0"
+    "text": "Two-way tables: Row percents\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                bigregion\n                Protestant\n                Catholic\n                Jewish\n                None\n                Other\n                Total\n              \n        \n        \n        \n                \n                  Northeast\n                  32.4\n                  33.3\n                  5.5\n                  23.0\n                  5.7\n                  100.0\n                \n                \n                  Midwest  \n                  47.1\n                  24.9\n                  0.4\n                  22.8\n                  4.8\n                  100.0\n                \n                \n                  South    \n                  62.4\n                  15.4\n                  1.1\n                  16.3\n                  4.8\n                  100.0\n                \n                \n                  West     \n                  37.7\n                  24.6\n                  1.6\n                  28.5\n                  7.6\n                  100.0"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#two-way-tables-column-percents",
     "href": "slides/05-work-with-dplyr-and-geoms.html#two-way-tables-column-percents",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Two-way tables: Column percents",
-    "text": "Two-way tables: Column percents\n\n\n\n\n\nbigregion\nProtestant\nCatholic\nJewish\nNone\nOther\n\n\n\n\nNortheast\n11.5\n25.0\n52.9\n18.1\n17.6\n\n\nMidwest\n23.7\n26.5\n5.9\n25.4\n20.8\n\n\nSouth\n47.4\n24.7\n21.6\n27.5\n31.4\n\n\nWest\n17.4\n23.9\n19.6\n29.1\n30.2\n\n\nTotal\n100.0\n100.0\n100.0\n100.0\n100.0"
+    "text": "Two-way tables: Column percents\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                bigregion\n                Protestant\n                Catholic\n                Jewish\n                None\n                Other\n              \n        \n        \n        \n                \n                  Northeast\n                  11.5 \n                  25.0 \n                  52.9 \n                  18.1 \n                  17.6 \n                \n                \n                  Midwest  \n                  23.7 \n                  26.5 \n                  5.9  \n                  25.4 \n                  20.8 \n                \n                \n                  South    \n                  47.4 \n                  24.7 \n                  21.6 \n                  27.5 \n                  31.4 \n                \n                \n                  West     \n                  17.4 \n                  23.9 \n                  19.6 \n                  29.1 \n                  30.2 \n                \n                \n                  Total    \n                  100.0\n                  100.0\n                  100.0\n                  100.0\n                  100.0"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#two-way-tables-full-marginals",
     "href": "slides/05-work-with-dplyr-and-geoms.html#two-way-tables-full-marginals",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Two-way tables: Full marginals",
-    "text": "Two-way tables: Full marginals\n\n\n\n\n\nbigregion\nProtestant\nCatholic\nJewish\nNone\nOther\n\n\n\n\nNortheast\n5.5\n5.7\n0.9\n3.9\n1.0\n\n\nMidwest\n11.4\n6.0\n0.1\n5.5\n1.2\n\n\nSouth\n22.8\n5.6\n0.4\n6.0\n1.8\n\n\nWest\n8.4\n5.4\n0.4\n6.3\n1.7"
+    "text": "Two-way tables: Full marginals\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                bigregion\n                Protestant\n                Catholic\n                Jewish\n                None\n                Other\n              \n        \n        \n        \n                \n                  Northeast\n                  5.5 \n                  5.7\n                  0.9\n                  3.9\n                  1.0\n                \n                \n                  Midwest  \n                  11.4\n                  6.0\n                  0.1\n                  5.5\n                  1.2\n                \n                \n                  South    \n                  22.8\n                  5.6\n                  0.4\n                  6.0\n                  1.8\n                \n                \n                  West     \n                  8.4 \n                  5.4\n                  0.4\n                  6.3\n                  1.7"
+  },
+  {
+    "objectID": "slides/05-work-with-dplyr-and-geoms.html#n-way-tables",
+    "href": "slides/05-work-with-dplyr-and-geoms.html#n-way-tables",
+    "title": "Data Visualization - 5. dplyr and Geoms",
+    "section": "n-way tables",
+    "text": "n-way tables\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                Race\n                Religion\n                Northeast\n                Midwest\n                South\n                West\n              \n        \n        \n        \n                \n                  White\n                  Protestant\n                  112\n                  260\n                  415\n                  180\n                \n                \n                       \n                  Catholic  \n                  142\n                  148\n                  116\n                  94 \n                \n                \n                       \n                  Jewish    \n                  26 \n                  3  \n                  11 \n                  10 \n                \n                \n                       \n                  None      \n                  85 \n                  126\n                  123\n                  147\n                \n                \n                       \n                  Other     \n                  16 \n                  19 \n                  26 \n                  31 \n                \n                \n                       \n                  (Missing) \n                  1  \n                  3  \n                  6  \n                  -  \n                \n                \n                  Black\n                  Protestant\n                  36 \n                  50 \n                  209\n                  32 \n                \n                \n                       \n                  Catholic  \n                  6  \n                  5  \n                  23 \n                  8  \n                \n                \n                       \n                  Jewish    \n                  1  \n                  -  \n                  -  \n                  -  \n                \n                \n                       \n                  None      \n                  14 \n                  25 \n                  33 \n                  17 \n                \n                \n                       \n                  Other     \n                  3  \n                  8  \n                  14 \n                  1  \n                \n                \n                  Other\n                  Protestant\n                  10 \n                  15 \n                  26 \n                  26 \n                \n                \n                       \n                  Catholic  \n                  14 \n                  19 \n                  21 \n                  53 \n                \n                \n                       \n                  None      \n                  13 \n                  6  \n                  14 \n                  16 \n                \n                \n                       \n                  Other     \n                  9  \n                  6  \n                  10 \n                  16 \n                \n                \n                  Black\n                  (Missing) \n                  -  \n                  1  \n                  3  \n                  1  \n                \n                \n                  Other\n                  (Missing) \n                  -  \n                  1  \n                  2  \n                  -"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#dplyr-lets-you-work-with-tibbles",
     "href": "slides/05-work-with-dplyr-and-geoms.html#dplyr-lets-you-work-with-tibbles",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "dplyr lets you work with tibbles",
     "text": "dplyr lets you work with tibbles\n\nRemember, tibbles are tables of data where the columns can be of different types, such as numeric, logical, character, factor, etc.\nWe’ll use dplyr to transform and summarize our data."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#dplyr-lets-you-work-with-tibbles-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#dplyr-lets-you-work-with-tibbles-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "dplyr lets you work with tibbles",
     "text": "dplyr lets you work with tibbles\n\nRemember, tibbles are tables of data where the columns can be of different types, such as numeric, logical, character, factor, etc.\nWe’ll use dplyr to transform and summarize our data.\nWe’ll use the pipe operator, |&gt;, to chain together sequences of actions on our tables."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#some-actions-to-take-on-a-single-table",
     "href": "slides/05-work-with-dplyr-and-geoms.html#some-actions-to-take-on-a-single-table",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Some actions to take on a single table",
     "text": "Some actions to take on a single table\n\nGroup the data at the level we want, such as “Religion by Region” or “Children by School”.\nSubset either the rows or columns of or table—i.e. remove them before doing anything.\nMutate the data. That is, change something at the current level of grouping. Mutating adds new columns to the table, or changes the content of an existing column. It never changes the number of rows.\nSummarize or aggregate the data. That is, make something new at a higher level of grouping. E.g., calculate means or counts by some grouping variable. This will generally result in a smaller, summary table. Usually this will have the same number of rows as there are groups being summarized."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#for-each-action-theres-a-function",
     "href": "slides/05-work-with-dplyr-and-geoms.html#for-each-action-theres-a-function",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "For each action there’s a function",
     "text": "For each action there’s a function\n\nGroup using group_by().\nSubset has one action for rows and one for columns. We filter() rows and select() columns.\nMutate tables (i.e. add new columns, or re-make existing ones) using mutate().\nSummarize tables (i.e. perform aggregating calculations) using summarize()."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#general-social-survey-data-gss_sm",
     "href": "slides/05-work-with-dplyr-and-geoms.html#general-social-survey-data-gss_sm",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "General Social Survey data: gss_sm",
     "text": "General Social Survey data: gss_sm\n\n## library(socviz) # if not loaded\ngss_sm\n\n# A tibble: 2,867 × 32\n    year    id ballot       age childs sibs   degree race  sex   region income16\n   &lt;dbl&gt; &lt;dbl&gt; &lt;labelled&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;labe&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt;   \n 1  2016     1 1             47      3 2      Bache… White Male  New E… $170000…\n 2  2016     2 2             61      0 3      High … White Male  New E… $50000 …\n 3  2016     3 3             72      2 3      Bache… White Male  New E… $75000 …\n 4  2016     4 1             43      4 3      High … White Fema… New E… $170000…\n 5  2016     5 3             55      2 2      Gradu… White Fema… New E… $170000…\n 6  2016     6 2             53      2 2      Junio… White Fema… New E… $60000 …\n 7  2016     7 1             50      2 2      High … White Male  New E… $170000…\n 8  2016     8 3             23      3 6      High … Other Fema… Middl… $30000 …\n 9  2016     9 1             45      3 5      High … Black Male  Middl… $60000 …\n10  2016    10 3             71      4 1      Junio… White Male  Middl… $60000 …\n# ℹ 2,857 more rows\n# ℹ 21 more variables: relig &lt;fct&gt;, marital &lt;fct&gt;, padeg &lt;fct&gt;, madeg &lt;fct&gt;,\n#   partyid &lt;fct&gt;, polviews &lt;fct&gt;, happy &lt;fct&gt;, partners &lt;fct&gt;, grass &lt;fct&gt;,\n#   zodiac &lt;fct&gt;, pres12 &lt;labelled&gt;, wtssall &lt;dbl&gt;, income_rc &lt;fct&gt;,\n#   agegrp &lt;fct&gt;, ageq &lt;fct&gt;, siblings &lt;fct&gt;, kids &lt;fct&gt;, religion &lt;fct&gt;,\n#   bigregion &lt;fct&gt;, partners_rc &lt;fct&gt;, obama &lt;dbl&gt;\n\n\nNotice how the tibble already tells us a lot."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#summarizing-a-table",
     "href": "slides/05-work-with-dplyr-and-geoms.html#summarizing-a-table",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Summarizing a Table",
     "text": "Summarizing a Table\n\nHere’s what we’re going to do:"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#summarizing-a-table-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#summarizing-a-table-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Summarizing a Table",
     "text": "Summarizing a Table\n\ngss_sm |&gt; \n  select(id, bigregion, religion)\n\n# A tibble: 2,867 × 3\n      id bigregion religion  \n   &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;     \n 1     1 Northeast None      \n 2     2 Northeast None      \n 3     3 Northeast Catholic  \n 4     4 Northeast Catholic  \n 5     5 Northeast None      \n 6     6 Northeast None      \n 7     7 Northeast None      \n 8     8 Northeast Catholic  \n 9     9 Northeast Protestant\n10    10 Northeast None      \n# ℹ 2,857 more rows\n\n\nWe’re just taking a look at the relevant columns here."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#group-by-one-column-or-variable",
     "href": "slides/05-work-with-dplyr-and-geoms.html#group-by-one-column-or-variable",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Group by one column or variable",
     "text": "Group by one column or variable\n\ngss_sm |&gt; \n  group_by(bigregion)\n\n# A tibble: 2,867 × 32\n# Groups:   bigregion [4]\n    year    id ballot       age childs sibs   degree race  sex   region income16\n   &lt;dbl&gt; &lt;dbl&gt; &lt;labelled&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;labe&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt;   \n 1  2016     1 1             47      3 2      Bache… White Male  New E… $170000…\n 2  2016     2 2             61      0 3      High … White Male  New E… $50000 …\n 3  2016     3 3             72      2 3      Bache… White Male  New E… $75000 …\n 4  2016     4 1             43      4 3      High … White Fema… New E… $170000…\n 5  2016     5 3             55      2 2      Gradu… White Fema… New E… $170000…\n 6  2016     6 2             53      2 2      Junio… White Fema… New E… $60000 …\n 7  2016     7 1             50      2 2      High … White Male  New E… $170000…\n 8  2016     8 3             23      3 6      High … Other Fema… Middl… $30000 …\n 9  2016     9 1             45      3 5      High … Black Male  Middl… $60000 …\n10  2016    10 3             71      4 1      Junio… White Male  Middl… $60000 …\n# ℹ 2,857 more rows\n# ℹ 21 more variables: relig &lt;fct&gt;, marital &lt;fct&gt;, padeg &lt;fct&gt;, madeg &lt;fct&gt;,\n#   partyid &lt;fct&gt;, polviews &lt;fct&gt;, happy &lt;fct&gt;, partners &lt;fct&gt;, grass &lt;fct&gt;,\n#   zodiac &lt;fct&gt;, pres12 &lt;labelled&gt;, wtssall &lt;dbl&gt;, income_rc &lt;fct&gt;,\n#   agegrp &lt;fct&gt;, ageq &lt;fct&gt;, siblings &lt;fct&gt;, kids &lt;fct&gt;, religion &lt;fct&gt;,\n#   bigregion &lt;fct&gt;, partners_rc &lt;fct&gt;, obama &lt;dbl&gt;\n\n\nGrouping just changes the logical structure of the tibble."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#group-and-summarize-by-one-column",
     "href": "slides/05-work-with-dplyr-and-geoms.html#group-and-summarize-by-one-column",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Group and summarize by one column",
     "text": "Group and summarize by one column\n\n\n\ngss_sm\n\n\n\n\n# A tibble: 2,867 × 32\n    year    id ballot       age childs sibs   degree race  sex   region income16\n   &lt;dbl&gt; &lt;dbl&gt; &lt;labelled&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;labe&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt;   \n 1  2016     1 1             47      3 2      Bache… White Male  New E… $170000…\n 2  2016     2 2             61      0 3      High … White Male  New E… $50000 …\n 3  2016     3 3             72      2 3      Bache… White Male  New E… $75000 …\n 4  2016     4 1             43      4 3      High … White Fema… New E… $170000…\n 5  2016     5 3             55      2 2      Gradu… White Fema… New E… $170000…\n 6  2016     6 2             53      2 2      Junio… White Fema… New E… $60000 …\n 7  2016     7 1             50      2 2      High … White Male  New E… $170000…\n 8  2016     8 3             23      3 6      High … Other Fema… Middl… $30000 …\n 9  2016     9 1             45      3 5      High … Black Male  Middl… $60000 …\n10  2016    10 3             71      4 1      Junio… White Male  Middl… $60000 …\n# ℹ 2,857 more rows\n# ℹ 21 more variables: relig &lt;fct&gt;, marital &lt;fct&gt;, padeg &lt;fct&gt;, madeg &lt;fct&gt;,\n#   partyid &lt;fct&gt;, polviews &lt;fct&gt;, happy &lt;fct&gt;, partners &lt;fct&gt;, grass &lt;fct&gt;,\n#   zodiac &lt;fct&gt;, pres12 &lt;labelled&gt;, wtssall &lt;dbl&gt;, income_rc &lt;fct&gt;,\n#   agegrp &lt;fct&gt;, ageq &lt;fct&gt;, siblings &lt;fct&gt;, kids &lt;fct&gt;, religion &lt;fct&gt;,\n#   bigregion &lt;fct&gt;, partners_rc &lt;fct&gt;, obama &lt;dbl&gt;"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#group-and-summarize-by-one-column-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#group-and-summarize-by-one-column-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Group and summarize by one column",
     "text": "Group and summarize by one column\n\n\n\ngss_sm |&gt;\n  group_by(bigregion)\n\n\n\n\n# A tibble: 2,867 × 32\n# Groups:   bigregion [4]\n    year    id ballot       age childs sibs   degree race  sex   region income16\n   &lt;dbl&gt; &lt;dbl&gt; &lt;labelled&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;labe&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt;   \n 1  2016     1 1             47      3 2      Bache… White Male  New E… $170000…\n 2  2016     2 2             61      0 3      High … White Male  New E… $50000 …\n 3  2016     3 3             72      2 3      Bache… White Male  New E… $75000 …\n 4  2016     4 1             43      4 3      High … White Fema… New E… $170000…\n 5  2016     5 3             55      2 2      Gradu… White Fema… New E… $170000…\n 6  2016     6 2             53      2 2      Junio… White Fema… New E… $60000 …\n 7  2016     7 1             50      2 2      High … White Male  New E… $170000…\n 8  2016     8 3             23      3 6      High … Other Fema… Middl… $30000 …\n 9  2016     9 1             45      3 5      High … Black Male  Middl… $60000 …\n10  2016    10 3             71      4 1      Junio… White Male  Middl… $60000 …\n# ℹ 2,857 more rows\n# ℹ 21 more variables: relig &lt;fct&gt;, marital &lt;fct&gt;, padeg &lt;fct&gt;, madeg &lt;fct&gt;,\n#   partyid &lt;fct&gt;, polviews &lt;fct&gt;, happy &lt;fct&gt;, partners &lt;fct&gt;, grass &lt;fct&gt;,\n#   zodiac &lt;fct&gt;, pres12 &lt;labelled&gt;, wtssall &lt;dbl&gt;, income_rc &lt;fct&gt;,\n#   agegrp &lt;fct&gt;, ageq &lt;fct&gt;, siblings &lt;fct&gt;, kids &lt;fct&gt;, religion &lt;fct&gt;,\n#   bigregion &lt;fct&gt;, partners_rc &lt;fct&gt;, obama &lt;dbl&gt;"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#group-and-summarize-by-one-column-2",
     "href": "slides/05-work-with-dplyr-and-geoms.html#group-and-summarize-by-one-column-2",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Group and summarize by one column",
     "text": "Group and summarize by one column\n\n\n\ngss_sm |&gt;\n  group_by(bigregion) |&gt;\n  summarize(total = n())\n\n\n\n\n# A tibble: 4 × 2\n  bigregion total\n  &lt;fct&gt;     &lt;int&gt;\n1 Northeast   488\n2 Midwest     695\n3 South      1052\n4 West        632\n\n\n\n\nThe function n() counts up the rows within each group.\n\nAll the other columns are dropped in the summary operation\nYour original gss_sm table is untouched"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#group-and-summarize-by-two-columns",
     "href": "slides/05-work-with-dplyr-and-geoms.html#group-and-summarize-by-two-columns",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Group and summarize by two columns",
     "text": "Group and summarize by two columns\n\n\n\ngss_sm\n\n\n\n\n# A tibble: 2,867 × 32\n    year    id ballot       age childs sibs   degree race  sex   region income16\n   &lt;dbl&gt; &lt;dbl&gt; &lt;labelled&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;labe&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt;   \n 1  2016     1 1             47      3 2      Bache… White Male  New E… $170000…\n 2  2016     2 2             61      0 3      High … White Male  New E… $50000 …\n 3  2016     3 3             72      2 3      Bache… White Male  New E… $75000 …\n 4  2016     4 1             43      4 3      High … White Fema… New E… $170000…\n 5  2016     5 3             55      2 2      Gradu… White Fema… New E… $170000…\n 6  2016     6 2             53      2 2      Junio… White Fema… New E… $60000 …\n 7  2016     7 1             50      2 2      High … White Male  New E… $170000…\n 8  2016     8 3             23      3 6      High … Other Fema… Middl… $30000 …\n 9  2016     9 1             45      3 5      High … Black Male  Middl… $60000 …\n10  2016    10 3             71      4 1      Junio… White Male  Middl… $60000 …\n# ℹ 2,857 more rows\n# ℹ 21 more variables: relig &lt;fct&gt;, marital &lt;fct&gt;, padeg &lt;fct&gt;, madeg &lt;fct&gt;,\n#   partyid &lt;fct&gt;, polviews &lt;fct&gt;, happy &lt;fct&gt;, partners &lt;fct&gt;, grass &lt;fct&gt;,\n#   zodiac &lt;fct&gt;, pres12 &lt;labelled&gt;, wtssall &lt;dbl&gt;, income_rc &lt;fct&gt;,\n#   agegrp &lt;fct&gt;, ageq &lt;fct&gt;, siblings &lt;fct&gt;, kids &lt;fct&gt;, religion &lt;fct&gt;,\n#   bigregion &lt;fct&gt;, partners_rc &lt;fct&gt;, obama &lt;dbl&gt;"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#group-and-summarize-by-two-columns-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#group-and-summarize-by-two-columns-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Group and summarize by two columns",
     "text": "Group and summarize by two columns\n\n\n\ngss_sm |&gt;\n  group_by(bigregion, religion)\n\n\n\n\n# A tibble: 2,867 × 32\n# Groups:   bigregion, religion [24]\n    year    id ballot       age childs sibs   degree race  sex   region income16\n   &lt;dbl&gt; &lt;dbl&gt; &lt;labelled&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;labe&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt;   \n 1  2016     1 1             47      3 2      Bache… White Male  New E… $170000…\n 2  2016     2 2             61      0 3      High … White Male  New E… $50000 …\n 3  2016     3 3             72      2 3      Bache… White Male  New E… $75000 …\n 4  2016     4 1             43      4 3      High … White Fema… New E… $170000…\n 5  2016     5 3             55      2 2      Gradu… White Fema… New E… $170000…\n 6  2016     6 2             53      2 2      Junio… White Fema… New E… $60000 …\n 7  2016     7 1             50      2 2      High … White Male  New E… $170000…\n 8  2016     8 3             23      3 6      High … Other Fema… Middl… $30000 …\n 9  2016     9 1             45      3 5      High … Black Male  Middl… $60000 …\n10  2016    10 3             71      4 1      Junio… White Male  Middl… $60000 …\n# ℹ 2,857 more rows\n# ℹ 21 more variables: relig &lt;fct&gt;, marital &lt;fct&gt;, padeg &lt;fct&gt;, madeg &lt;fct&gt;,\n#   partyid &lt;fct&gt;, polviews &lt;fct&gt;, happy &lt;fct&gt;, partners &lt;fct&gt;, grass &lt;fct&gt;,\n#   zodiac &lt;fct&gt;, pres12 &lt;labelled&gt;, wtssall &lt;dbl&gt;, income_rc &lt;fct&gt;,\n#   agegrp &lt;fct&gt;, ageq &lt;fct&gt;, siblings &lt;fct&gt;, kids &lt;fct&gt;, religion &lt;fct&gt;,\n#   bigregion &lt;fct&gt;, partners_rc &lt;fct&gt;, obama &lt;dbl&gt;"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#group-and-summarize-by-two-columns-2",
     "href": "slides/05-work-with-dplyr-and-geoms.html#group-and-summarize-by-two-columns-2",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Group and summarize by two columns",
     "text": "Group and summarize by two columns\n\n\n\ngss_sm |&gt;\n  group_by(bigregion, religion) |&gt;\n  summarize(total = n())\n\n\n\n\n# A tibble: 24 × 3\n# Groups:   bigregion [4]\n   bigregion religion   total\n   &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt;\n 1 Northeast Protestant   158\n 2 Northeast Catholic     162\n 3 Northeast Jewish        27\n 4 Northeast None         112\n 5 Northeast Other         28\n 6 Northeast &lt;NA&gt;           1\n 7 Midwest   Protestant   325\n 8 Midwest   Catholic     172\n 9 Midwest   Jewish         3\n10 Midwest   None         157\n# ℹ 14 more rows\n\n\n\n\nThe function n() counts up the rows within the innermost (i.e. the rightmost) group."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#calculate-frequencies",
     "href": "slides/05-work-with-dplyr-and-geoms.html#calculate-frequencies",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Calculate frequencies",
     "text": "Calculate frequencies\n\n\n\ngss_sm\n\n\n\n\n# A tibble: 2,867 × 32\n    year    id ballot       age childs sibs   degree race  sex   region income16\n   &lt;dbl&gt; &lt;dbl&gt; &lt;labelled&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;labe&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt;   \n 1  2016     1 1             47      3 2      Bache… White Male  New E… $170000…\n 2  2016     2 2             61      0 3      High … White Male  New E… $50000 …\n 3  2016     3 3             72      2 3      Bache… White Male  New E… $75000 …\n 4  2016     4 1             43      4 3      High … White Fema… New E… $170000…\n 5  2016     5 3             55      2 2      Gradu… White Fema… New E… $170000…\n 6  2016     6 2             53      2 2      Junio… White Fema… New E… $60000 …\n 7  2016     7 1             50      2 2      High … White Male  New E… $170000…\n 8  2016     8 3             23      3 6      High … Other Fema… Middl… $30000 …\n 9  2016     9 1             45      3 5      High … Black Male  Middl… $60000 …\n10  2016    10 3             71      4 1      Junio… White Male  Middl… $60000 …\n# ℹ 2,857 more rows\n# ℹ 21 more variables: relig &lt;fct&gt;, marital &lt;fct&gt;, padeg &lt;fct&gt;, madeg &lt;fct&gt;,\n#   partyid &lt;fct&gt;, polviews &lt;fct&gt;, happy &lt;fct&gt;, partners &lt;fct&gt;, grass &lt;fct&gt;,\n#   zodiac &lt;fct&gt;, pres12 &lt;labelled&gt;, wtssall &lt;dbl&gt;, income_rc &lt;fct&gt;,\n#   agegrp &lt;fct&gt;, ageq &lt;fct&gt;, siblings &lt;fct&gt;, kids &lt;fct&gt;, religion &lt;fct&gt;,\n#   bigregion &lt;fct&gt;, partners_rc &lt;fct&gt;, obama &lt;dbl&gt;"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#calculate-frequencies-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#calculate-frequencies-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Calculate frequencies",
     "text": "Calculate frequencies\n\n\n\ngss_sm |&gt;\n  group_by(bigregion, religion)\n\n\n\n\n# A tibble: 2,867 × 32\n# Groups:   bigregion, religion [24]\n    year    id ballot       age childs sibs   degree race  sex   region income16\n   &lt;dbl&gt; &lt;dbl&gt; &lt;labelled&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;labe&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt;   \n 1  2016     1 1             47      3 2      Bache… White Male  New E… $170000…\n 2  2016     2 2             61      0 3      High … White Male  New E… $50000 …\n 3  2016     3 3             72      2 3      Bache… White Male  New E… $75000 …\n 4  2016     4 1             43      4 3      High … White Fema… New E… $170000…\n 5  2016     5 3             55      2 2      Gradu… White Fema… New E… $170000…\n 6  2016     6 2             53      2 2      Junio… White Fema… New E… $60000 …\n 7  2016     7 1             50      2 2      High … White Male  New E… $170000…\n 8  2016     8 3             23      3 6      High … Other Fema… Middl… $30000 …\n 9  2016     9 1             45      3 5      High … Black Male  Middl… $60000 …\n10  2016    10 3             71      4 1      Junio… White Male  Middl… $60000 …\n# ℹ 2,857 more rows\n# ℹ 21 more variables: relig &lt;fct&gt;, marital &lt;fct&gt;, padeg &lt;fct&gt;, madeg &lt;fct&gt;,\n#   partyid &lt;fct&gt;, polviews &lt;fct&gt;, happy &lt;fct&gt;, partners &lt;fct&gt;, grass &lt;fct&gt;,\n#   zodiac &lt;fct&gt;, pres12 &lt;labelled&gt;, wtssall &lt;dbl&gt;, income_rc &lt;fct&gt;,\n#   agegrp &lt;fct&gt;, ageq &lt;fct&gt;, siblings &lt;fct&gt;, kids &lt;fct&gt;, religion &lt;fct&gt;,\n#   bigregion &lt;fct&gt;, partners_rc &lt;fct&gt;, obama &lt;dbl&gt;"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#calculate-frequencies-2",
     "href": "slides/05-work-with-dplyr-and-geoms.html#calculate-frequencies-2",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Calculate frequencies",
     "text": "Calculate frequencies\n\n\n\ngss_sm |&gt;\n  group_by(bigregion, religion) |&gt;\n  summarize(total = n())\n\n\n\n\n# A tibble: 24 × 3\n# Groups:   bigregion [4]\n   bigregion religion   total\n   &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt;\n 1 Northeast Protestant   158\n 2 Northeast Catholic     162\n 3 Northeast Jewish        27\n 4 Northeast None         112\n 5 Northeast Other         28\n 6 Northeast &lt;NA&gt;           1\n 7 Midwest   Protestant   325\n 8 Midwest   Catholic     172\n 9 Midwest   Jewish         3\n10 Midwest   None         157\n# ℹ 14 more rows"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#calculate-frequencies-3",
     "href": "slides/05-work-with-dplyr-and-geoms.html#calculate-frequencies-3",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Calculate frequencies",
     "text": "Calculate frequencies\n\n\n\ngss_sm |&gt;\n  group_by(bigregion, religion) |&gt;\n  summarize(total = n()) |&gt;\n  mutate(freq = total / sum(total),\n           pct = round((freq*100), 1))\n\n\n\n\n# A tibble: 24 × 5\n# Groups:   bigregion [4]\n   bigregion religion   total    freq   pct\n   &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;\n 1 Northeast Protestant   158 0.324    32.4\n 2 Northeast Catholic     162 0.332    33.2\n 3 Northeast Jewish        27 0.0553    5.5\n 4 Northeast None         112 0.230    23  \n 5 Northeast Other         28 0.0574    5.7\n 6 Northeast &lt;NA&gt;           1 0.00205   0.2\n 7 Midwest   Protestant   325 0.468    46.8\n 8 Midwest   Catholic     172 0.247    24.7\n 9 Midwest   Jewish         3 0.00432   0.4\n10 Midwest   None         157 0.226    22.6\n# ℹ 14 more rows\n\n\n\n\nThe function n() counts up the rows\nWhich rows? The ones fed down the pipeline\nThe innermost (i.e. the rightmost) group."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#pipelines-carry-assumptions-forward",
     "href": "slides/05-work-with-dplyr-and-geoms.html#pipelines-carry-assumptions-forward",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Pipelines carry assumptions forward",
     "text": "Pipelines carry assumptions forward\n\ngss_sm |&gt; \n  group_by(bigregion, religion) |&gt; \n  summarize(total = n()) |&gt; \n  mutate(freq = total / sum(total),\n           pct = round((freq*100), 1))\n\n# A tibble: 24 × 5\n# Groups:   bigregion [4]\n   bigregion religion   total    freq   pct\n   &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;\n 1 Northeast Protestant   158 0.324    32.4\n 2 Northeast Catholic     162 0.332    33.2\n 3 Northeast Jewish        27 0.0553    5.5\n 4 Northeast None         112 0.230    23  \n 5 Northeast Other         28 0.0574    5.7\n 6 Northeast &lt;NA&gt;           1 0.00205   0.2\n 7 Midwest   Protestant   325 0.468    46.8\n 8 Midwest   Catholic     172 0.247    24.7\n 9 Midwest   Jewish         3 0.00432   0.4\n10 Midwest   None         157 0.226    22.6\n# ℹ 14 more rows\n\n\n\nGroups are carried forward till summarized or explicitly ungrouped. Summary calculations are done on the innermost group, which then “disappears”—i.e. it becomes the rows of in the summary table."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#pipelines-carry-assumptions-forward-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#pipelines-carry-assumptions-forward-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Pipelines carry assumptions forward",
     "text": "Pipelines carry assumptions forward\n\ngss_sm |&gt; \n  group_by(bigregion, religion) |&gt; \n  summarize(total = n()) |&gt; \n  mutate(freq = total / sum(total),\n           pct = round((freq*100), 1)) \n\n# A tibble: 24 × 5\n# Groups:   bigregion [4]\n   bigregion religion   total    freq   pct\n   &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;\n 1 Northeast Protestant   158 0.324    32.4\n 2 Northeast Catholic     162 0.332    33.2\n 3 Northeast Jewish        27 0.0553    5.5\n 4 Northeast None         112 0.230    23  \n 5 Northeast Other         28 0.0574    5.7\n 6 Northeast &lt;NA&gt;           1 0.00205   0.2\n 7 Midwest   Protestant   325 0.468    46.8\n 8 Midwest   Catholic     172 0.247    24.7\n 9 Midwest   Jewish         3 0.00432   0.4\n10 Midwest   None         157 0.226    22.6\n# ℹ 14 more rows\n\n\nmutate() is quite clever. See how we can immediately use freq, even though we are creating it in the same mutate() expression."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#convenience-functions",
     "href": "slides/05-work-with-dplyr-and-geoms.html#convenience-functions",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Convenience functions",
     "text": "Convenience functions\n\ngss_sm |&gt; \n  group_by(bigregion, religion) |&gt; \n  summarize(total = n()) |&gt; \n  mutate(freq = total / sum(total),\n           pct = round((freq*100), 1)) \n\n# A tibble: 24 × 5\n# Groups:   bigregion [4]\n   bigregion religion   total    freq   pct\n   &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;\n 1 Northeast Protestant   158 0.324    32.4\n 2 Northeast Catholic     162 0.332    33.2\n 3 Northeast Jewish        27 0.0553    5.5\n 4 Northeast None         112 0.230    23  \n 5 Northeast Other         28 0.0574    5.7\n 6 Northeast &lt;NA&gt;           1 0.00205   0.2\n 7 Midwest   Protestant   325 0.468    46.8\n 8 Midwest   Catholic     172 0.247    24.7\n 9 Midwest   Jewish         3 0.00432   0.4\n10 Midwest   None         157 0.226    22.6\n# ℹ 14 more rows\n\n\nWe’re going to be doing this group_by() … n() step a lot. Some shorthand for it would be useful."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#three-options-for-counting-up-rows",
     "href": "slides/05-work-with-dplyr-and-geoms.html#three-options-for-counting-up-rows",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Three options for counting up rows",
     "text": "Three options for counting up rows\n\n\n\nUse n()\n\n\n\ngss_sm |&gt; \n  group_by(bigregion, religion) |&gt; \n  summarize(n = n()) \n\n# A tibble: 24 × 3\n# Groups:   bigregion [4]\n   bigregion religion       n\n   &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt;\n 1 Northeast Protestant   158\n 2 Northeast Catholic     162\n 3 Northeast Jewish        27\n 4 Northeast None         112\n 5 Northeast Other         28\n 6 Northeast &lt;NA&gt;           1\n 7 Midwest   Protestant   325\n 8 Midwest   Catholic     172\n 9 Midwest   Jewish         3\n10 Midwest   None         157\n# ℹ 14 more rows\n\n\n\n\nGroup it yourself; result is grouped.\n\n\n\nUse tally()\n\n\n\ngss_sm |&gt; \n  group_by(bigregion, religion) |&gt; \n  tally() \n\n# A tibble: 24 × 3\n# Groups:   bigregion [4]\n   bigregion religion       n\n   &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt;\n 1 Northeast Protestant   158\n 2 Northeast Catholic     162\n 3 Northeast Jewish        27\n 4 Northeast None         112\n 5 Northeast Other         28\n 6 Northeast &lt;NA&gt;           1\n 7 Midwest   Protestant   325\n 8 Midwest   Catholic     172\n 9 Midwest   Jewish         3\n10 Midwest   None         157\n# ℹ 14 more rows\n\n\n\n\nMore compact; result is grouped.\n\n\n\nUse count()\n\n\n\ngss_sm |&gt; \n  count(bigregion, religion) \n\n# A tibble: 24 × 3\n   bigregion religion       n\n   &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt;\n 1 Northeast Protestant   158\n 2 Northeast Catholic     162\n 3 Northeast Jewish        27\n 4 Northeast None         112\n 5 Northeast Other         28\n 6 Northeast &lt;NA&gt;           1\n 7 Midwest   Protestant   325\n 8 Midwest   Catholic     172\n 9 Midwest   Jewish         3\n10 Midwest   None         157\n# ℹ 14 more rows\n\n\n\n\nOne step; result is not grouped."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#pass-results-on-to-a-table",
     "href": "slides/05-work-with-dplyr-and-geoms.html#pass-results-on-to-a-table",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Pass results on to … a table",
-    "text": "Pass results on to … a table\n\ngss_sm |&gt; \n  count(bigregion, religion) |&gt; \n  pivot_wider(names_from = bigregion, values_from = n) |&gt;  \n  knitr::kable()  \n\n\n\n\n\n\nreligion\nNortheast\nMidwest\nSouth\nWest\n\n\n\n\nProtestant\n158\n325\n650\n238\n\n\nCatholic\n162\n172\n160\n155\n\n\nJewish\n27\n3\n11\n10\n\n\nNone\n112\n157\n170\n180\n\n\nOther\n28\n33\n50\n48\n\n\nNA\n1\n5\n11\n1\n\n\n\n\n\n\nMore on pivot_wider() and kable() soon …"
+    "text": "Pass results on to … a table\n\ngss_sm |&gt; \n  count(bigregion, religion) |&gt; \n  pivot_wider(names_from = bigregion, values_from = n) |&gt;  \n  tinytable::tt()  \n\n\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                religion\n                Northeast\n                Midwest\n                South\n                West\n              \n        \n        \n        \n                \n                  Protestant\n                  158\n                  325\n                  650\n                  238\n                \n                \n                  Catholic  \n                  162\n                  172\n                  160\n                  155\n                \n                \n                  Jewish    \n                   27\n                    3\n                   11\n                   10\n                \n                \n                  None      \n                  112\n                  157\n                  170\n                  180\n                \n                \n                  Other     \n                   28\n                   33\n                   50\n                   48\n                \n                \n                  NA        \n                    1\n                    5\n                   11\n                    1\n                \n        \n      \n    \n\n\n\n\nMore on pivot_wider() and soon …"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#pass-results-on-to-a-graph",
     "href": "slides/05-work-with-dplyr-and-geoms.html#pass-results-on-to-a-graph",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Pass results on to … a graph",
     "text": "Pass results on to … a graph\n\ngss_sm |&gt; \n  group_by(bigregion, religion) |&gt; \n  tally() |&gt; \n  mutate(pct = round((n/sum(n))*100), 1) |&gt; \n  drop_na() |&gt; \n  ggplot(mapping = aes(x = pct, y = reorder(religion, -pct), fill = religion)) + \n  geom_col() + \n    labs(x = \"Percent\", y = NULL) +\n    guides(fill = \"none\") + \n    facet_wrap(~ bigregion, nrow = 1)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#check-by-summarizing",
     "href": "slides/05-work-with-dplyr-and-geoms.html#check-by-summarizing",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Check by summarizing",
     "text": "Check by summarizing\n\n\n\nrel_by_region &lt;- gss_sm |&gt; \n  count(bigregion, religion) |&gt; \n  mutate(pct = round((n/sum(n))*100, 1)) \n\nrel_by_region\n\n# A tibble: 24 × 4\n   bigregion religion       n   pct\n   &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt; &lt;dbl&gt;\n 1 Northeast Protestant   158   5.5\n 2 Northeast Catholic     162   5.7\n 3 Northeast Jewish        27   0.9\n 4 Northeast None         112   3.9\n 5 Northeast Other         28   1  \n 6 Northeast &lt;NA&gt;           1   0  \n 7 Midwest   Protestant   325  11.3\n 8 Midwest   Catholic     172   6  \n 9 Midwest   Jewish         3   0.1\n10 Midwest   None         157   5.5\n# ℹ 14 more rows\n\n\nHm, did I sum over right group?"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#check-by-summarizing-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#check-by-summarizing-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Check by summarizing",
     "text": "Check by summarizing\n\n\n\nrel_by_region &lt;- gss_sm |&gt; \n  count(bigregion, religion) |&gt; \n  mutate(pct = round((n/sum(n))*100, 1)) \n\nrel_by_region\n\n# A tibble: 24 × 4\n   bigregion religion       n   pct\n   &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt; &lt;dbl&gt;\n 1 Northeast Protestant   158   5.5\n 2 Northeast Catholic     162   5.7\n 3 Northeast Jewish        27   0.9\n 4 Northeast None         112   3.9\n 5 Northeast Other         28   1  \n 6 Northeast &lt;NA&gt;           1   0  \n 7 Midwest   Protestant   325  11.3\n 8 Midwest   Catholic     172   6  \n 9 Midwest   Jewish         3   0.1\n10 Midwest   None         157   5.5\n# ℹ 14 more rows\n\n\nHm, did I sum over right group?\n\n\n## Each region should sum to ~100\nrel_by_region |&gt; \n  group_by(bigregion) |&gt; \n  summarize(total = sum(pct)) \n\n# A tibble: 4 × 2\n  bigregion total\n  &lt;fct&gt;     &lt;dbl&gt;\n1 Northeast  17  \n2 Midwest    24.3\n3 South      36.7\n4 West       22  \n\n\nNo! What has gone wrong here?"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#check-by-summarizing-2",
     "href": "slides/05-work-with-dplyr-and-geoms.html#check-by-summarizing-2",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Check by summarizing",
     "text": "Check by summarizing\n\n\n\nrel_by_region &lt;- gss_sm |&gt; \n  count(bigregion, religion) |&gt; \n  mutate(pct = round((n/sum(n))*100, 1)) \n\n\n\ncount() returns ungrouped results, so there are no groups carry forward to the mutate() step.\n\n\n\nrel_by_region |&gt; \n  summarize(total = sum(pct))\n\n# A tibble: 1 × 1\n  total\n  &lt;dbl&gt;\n1   100\n\n\n\n\nWith count(), the pct values here are the marginals for the whole table."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#check-by-summarizing-3",
     "href": "slides/05-work-with-dplyr-and-geoms.html#check-by-summarizing-3",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Check by summarizing",
     "text": "Check by summarizing\n\n\n\nrel_by_region &lt;- gss_sm |&gt; \n  count(bigregion, religion) |&gt; \n  mutate(pct = round((n/sum(n))*100, 1)) \n\n\n\ncount() returns ungrouped results, so there are no groups carry forward to the mutate() step.\n\n\n\nrel_by_region |&gt; \n  summarize(total = sum(pct))\n\n# A tibble: 1 × 1\n  total\n  &lt;dbl&gt;\n1   100\n\n\n\n\nWith count(), the pct values here are the marginals for the whole table.\n\n\n\n\nrel_by_region &lt;- gss_sm |&gt; \n  group_by(bigregion, religion) |&gt; \n  tally() |&gt; \n  mutate(pct = round((n/sum(n))*100, 1)) \n\n\n# Check\nrel_by_region |&gt; \n  group_by(bigregion) |&gt; \n  summarize(total = sum(pct))\n\n# A tibble: 4 × 2\n  bigregion total\n  &lt;fct&gt;     &lt;dbl&gt;\n1 Northeast 100  \n2 Midwest    99.9\n3 South     100  \n4 West      100. \n\n\n\n\nWe get some rounding error because we used round() after summing originally."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#two-lessons",
     "href": "slides/05-work-with-dplyr-and-geoms.html#two-lessons",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Two lessons",
     "text": "Two lessons\nCheck your tables!\n\nPipelines feed their content forward, so you need to make sure your results are not incorrect.\nOften, complex tables and graphs can be disturbingly plausible even when wrong.\nSo, figure out what the result should be and test it!\nStarting with simple or toy cases can help with this process."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#two-lessons-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#two-lessons-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Two lessons",
     "text": "Two lessons\nInspect your pipes!\n\nUnderstand pipelines by running them forward or peeling them back a step at a time.\nThis is a very effective way to understand your own and other people’s code."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#lets-put-that-table-in-an-object",
     "href": "slides/05-work-with-dplyr-and-geoms.html#lets-put-that-table-in-an-object",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Let’s put that table in an object",
     "text": "Let’s put that table in an object\n\nrel_by_region &lt;- gss_sm |&gt; \n  group_by(bigregion, religion) |&gt; \n  tally() |&gt; \n  mutate(pct = round((n/sum(n))*100, 1)) |&gt; \n  drop_na()\n\n\nhead(rel_by_region)\n\n# A tibble: 6 × 4\n# Groups:   bigregion [2]\n  bigregion religion       n   pct\n  &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt; &lt;dbl&gt;\n1 Northeast Protestant   158  32.4\n2 Northeast Catholic     162  33.2\n3 Northeast Jewish        27   5.5\n4 Northeast None         112  23  \n5 Northeast Other         28   5.7\n6 Midwest   Protestant   325  46.8"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#we-might-write",
     "href": "slides/05-work-with-dplyr-and-geoms.html#we-might-write",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "We might write …",
     "text": "We might write …\n\np &lt;- ggplot(data = rel_by_region, \n                mapping = aes(x = bigregion, \n                              y = pct, \n                              fill = religion))\np_out &lt;- p + geom_col(position = \"dodge\") +\n    labs(x = \"Region\",\n         y = \"Percent\", \n         fill = \"Religion\")"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#we-might-write-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#we-might-write-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "We might write …",
     "text": "We might write …"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#is-this-an-effective-graph-not-really",
     "href": "slides/05-work-with-dplyr-and-geoms.html#is-this-an-effective-graph-not-really",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Is this an effective graph? Not really!",
     "text": "Is this an effective graph? Not really!"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#try-faceting-instead",
     "href": "slides/05-work-with-dplyr-and-geoms.html#try-faceting-instead",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Try faceting instead",
     "text": "Try faceting instead\n\np &lt;- ggplot(data = rel_by_region, \n                mapping = aes(x = pct, \n                              y = reorder(religion, -pct), \n                              fill = religion))\np_out_facet &lt;- p + geom_col() +\n  guides(fill = \"none\") + \n  facet_wrap(~ bigregion, nrow = 1) +\n  labs(x = \"Percent\",\n       y = NULL) \n\n\nPutting categories on the y-axis is a very useful trick.\nFaceting reduces the number of guides the viewer needs to consult."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#try-faceting-instead-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#try-faceting-instead-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Try faceting instead",
     "text": "Try faceting instead"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#try-faceting-instead-2",
     "href": "slides/05-work-with-dplyr-and-geoms.html#try-faceting-instead-2",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Try faceting instead",
     "text": "Try faceting instead\nTry putting categories on the y-axis. (And reorder them by x.)\nTry faceting variables instead of mapping them to color or shape.\nTry to minimize the need for guides and legends."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#facet-children-vs-age-by-race",
     "href": "slides/05-work-with-dplyr-and-geoms.html#facet-children-vs-age-by-race",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Facet Children vs Age, by Race",
     "text": "Facet Children vs Age, by Race\n\np &lt;-  ggplot(data = gss_sm,\n             mapping = aes(x = age, y = childs))\n\np + geom_point(alpha = 0.2) + \n  geom_smooth() +\n  facet_wrap(~ race)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#facet-by-more-than-one-variable",
     "href": "slides/05-work-with-dplyr-and-geoms.html#facet-by-more-than-one-variable",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Facet by more than one variable",
     "text": "Facet by more than one variable\n\np &lt;-  ggplot(data = gss_sm,\n             mapping = aes(x = age, y = childs))\n\np + geom_point(alpha = 0.2) + \n  geom_smooth() +\n  facet_wrap(~ sex + race)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#arrange-facet_wrap-quite-freely",
     "href": "slides/05-work-with-dplyr-and-geoms.html#arrange-facet_wrap-quite-freely",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Arrange facet_wrap() quite freely",
     "text": "Arrange facet_wrap() quite freely\n\np &lt;-  ggplot(data = gss_sm,\n             mapping = aes(x = age, y = childs))\n\np + geom_point(alpha = 0.2) + \n  geom_smooth() +\n  facet_wrap(~ sex + race, nrow = 1)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#facet_grid-is-more-like-a-true-crosstab",
     "href": "slides/05-work-with-dplyr-and-geoms.html#facet_grid-is-more-like-a-true-crosstab",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "facet_grid() is more like a true crosstab",
     "text": "facet_grid() is more like a true crosstab\n\np + geom_point(alpha = 0.2) + \n  geom_smooth() +\n  facet_grid(sex ~ race)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#extend-both-to-multi-way-views",
     "href": "slides/05-work-with-dplyr-and-geoms.html#extend-both-to-multi-way-views",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Extend both to multi-way views",
     "text": "Extend both to multi-way views\n\np_out &lt;- p + geom_point(alpha = 0.2) + \n  geom_smooth() +\n  facet_grid(bigregion ~ race + sex)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#core-grammar",
     "href": "slides/05-work-with-dplyr-and-geoms.html#core-grammar",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Core Grammar",
     "text": "Core Grammar\n\nCore grammar"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#grouped-data-faceting",
     "href": "slides/05-work-with-dplyr-and-geoms.html#grouped-data-faceting",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Grouped data; faceting",
     "text": "Grouped data; faceting\n\nAlong with a few peeks at scale transformations, guide adjustments, and theme adjustment\n\n\nAll basic steps"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#dplyr-and-pipelining",
     "href": "slides/05-work-with-dplyr-and-geoms.html#dplyr-and-pipelining",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "dplyr and Pipelining",
     "text": "dplyr and Pipelining\nThe elements of filtering and summarizing\n\ngss_sm |&gt; \n  group_by(bigregion, religion) |&gt; \n  tally() |&gt; \n  mutate(freq = n / sum(n),\n         pct = round((freq*100), 1)) \n\n# A tibble: 24 × 5\n# Groups:   bigregion [4]\n   bigregion religion       n    freq   pct\n   &lt;fct&gt;     &lt;fct&gt;      &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;\n 1 Northeast Protestant   158 0.324    32.4\n 2 Northeast Catholic     162 0.332    33.2\n 3 Northeast Jewish        27 0.0553    5.5\n 4 Northeast None         112 0.230    23  \n 5 Northeast Other         28 0.0574    5.7\n 6 Northeast &lt;NA&gt;           1 0.00205   0.2\n 7 Midwest   Protestant   325 0.468    46.8\n 8 Midwest   Catholic     172 0.247    24.7\n 9 Midwest   Jewish         3 0.00432   0.4\n10 Midwest   None         157 0.226    22.6\n# ℹ 14 more rows"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#organdata-is-in-the-socviz-package",
     "href": "slides/05-work-with-dplyr-and-geoms.html#organdata-is-in-the-socviz-package",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "organdata is in the socviz package",
     "text": "organdata is in the socviz package\n\norgandata\n\n# A tibble: 238 × 21\n   country   year       donors   pop pop_dens   gdp gdp_lag health health_lag\n   &lt;chr&gt;     &lt;date&gt;      &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;int&gt;   &lt;int&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n 1 Australia NA          NA    17065    0.220 16774   16591   1300       1224\n 2 Australia 1991-01-01  12.1  17284    0.223 17171   16774   1379       1300\n 3 Australia 1992-01-01  12.4  17495    0.226 17914   17171   1455       1379\n 4 Australia 1993-01-01  12.5  17667    0.228 18883   17914   1540       1455\n 5 Australia 1994-01-01  10.2  17855    0.231 19849   18883   1626       1540\n 6 Australia 1995-01-01  10.2  18072    0.233 21079   19849   1737       1626\n 7 Australia 1996-01-01  10.6  18311    0.237 21923   21079   1846       1737\n 8 Australia 1997-01-01  10.3  18518    0.239 22961   21923   1948       1846\n 9 Australia 1998-01-01  10.5  18711    0.242 24148   22961   2077       1948\n10 Australia 1999-01-01   8.67 18926    0.244 25445   24148   2231       2077\n# ℹ 228 more rows\n# ℹ 12 more variables: pubhealth &lt;dbl&gt;, roads &lt;dbl&gt;, cerebvas &lt;int&gt;,\n#   assault &lt;int&gt;, external &lt;int&gt;, txp_pop &lt;dbl&gt;, world &lt;chr&gt;, opt &lt;chr&gt;,\n#   consent_law &lt;chr&gt;, consent_practice &lt;chr&gt;, consistent &lt;chr&gt;, ccode &lt;chr&gt;"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#first-look",
     "href": "slides/05-work-with-dplyr-and-geoms.html#first-look",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "First look",
     "text": "First look\n\np &lt;- ggplot(data = organdata,\n            mapping = aes(x = year, y = donors))\np + geom_point()"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#first-look-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#first-look-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "First look",
     "text": "First look\n\np &lt;- ggplot(data = organdata,\n            mapping = aes(x = year, y = donors))\np + geom_line()"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#first-look-2",
     "href": "slides/05-work-with-dplyr-and-geoms.html#first-look-2",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "First look",
     "text": "First look\n\np &lt;- ggplot(data = organdata,\n            mapping = aes(x = year, y = donors))\np + geom_line(aes(group = country))"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#first-look-3",
     "href": "slides/05-work-with-dplyr-and-geoms.html#first-look-3",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "First look",
     "text": "First look\n\np &lt;- ggplot(data = organdata,\n            mapping = aes(x = year, y = donors))\np + geom_line() + \n  facet_wrap(~ country, nrow = 3)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#first-look-4",
     "href": "slides/05-work-with-dplyr-and-geoms.html#first-look-4",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "First look",
     "text": "First look\n\np &lt;- ggplot(data = organdata,\n            mapping = aes(x = year, y = donors))\np + geom_line() + \n  facet_wrap(~ reorder(country, donors, na.rm = TRUE), nrow = 3)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#first-look-5",
     "href": "slides/05-work-with-dplyr-and-geoms.html#first-look-5",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "First look",
     "text": "First look\n\np &lt;- ggplot(data = organdata,\n            mapping = aes(x = year, y = donors))\np + geom_line() + \n  facet_wrap(~ reorder(country, -donors, na.rm = TRUE), nrow = 3)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#summarize-a-bunch-of-variables",
     "href": "slides/05-work-with-dplyr-and-geoms.html#summarize-a-bunch-of-variables",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Summarize a bunch of variables",
     "text": "Summarize a bunch of variables\n\nby_country &lt;- organdata |&gt;  \n  group_by(consent_law, country)  |&gt; \n    summarize(donors_mean= mean(donors, na.rm = TRUE),\n              donors_sd = sd(donors, na.rm = TRUE),\n              gdp_mean = mean(gdp, na.rm = TRUE),\n              health_mean = mean(health, na.rm = TRUE),\n              roads_mean = mean(roads, na.rm = TRUE),\n              cerebvas_mean = mean(cerebvas, na.rm = TRUE))\n\nhead(by_country)\n\n# A tibble: 6 × 8\n# Groups:   consent_law [1]\n  consent_law country     donors_mean donors_sd gdp_mean health_mean roads_mean\n  &lt;chr&gt;       &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;\n1 Informed    Australia          10.6     1.14    22179.       1958.      105. \n2 Informed    Canada             14.0     0.751   23711.       2272.      109. \n3 Informed    Denmark            13.1     1.47    23722.       2054.      102. \n4 Informed    Germany            13.0     0.611   22163.       2349.      113. \n5 Informed    Ireland            19.8     2.48    20824.       1480.      118. \n6 Informed    Netherlands        13.7     1.55    23013.       1993.       76.1\n# ℹ 1 more variable: cerebvas_mean &lt;dbl&gt;\n\n\n\nThis works, but there’s so much repetition! It’s an open invitation to make mistakes copying and pasting."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#use-across-and-where-instead",
     "href": "slides/05-work-with-dplyr-and-geoms.html#use-across-and-where-instead",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Use across() and where() instead",
     "text": "Use across() and where() instead\n\n  by_country &lt;- organdata |&gt; \n    group_by(consent_law, country) |&gt;\n      summarize(across(where(is.numeric),\n                       list(mean = ~ mean(.x, na.rm = TRUE), \n                            sd = ~ sd(.x, na.rm = TRUE))))\nhead(by_country)              \n\n# A tibble: 6 × 28\n# Groups:   consent_law [1]\n  consent_law country     donors_mean donors_sd pop_mean pop_sd pop_dens_mean\n  &lt;chr&gt;       &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;\n1 Informed    Australia          10.6     1.14    18318.  831.          0.237\n2 Informed    Canada             14.0     0.751   29608. 1193.          0.297\n3 Informed    Denmark            13.1     1.47     5257.   80.6        12.2  \n4 Informed    Germany            13.0     0.611   80255. 5158.         22.5  \n5 Informed    Ireland            19.8     2.48     3674.  132.          5.23 \n6 Informed    Netherlands        13.7     1.55    15548.  373.         37.4  \n# ℹ 21 more variables: pop_dens_sd &lt;dbl&gt;, gdp_mean &lt;dbl&gt;, gdp_sd &lt;dbl&gt;,\n#   gdp_lag_mean &lt;dbl&gt;, gdp_lag_sd &lt;dbl&gt;, health_mean &lt;dbl&gt;, health_sd &lt;dbl&gt;,\n#   health_lag_mean &lt;dbl&gt;, health_lag_sd &lt;dbl&gt;, pubhealth_mean &lt;dbl&gt;,\n#   pubhealth_sd &lt;dbl&gt;, roads_mean &lt;dbl&gt;, roads_sd &lt;dbl&gt;, cerebvas_mean &lt;dbl&gt;,\n#   cerebvas_sd &lt;dbl&gt;, assault_mean &lt;dbl&gt;, assault_sd &lt;dbl&gt;,\n#   external_mean &lt;dbl&gt;, external_sd &lt;dbl&gt;, txp_pop_mean &lt;dbl&gt;,\n#   txp_pop_sd &lt;dbl&gt;"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#use-across-and-where-instead-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#use-across-and-where-instead-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Use across() and where() instead",
     "text": "Use across() and where() instead\n\nby_country &lt;- organdata |&gt; \n  group_by(consent_law, country) |&gt;\n    summarize(across(where(is.numeric),\n                       list(mean = ~ mean(.x, na.rm = TRUE), \n                            sd = ~ sd(.x, na.rm = TRUE))), \n              .groups = \"drop\") \nhead(by_country)              \n\n# A tibble: 6 × 28\n  consent_law country     donors_mean donors_sd pop_mean pop_sd pop_dens_mean\n  &lt;chr&gt;       &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;\n1 Informed    Australia          10.6     1.14    18318.  831.          0.237\n2 Informed    Canada             14.0     0.751   29608. 1193.          0.297\n3 Informed    Denmark            13.1     1.47     5257.   80.6        12.2  \n4 Informed    Germany            13.0     0.611   80255. 5158.         22.5  \n5 Informed    Ireland            19.8     2.48     3674.  132.          5.23 \n6 Informed    Netherlands        13.7     1.55    15548.  373.         37.4  \n# ℹ 21 more variables: pop_dens_sd &lt;dbl&gt;, gdp_mean &lt;dbl&gt;, gdp_sd &lt;dbl&gt;,\n#   gdp_lag_mean &lt;dbl&gt;, gdp_lag_sd &lt;dbl&gt;, health_mean &lt;dbl&gt;, health_sd &lt;dbl&gt;,\n#   health_lag_mean &lt;dbl&gt;, health_lag_sd &lt;dbl&gt;, pubhealth_mean &lt;dbl&gt;,\n#   pubhealth_sd &lt;dbl&gt;, roads_mean &lt;dbl&gt;, roads_sd &lt;dbl&gt;, cerebvas_mean &lt;dbl&gt;,\n#   cerebvas_sd &lt;dbl&gt;, assault_mean &lt;dbl&gt;, assault_sd &lt;dbl&gt;,\n#   external_mean &lt;dbl&gt;, external_sd &lt;dbl&gt;, txp_pop_mean &lt;dbl&gt;,\n#   txp_pop_sd &lt;dbl&gt;"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#plot-our-summary-data",
     "href": "slides/05-work-with-dplyr-and-geoms.html#plot-our-summary-data",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Plot our summary data",
     "text": "Plot our summary data\n\n\nby_country |&gt; \n  ggplot(mapping = \n           aes(x = donors_mean, \n               y = reorder(country, donors_mean),\n               color = consent_law)) + \n  geom_point(size=3) +\n  labs(x = \"Donor Procurement Rate\",\n       y = NULL, \n       color = \"Consent Law\")"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#what-about-faceting-it-instead",
     "href": "slides/05-work-with-dplyr-and-geoms.html#what-about-faceting-it-instead",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "What about faceting it instead?",
     "text": "What about faceting it instead?\nThe problem is that countries can only be in one Consent Law category.\n\n\nby_country |&gt; \n  ggplot(mapping = \n           aes(x = donors_mean, \n               y = reorder(country, donors_mean),\n               color = consent_law)) + \n  geom_point(size=3) +\n  guides(color = \"none\") +\n  facet_wrap(~ consent_law) + \n  labs(x = \"Donor Procurement Rate\",\n       y = NULL, \n       color = \"Consent Law\")"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#what-about-faceting-it-instead-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#what-about-faceting-it-instead-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "What about faceting it instead?",
-    "text": "What about faceting it instead?\nRestricting to one column doesn’t fix it.\n\n\nby_country |&gt; \n  ggplot(mapping = \n           aes(x = donors_mean, \n               y = reorder(country, donors_mean),\n               color = consent_law)) + \n  geom_point(size=3) +\n  guides(color = \"none\") +\n  facet_wrap(~ consent_law, ncol = 1) + \n  labs(x = \"Donor Procurement Rate\",\n       y = NULL, \n       color = \"Consent Law\")"
+    "text": "What about faceting it instead?\n\n\nby_country |&gt; \n  ggplot(mapping = \n           aes(x = donors_mean, \n               y = reorder(country, donors_mean),\n               color = consent_law)) + \n  geom_point(size=3) +\n  guides(color = \"none\") +\n  facet_wrap(~ consent_law, ncol = 1) + \n  labs(x = \"Donor Procurement Rate\",\n       y = NULL, \n       color = \"Consent Law\")\n\n\n\n\n\n\n\n\n\nRestricting to one column doesn’t fix it."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#allow-the-y-scale-to-vary",
     "href": "slides/05-work-with-dplyr-and-geoms.html#allow-the-y-scale-to-vary",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Allow the y-scale to vary",
     "text": "Allow the y-scale to vary\nNormally the point of a facet is to preserve comparability between panels by not allowing the scales to vary. But for categorical measures it can be useful to allow this.\n\n\nby_country |&gt; \n  ggplot(mapping = \n           aes(x = donors_mean, \n               y = reorder(country, donors_mean),\n               color = consent_law)) + \n  geom_point(size=3) +\n  guides(color = \"none\") +\n  facet_wrap(~ consent_law, \n             ncol = 1,\n             scales = \"free_y\") +  \n  labs(x = \"Donor Procurement Rate\",\n       y = NULL, \n       color = \"Consent Law\")"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#again-these-methods-are-general",
     "href": "slides/05-work-with-dplyr-and-geoms.html#again-these-methods-are-general",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Again, these methods are general",
     "text": "Again, these methods are general\n\n\nby_country |&gt; \n  ggplot(mapping = \n           aes(x = donors_mean, \n               y = reorder(country, donors_mean),\n               color = consent_law)) + \n  geom_pointrange(mapping = \n                    aes(xmin = donors_mean - donors_sd, \n                        xmax = donors_mean + donors_sd)) + \n  guides(color = \"none\") +\n  facet_wrap(~ consent_law, \n             ncol = 1,\n             scales = \"free_y\") +  \n  labs(x = \"Donor Procurement Rate\",\n       y = NULL, \n       color = \"Consent Law\")"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#geom_text-for-basic-labels",
     "href": "slides/05-work-with-dplyr-and-geoms.html#geom_text-for-basic-labels",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "geom_text() for basic labels",
     "text": "geom_text() for basic labels\n\n\nby_country |&gt; \n  ggplot(mapping = aes(x = roads_mean, \n                       y = donors_mean)) + \n  geom_text(mapping = aes(label = country))"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#its-not-very-flexible",
     "href": "slides/05-work-with-dplyr-and-geoms.html#its-not-very-flexible",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "It’s not very flexible",
     "text": "It’s not very flexible\n\n\nby_country |&gt; \n  ggplot(mapping = aes(x = roads_mean, \n                       y = donors_mean)) + \n  geom_point() + \n  geom_text(mapping = aes(label = country),\n            hjust = 0)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#there-are-tricks-but-theyre-limited",
     "href": "slides/05-work-with-dplyr-and-geoms.html#there-are-tricks-but-theyre-limited",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "There are tricks, but they’re limited",
     "text": "There are tricks, but they’re limited\n\n\nby_country |&gt; \n  ggplot(mapping = aes(x = roads_mean, \n                       y = donors_mean)) + \n  geom_point() + \n  geom_text(mapping = aes(x = roads_mean + 2, \n                          label = country),\n            hjust = 0)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#well-use-ggrepel-instead",
     "href": "slides/05-work-with-dplyr-and-geoms.html#well-use-ggrepel-instead",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "We’ll use ggrepel instead",
     "text": "We’ll use ggrepel instead\nThe ggrepel package provides geom_text_repel() and geom_label_repel()"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#elections_historic-is-in-socviz",
     "href": "slides/05-work-with-dplyr-and-geoms.html#elections_historic-is-in-socviz",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "elections_historic is in socviz",
     "text": "elections_historic is in socviz\n\nelections_historic\n\n# A tibble: 49 × 19\n   election  year winner      win_party ec_pct popular_pct popular_margin  votes\n      &lt;int&gt; &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;  &lt;int&gt;\n 1       10  1824 John Quinc… D.-R.      0.322       0.309        -0.104  1.13e5\n 2       11  1828 Andrew Jac… Dem.       0.682       0.559         0.122  6.43e5\n 3       12  1832 Andrew Jac… Dem.       0.766       0.547         0.178  7.03e5\n 4       13  1836 Martin Van… Dem.       0.578       0.508         0.142  7.63e5\n 5       14  1840 William He… Whig       0.796       0.529         0.0605 1.28e6\n 6       15  1844 James Polk  Dem.       0.618       0.495         0.0145 1.34e6\n 7       16  1848 Zachary Ta… Whig       0.562       0.473         0.0479 1.36e6\n 8       17  1852 Franklin P… Dem.       0.858       0.508         0.0695 1.61e6\n 9       18  1856 James Buch… Dem.       0.588       0.453         0.122  1.84e6\n10       19  1860 Abraham Li… Rep.       0.594       0.396         0.101  1.86e6\n# ℹ 39 more rows\n# ℹ 11 more variables: margin &lt;int&gt;, runner_up &lt;chr&gt;, ru_part &lt;chr&gt;,\n#   turnout_pct &lt;dbl&gt;, winner_lname &lt;chr&gt;, winner_label &lt;chr&gt;, ru_lname &lt;chr&gt;,\n#   ru_label &lt;chr&gt;, two_term &lt;lgl&gt;, ec_votes &lt;dbl&gt;, ec_denom &lt;dbl&gt;"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#well-draw-a-plot-like-this",
     "href": "slides/05-work-with-dplyr-and-geoms.html#well-draw-a-plot-like-this",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "We’ll draw a plot like this",
     "text": "We’ll draw a plot like this\n\nPresidential elections"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#keep-things-neat",
     "href": "slides/05-work-with-dplyr-and-geoms.html#keep-things-neat",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Keep things neat",
     "text": "Keep things neat\n\n## The packages we'll use in addition to ggplot\nlibrary(ggrepel) \nlibrary(scales) \n\np_title &lt;- \"Presidential Elections: Popular & Electoral College Margins\"\np_subtitle &lt;- \"1824-2016\"\np_caption &lt;- \"Data for 2016 are provisional.\"\nx_label &lt;- \"Winner's share of Popular Vote\"\ny_label &lt;- \"Winner's share of Electoral College Votes\""
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#base-layer-lines-points",
     "href": "slides/05-work-with-dplyr-and-geoms.html#base-layer-lines-points",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Base Layer, Lines, Points",
     "text": "Base Layer, Lines, Points\n\n\np &lt;- ggplot(data = elections_historic, \n            mapping = aes(x = popular_pct, \n                          y = ec_pct,\n                          label = winner_label))\n\np + geom_hline(yintercept = 0.5, \n               linewidth = 1.4, \n               color = \"gray80\") +\n    geom_vline(xintercept = 0.5, \n               linewidth = 1.4, \n               color = \"gray80\") +\n    geom_point()"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#add-the-labels",
     "href": "slides/05-work-with-dplyr-and-geoms.html#add-the-labels",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Add the labels",
     "text": "Add the labels\nThis looks terrible here because geom_text_repel() uses the dimensions of the available graphics device to iteratively figure out the labels. Let’s allow it to draw on the whole slide.\n\n\np &lt;- ggplot(data = elections_historic, \n            mapping = aes(x = popular_pct, \n                          y = ec_pct,\n                          label = winner_label))\n\np + geom_hline(yintercept = 0.5, \n               linewidth = 1.4, color = \"gray80\") +\n  geom_vline(xintercept = 0.5, \n             linewidth = 1.4, color = \"gray80\") +\n  geom_point() + \n  geom_text_repel()"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#labeling-is-with-respect-to-the-plot-size",
     "href": "slides/05-work-with-dplyr-and-geoms.html#labeling-is-with-respect-to-the-plot-size",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Labeling is with respect to the plot size",
     "text": "Labeling is with respect to the plot size\n\np &lt;- ggplot(data = elections_historic, \n            mapping  = aes(x = popular_pct, \n                           y = ec_pct,\n                           label = winner_label))\n\np_out &lt;- p + \n  geom_hline(yintercept = 0.5, \n             linewidth = 1.4, \n             color = \"gray80\") +\n  geom_vline(xintercept = 0.5, \n             linewidth = 1.4, \n             color = \"gray80\") +\n  geom_point() + \n  geom_text_repel()"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#adjust-the-scales",
     "href": "slides/05-work-with-dplyr-and-geoms.html#adjust-the-scales",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Adjust the Scales",
     "text": "Adjust the Scales\n\np &lt;- ggplot(data = elections_historic, \n            mapping  = aes(x = popular_pct, \n                           y = ec_pct,\n                           label = winner_label))\np_out &lt;- p + geom_hline(yintercept = 0.5, \n                        linewidth = 1.4, \n                        color = \"gray80\") +\n    geom_vline(xintercept = 0.5, \n               linewidth = 1.4, \n               color = \"gray80\") +\n    geom_point() +\n    geom_text_repel() +\n    scale_x_continuous(labels = label_percent()) + \n    scale_y_continuous(labels = label_percent())"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#add-the-labels-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#add-the-labels-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Add the labels",
     "text": "Add the labels\n\np &lt;- ggplot(data = elections_historic, \n            mapping  = aes(x = popular_pct, \n                           y = ec_pct,\n                           label = winner_label))\np_out &lt;- p + geom_hline(yintercept = 0.5, \n                        linewidth = 1.4, \n                        color = \"gray80\") +\n  geom_vline(xintercept = 0.5, \n             linewidth = 1.4, \n             color = \"gray80\") +\n  geom_point() +\n  geom_text_repel(mapping = aes(family = \"Tenso Slide\")) +\n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_percent()) +\n  labs(x = x_label, y = y_label,  \n       title = p_title, \n       subtitle = p_subtitle,\n       caption = p_caption)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#option-1-on-the-fly-in-ggplot",
     "href": "slides/05-work-with-dplyr-and-geoms.html#option-1-on-the-fly-in-ggplot",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Option 1: On the fly in ggplot",
     "text": "Option 1: On the fly in ggplot\n\n\nby_country |&gt; \n  ggplot(mapping = aes(x = gdp_mean,\n                       y = health_mean)) +\n  geom_point() + \n  geom_text_repel(data = subset(by_country, gdp_mean &gt; 25000), \n                  mapping = aes(label = country))"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#option-1-on-the-fly-inside-ggplot",
     "href": "slides/05-work-with-dplyr-and-geoms.html#option-1-on-the-fly-inside-ggplot",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Option 1: On the fly inside ggplot",
     "text": "Option 1: On the fly inside ggplot\nStuffing everything into the subset() call might get messy\n\n\nby_country |&gt; \n  ggplot(mapping = aes(x = gdp_mean,\n                       y = health_mean)) +\n  geom_point() + \n  geom_text_repel(data = subset(by_country, \n                                gdp_mean &gt; 25000 |\n                                  health_mean &lt; 1500 |\n                                  country %in% \"Belgium\"), \n                  mapping = aes(label = country))"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#option-2-use-dplyr-first",
     "href": "slides/05-work-with-dplyr-and-geoms.html#option-2-use-dplyr-first",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Option 2: Use dplyr first",
     "text": "Option 2: Use dplyr first\n\ndf_hl &lt;- by_country |&gt; \n  filter(gdp_mean &gt; 25000 | \n           health_mean &lt; 1500 | \n           country %in% \"Belgium\")\n\ndf_hl\n\n# A tibble: 6 × 28\n  consent_law country       donors_mean donors_sd pop_mean  pop_sd pop_dens_mean\n  &lt;chr&gt;       &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;         &lt;dbl&gt;\n1 Informed    Ireland              19.8      2.48    3674.   132.           5.23\n2 Informed    United States        20.0      1.33  269330. 12545.           2.80\n3 Presumed    Belgium              21.9      1.94   10153.   109.          30.7 \n4 Presumed    Norway               15.4      1.11    4386.    97.3          1.35\n5 Presumed    Spain                28.1      4.96   39666.   951.           7.84\n6 Presumed    Switzerland          14.2      1.71    7037.   170.          17.0 \n# ℹ 21 more variables: pop_dens_sd &lt;dbl&gt;, gdp_mean &lt;dbl&gt;, gdp_sd &lt;dbl&gt;,\n#   gdp_lag_mean &lt;dbl&gt;, gdp_lag_sd &lt;dbl&gt;, health_mean &lt;dbl&gt;, health_sd &lt;dbl&gt;,\n#   health_lag_mean &lt;dbl&gt;, health_lag_sd &lt;dbl&gt;, pubhealth_mean &lt;dbl&gt;,\n#   pubhealth_sd &lt;dbl&gt;, roads_mean &lt;dbl&gt;, roads_sd &lt;dbl&gt;, cerebvas_mean &lt;dbl&gt;,\n#   cerebvas_sd &lt;dbl&gt;, assault_mean &lt;dbl&gt;, assault_sd &lt;dbl&gt;,\n#   external_mean &lt;dbl&gt;, external_sd &lt;dbl&gt;, txp_pop_mean &lt;dbl&gt;,\n#   txp_pop_sd &lt;dbl&gt;"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#option-2-use-dplyr-first-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#option-2-use-dplyr-first-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Option 2: Use dplyr first",
     "text": "Option 2: Use dplyr first\nThis makes things neater. A geom can be fully “autonomous”. Each one can have its own mapping call and its own data source. This can be very useful when building up plots overlaying several sources or subsets of data.\n\n\nby_country |&gt; \n  ggplot(mapping = aes(x = gdp_mean,\n                       y = health_mean)) +\n  geom_point() + \n  geom_text_repel(data = df_hl, \n                  mapping = aes(label = country))"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#annotate-can-imitate-geoms",
     "href": "slides/05-work-with-dplyr-and-geoms.html#annotate-can-imitate-geoms",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "annotate() can imitate geoms",
     "text": "annotate() can imitate geoms\n\n\norgandata |&gt; \n  ggplot(mapping = aes(x = roads, \n                       y = donors)) + \n  geom_point() + \n  annotate(geom = \"text\", \n           family = \"Tenso Slide\",\n           x = 157, \n           y = 33,\n           label = \"A surprisingly high \\n recovery rate.\",\n           hjust = 0)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#annotate-can-imitate-geoms-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#annotate-can-imitate-geoms-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "annotate() can imitate geoms",
     "text": "annotate() can imitate geoms\n\n\norgandata |&gt; \n  ggplot(mapping = aes(x = roads, \n                       y = donors)) + \n  geom_point() +\n  annotate(geom = \"rect\", \n           xmin = 125, xmax = 155,\n           ymin = 30, ymax = 35,\n           fill = \"red\", \n           alpha = 0.2) + \n  annotate(geom = \"text\", \n           x = 157, y = 33,\n           family = \"Tenso Slide\",\n           label = \"A surprisingly high \\n recovery rate.\", \n           hjust = 0)"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#every-mapped-variable-has-a-scale",
     "href": "slides/05-work-with-dplyr-and-geoms.html#every-mapped-variable-has-a-scale",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Every mapped variable has a scale",
     "text": "Every mapped variable has a scale\n\nAesthetic mappings link quantities or categories in your data to things you can see on the graph. Thus, they have a scale associated with that representation.\nScale functions manage this relationship. Remember: not just x and y but also color, fill, shape, size, and alpha are scales.\nIf it can represent your data, it has a scale, and a scale function to manage it.\nThis means you control things like color schemes for data mappings through scale functions\nBecause those colors are representing features of your data."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#naming-conventions-for-scale-functions",
     "href": "slides/05-work-with-dplyr-and-geoms.html#naming-conventions-for-scale-functions",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Naming conventions for scale functions",
     "text": "Naming conventions for scale functions\n\nIn general, scale functions are named like this:\n\n\nscale_&lt;MAPPING&gt;_&lt;KIND&gt;()"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#naming-conventions",
     "href": "slides/05-work-with-dplyr-and-geoms.html#naming-conventions",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Naming conventions",
     "text": "Naming conventions\n\nIn general, scale functions are named like this:\n\n\nscale_&lt;MAPPING&gt;_&lt;KIND&gt;()\n\n\nWe already know there are a lot of mappings\nx, y, color, size, shape, and so on."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#naming-conventions-1",
     "href": "slides/05-work-with-dplyr-and-geoms.html#naming-conventions-1",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Naming conventions",
     "text": "Naming conventions\n\nIn general, scale functions are named like this:\n\n\nscale_&lt;MAPPING&gt;_&lt;KIND&gt;()\n\n\nWe already know there are a lot of mappings\nx, y, color, size, shape, and so on.\nAnd there are many kinds of scale as well.\ndiscrete, continuous, log10, date, binned, and many others.\nSo there’s a whole zoo of scale functions.\nThe naming convention helps us keep track."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#naming-conventions-2",
     "href": "slides/05-work-with-dplyr-and-geoms.html#naming-conventions-2",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Naming conventions",
     "text": "Naming conventions\n\nscale_&lt;MAPPING&gt;_&lt;KIND&gt;()\n\n\n\n\nscale_x_continuous()\nscale_y_continous()\nscale_x_discrete()\nscale_y_discrete()\nscale_x_log10()\nscale_x_sqrt()"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#naming-conventions-3",
     "href": "slides/05-work-with-dplyr-and-geoms.html#naming-conventions-3",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Naming conventions",
     "text": "Naming conventions\n\nscale_&lt;MAPPING&gt;_&lt;KIND&gt;()\n\n\n\n\nscale_x_continuous()\nscale_y_continous()\nscale_x_discrete()\nscale_y_discrete()\nscale_x_log10()\nscale_x_sqrt()\n\n\n\nscale_color_discrete()\nscale_color_gradient()\nscale_color_gradient2()\nscale_color_brewer()\nscale_fill_discrete()\nscale_fill_gradient()\nscale_fill_gradient2()\nscale_fill_brewer()"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#scale-functions-in-practice",
     "href": "slides/05-work-with-dplyr-and-geoms.html#scale-functions-in-practice",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "Scale functions in practice",
     "text": "Scale functions in practice\n\nScale functions take arguments appropriate to their mapping and kind\n\n\n\norgandata |&gt; \n  ggplot(mapping = aes(x = roads,\n                       y = donors,\n                       color = world)) + \n  geom_point() +\n  scale_y_continuous(breaks = c(5, 15, 25),\n                     labels = c(\"Five\", \n                                \"Fifteen\", \n                                \"Twenty Five\"))"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#more-usefully",
     "href": "slides/05-work-with-dplyr-and-geoms.html#more-usefully",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "More usefully …",
     "text": "More usefully …\n\n\norgandata |&gt; \n  ggplot(mapping = aes(x = roads,\n                       y = donors,\n                       color = world)) + \n  geom_point() +\n  scale_color_discrete(labels =\n                         c(\"Corporatist\", \n                           \"Liberal\",\n                           \"Social Democratic\", \n                           \"Unclassified\")) +\n  labs(x = \"Road Deaths\",\n       y = \"Donor Procurement\",\n       color = \"Welfare State\")"
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#the-guides-function",
     "href": "slides/05-work-with-dplyr-and-geoms.html#the-guides-function",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "The guides() function",
     "text": "The guides() function\n\n\norgandata |&gt; \n  ggplot(mapping = aes(x = roads,\n                       y = donors,\n                       color = consent_law)) + \n  geom_point() +\n  facet_wrap(~ consent_law, ncol = 1) +\n  guides(color = \"none\") + \n  labs(x = \"Road Deaths\",\n       y = \"Donor Procurement\")\n\n\n\n\n\n\n\n\n\nControls overall properties of the guide labels. Common use: turning it off. We’ll see more advanced uses later."
   },
   {
     "objectID": "slides/05-work-with-dplyr-and-geoms.html#the-theme-function",
     "href": "slides/05-work-with-dplyr-and-geoms.html#the-theme-function",
-    "title": "Data Visualization - 5. Dplyr and Geoms",
+    "title": "Data Visualization - 5. dplyr and Geoms",
     "section": "The theme() function",
     "text": "The theme() function\n\n\n## Using the \"classic\" ggplot theme here\norgandata |&gt; \n  ggplot(mapping = aes(x = roads,\n                       y = donors,\n                       color = consent_law)) + \n  geom_point() +\n  labs(title = \"By Consent Law\",\n    x = \"Road Deaths\",\n    y = \"Donor Procurement\", \n    color = \"Legal Regime:\") + \n  theme(legend.position = \"bottom\", \n        plot.title = element_text(color = \"darkred\",\n                                  face = \"bold\"))\n\n\n\n\n\n\n\n\n\ntheme() styles parts of your plot that do not direct represent data. Often the first thing people want to adjust; but logically it’s the last thing."
   },
@@ -2090,7 +2097,7 @@
     "href": "slides/07-make-maps-1.html#county-level-choropleths-2",
     "title": "Data Visualization - 7. Make Maps (1)",
     "section": "County-level choropleths",
-    "text": "County-level choropleths\n\n3,195 entities, including states (FIPS id ends in four zeros)\nAnd the US as a whole (FIPS id of 0)\nSample a few rows, with specific columns:\n\n\ncounty_data  |&gt; \n    select(id, name, state, pop_dens, pct_black) |&gt;\n    sample_n(10)\n\n# A tibble: 10 × 5\n   id    name              state pop_dens      pct_black  \n   &lt;chr&gt; &lt;chr&gt;             &lt;fct&gt; &lt;fct&gt;         &lt;fct&gt;      \n 1 35027 Lincoln County    NM    [    0,   10) [ 0.0, 2.0)\n 2 05075 Lawrence County   AR    [   10,   50) [ 0.0, 2.0)\n 3 20067 Grant County      KS    [   10,   50) [ 0.0, 2.0)\n 4 48095 Concho County     TX    [    0,   10) [ 2.0, 5.0)\n 5 47149 Rutherford County TN    [  100,  500) [10.0,15.0)\n 6 17029 Coles County      IL    [  100,  500) [ 2.0, 5.0)\n 7 12051 Hendry County     FL    [   10,   50) [10.0,15.0)\n 8 16059 Lemhi County      ID    [    0,   10) [ 0.0, 2.0)\n 9 46113 Shannon County    SD    [    0,   10) [ 0.0, 2.0)\n10 21059 Daviess County    KY    [  100,  500) [ 2.0, 5.0)"
+    "text": "County-level choropleths\n\n3,195 entities, including states (FIPS id ends in four zeros)\nAnd the US as a whole (FIPS id of 0)\nSample a few rows, with specific columns:\n\n\ncounty_data  |&gt; \n    select(id, name, state, pop_dens, pct_black) |&gt;\n    sample_n(10)\n\n# A tibble: 10 × 5\n   id    name             state pop_dens      pct_black  \n   &lt;chr&gt; &lt;chr&gt;            &lt;fct&gt; &lt;fct&gt;         &lt;fct&gt;      \n 1 51580 Covington city   VA    [ 1000, 5000) [10.0,15.0)\n 2 48251 Johnson County   TX    [  100,  500) [ 2.0, 5.0)\n 3 32005 Douglas County   NV    [   50,  100) [ 0.0, 2.0)\n 4 20169 Saline County    KS    [   50,  100) [ 2.0, 5.0)\n 5 31143 Polk County      NE    [   10,   50) [ 0.0, 2.0)\n 6 51009 Amherst County   VA    [   50,  100) [15.0,25.0)\n 7 24027 Howard County    MD    [ 1000, 5000) [15.0,25.0)\n 8 35035 Otero County     NM    [    0,   10) [ 2.0, 5.0)\n 9 41057 Tillamook County OR    [   10,   50) [ 0.0, 2.0)\n10 48423 Smith County     TX    [  100,  500) [15.0,25.0)"
   },
   {
     "objectID": "slides/07-make-maps-1.html#joined-table",
@@ -2349,56 +2356,77 @@
     "href": "slides/07-make-maps-1.html#opiates-time-series-plot-4",
     "title": "Data Visualization - 7. Make Maps (1)",
     "section": "Opiates Time Series plot",
-    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  ggplot(aes(x = year,\n             y = adjusted))"
+    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  mutate(top = state %in% st_top$state)\n\n\n\n\n# A tibble: 800 × 12\n    year state    fips deaths population crude adjusted adjusted_se region abbr \n   &lt;int&gt; &lt;chr&gt;   &lt;int&gt;  &lt;int&gt;      &lt;int&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;ord&gt;  &lt;chr&gt;\n 1  1999 alabama     1     37    4430141   0.8      0.8         0.1 South  AL   \n 2  1999 alaska      2     27     624779   4.3      4           0.8 West   AK   \n 3  1999 arizona     4    229    5023823   4.6      4.7         0.3 West   AZ   \n 4  1999 arkans…     5     28    2651860   1.1      1.1         0.2 South  AR   \n 5  1999 califo…     6   1474   33499204   4.4      4.5         0.1 West   CA   \n 6  1999 colora…     8    164    4226018   3.9      3.7         0.3 West   CO   \n 7  1999 connec…     9    151    3386401   4.5      4.4         0.4 North… CT   \n 8  1999 delawa…    10     32     774990   4.1      4.1         0.7 South  DE   \n 9  1999 distri…    11     28     570213   4.9      4.9         0.9 South  DC   \n10  1999 florida    12    402   15759421   2.6      2.6         0.1 South  FL   \n# ℹ 790 more rows\n# ℹ 2 more variables: division_name &lt;chr&gt;, top &lt;lgl&gt;"
   },
   {
     "objectID": "slides/07-make-maps-1.html#opiates-time-series-plot-5",
     "href": "slides/07-make-maps-1.html#opiates-time-series-plot-5",
     "title": "Data Visualization - 7. Make Maps (1)",
     "section": "Opiates Time Series plot",
-    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state),\n            color = \"gray50\")"
+    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  mutate(top = state %in% st_top$state) |&gt;\n  ggplot(aes(x = year,\n             y = adjusted))"
   },
   {
     "objectID": "slides/07-make-maps-1.html#opiates-time-series-plot-6",
     "href": "slides/07-make-maps-1.html#opiates-time-series-plot-6",
     "title": "Data Visualization - 7. Make Maps (1)",
     "section": "Opiates Time Series plot",
-    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state),\n            color = \"gray50\") +\n  geom_smooth(aes(group = region),\n              se = FALSE)"
+    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  mutate(top = state %in% st_top$state) |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state, color = top))"
   },
   {
     "objectID": "slides/07-make-maps-1.html#opiates-time-series-plot-7",
     "href": "slides/07-make-maps-1.html#opiates-time-series-plot-7",
     "title": "Data Visualization - 7. Make Maps (1)",
     "section": "Opiates Time Series plot",
-    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state),\n            color = \"gray50\") +\n  geom_smooth(aes(group = region),\n              se = FALSE) +\n  ggrepel::geom_text_repel(\n    data = st_top,\n    mapping = aes(x = year,\n                  y = adjusted,\n                  label = abbr),\n    size = 3,\n    segment.color = NA,\n    nudge_x = 0.5)"
+    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  mutate(top = state %in% st_top$state) |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state, color = top)) +\n  geom_smooth(aes(group = region),\n              se = FALSE)"
   },
   {
     "objectID": "slides/07-make-maps-1.html#opiates-time-series-plot-8",
     "href": "slides/07-make-maps-1.html#opiates-time-series-plot-8",
     "title": "Data Visualization - 7. Make Maps (1)",
     "section": "Opiates Time Series plot",
-    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state),\n            color = \"gray50\") +\n  geom_smooth(aes(group = region),\n              se = FALSE) +\n  ggrepel::geom_text_repel(\n    data = st_top,\n    mapping = aes(x = year,\n                  y = adjusted,\n                  label = abbr),\n    size = 3,\n    segment.color = NA,\n    nudge_x = 0.5) +\n  coord_cartesian(c(min(opiates$year),\n                    max(opiates$year) + 1))"
+    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  mutate(top = state %in% st_top$state) |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state, color = top)) +\n  geom_smooth(aes(group = region),\n              se = FALSE) +\n  ggrepel::geom_text_repel(\n    data = st_top,\n    mapping = aes(x = year,\n                  y = adjusted,\n                  label = abbr),\n    size = 3,\n    color = \"firebrick\",\n    segment.color = NA,\n    nudge_x = 0.5)"
   },
   {
     "objectID": "slides/07-make-maps-1.html#opiates-time-series-plot-9",
     "href": "slides/07-make-maps-1.html#opiates-time-series-plot-9",
     "title": "Data Visualization - 7. Make Maps (1)",
     "section": "Opiates Time Series plot",
-    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state),\n            color = \"gray50\") +\n  geom_smooth(aes(group = region),\n              se = FALSE) +\n  ggrepel::geom_text_repel(\n    data = st_top,\n    mapping = aes(x = year,\n                  y = adjusted,\n                  label = abbr),\n    size = 3,\n    segment.color = NA,\n    nudge_x = 0.5) +\n  coord_cartesian(c(min(opiates$year),\n                    max(opiates$year) + 1)) +\n  labs(x = NULL,\n       y = \"Rate per 100,000 population\",\n       title = \"State-Level Opiate Death\n          Rates by Region, 1999-2014\")"
+    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  mutate(top = state %in% st_top$state) |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state, color = top)) +\n  geom_smooth(aes(group = region),\n              se = FALSE) +\n  ggrepel::geom_text_repel(\n    data = st_top,\n    mapping = aes(x = year,\n                  y = adjusted,\n                  label = abbr),\n    size = 3,\n    color = \"firebrick\",\n    segment.color = NA,\n    nudge_x = 0.5) +\n  coord_cartesian(c(min(opiates$year),\n                    max(opiates$year) + 1))"
   },
   {
     "objectID": "slides/07-make-maps-1.html#opiates-time-series-plot-10",
     "href": "slides/07-make-maps-1.html#opiates-time-series-plot-10",
     "title": "Data Visualization - 7. Make Maps (1)",
     "section": "Opiates Time Series plot",
-    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state),\n            color = \"gray50\") +\n  geom_smooth(aes(group = region),\n              se = FALSE) +\n  ggrepel::geom_text_repel(\n    data = st_top,\n    mapping = aes(x = year,\n                  y = adjusted,\n                  label = abbr),\n    size = 3,\n    segment.color = NA,\n    nudge_x = 0.5) +\n  coord_cartesian(c(min(opiates$year),\n                    max(opiates$year) + 1)) +\n  labs(x = NULL,\n       y = \"Rate per 100,000 population\",\n       title = \"State-Level Opiate Death\n          Rates by Region, 1999-2014\") +\n  facet_wrap(~ reorder(region, adjusted,\n                       na.rm = TRUE),\n             nrow  = 1)"
+    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  mutate(top = state %in% st_top$state) |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state, color = top)) +\n  geom_smooth(aes(group = region),\n              se = FALSE) +\n  ggrepel::geom_text_repel(\n    data = st_top,\n    mapping = aes(x = year,\n                  y = adjusted,\n                  label = abbr),\n    size = 3,\n    color = \"firebrick\",\n    segment.color = NA,\n    nudge_x = 0.5) +\n  coord_cartesian(c(min(opiates$year),\n                    max(opiates$year) + 1)) +\n  scale_color_manual(values = c(\"gray50\", \"firebrick\"))"
   },
   {
     "objectID": "slides/07-make-maps-1.html#opiates-time-series-plot-11",
     "href": "slides/07-make-maps-1.html#opiates-time-series-plot-11",
     "title": "Data Visualization - 7. Make Maps (1)",
     "section": "Opiates Time Series plot",
-    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state),\n            color = \"gray50\") +\n  geom_smooth(aes(group = region),\n              se = FALSE) +\n  ggrepel::geom_text_repel(\n    data = st_top,\n    mapping = aes(x = year,\n                  y = adjusted,\n                  label = abbr),\n    size = 3,\n    segment.color = NA,\n    nudge_x = 0.5) +\n  coord_cartesian(c(min(opiates$year),\n                    max(opiates$year) + 1)) +\n  labs(x = NULL,\n       y = \"Rate per 100,000 population\",\n       title = \"State-Level Opiate Death\n          Rates by Region, 1999-2014\") +\n  facet_wrap(~ reorder(region, adjusted,\n                       na.rm = TRUE),\n             nrow  = 1)"
+    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  mutate(top = state %in% st_top$state) |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state, color = top)) +\n  geom_smooth(aes(group = region),\n              se = FALSE) +\n  ggrepel::geom_text_repel(\n    data = st_top,\n    mapping = aes(x = year,\n                  y = adjusted,\n                  label = abbr),\n    size = 3,\n    color = \"firebrick\",\n    segment.color = NA,\n    nudge_x = 0.5) +\n  coord_cartesian(c(min(opiates$year),\n                    max(opiates$year) + 1)) +\n  scale_color_manual(values = c(\"gray50\", \"firebrick\")) +\n  guides(color = FALSE)"
+  },
+  {
+    "objectID": "slides/07-make-maps-1.html#opiates-time-series-plot-12",
+    "href": "slides/07-make-maps-1.html#opiates-time-series-plot-12",
+    "title": "Data Visualization - 7. Make Maps (1)",
+    "section": "Opiates Time Series plot",
+    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  mutate(top = state %in% st_top$state) |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state, color = top)) +\n  geom_smooth(aes(group = region),\n              se = FALSE) +\n  ggrepel::geom_text_repel(\n    data = st_top,\n    mapping = aes(x = year,\n                  y = adjusted,\n                  label = abbr),\n    size = 3,\n    color = \"firebrick\",\n    segment.color = NA,\n    nudge_x = 0.5) +\n  coord_cartesian(c(min(opiates$year),\n                    max(opiates$year) + 1)) +\n  scale_color_manual(values = c(\"gray50\", \"firebrick\")) +\n  guides(color = FALSE) +\n  labs(x = NULL,\n       y = \"Rate per 100,000 population\",\n       title = \"State-Level Opiate Death Rates by Region, 1999-2014\")"
+  },
+  {
+    "objectID": "slides/07-make-maps-1.html#opiates-time-series-plot-13",
+    "href": "slides/07-make-maps-1.html#opiates-time-series-plot-13",
+    "title": "Data Visualization - 7. Make Maps (1)",
+    "section": "Opiates Time Series plot",
+    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  mutate(top = state %in% st_top$state) |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state, color = top)) +\n  geom_smooth(aes(group = region),\n              se = FALSE) +\n  ggrepel::geom_text_repel(\n    data = st_top,\n    mapping = aes(x = year,\n                  y = adjusted,\n                  label = abbr),\n    size = 3,\n    color = \"firebrick\",\n    segment.color = NA,\n    nudge_x = 0.5) +\n  coord_cartesian(c(min(opiates$year),\n                    max(opiates$year) + 1)) +\n  scale_color_manual(values = c(\"gray50\", \"firebrick\")) +\n  guides(color = FALSE) +\n  labs(x = NULL,\n       y = \"Rate per 100,000 population\",\n       title = \"State-Level Opiate Death Rates by Region, 1999-2014\") +\n  facet_wrap(~ reorder(region, adjusted,\n                       na.rm = TRUE),\n             nrow  = 1)"
+  },
+  {
+    "objectID": "slides/07-make-maps-1.html#opiates-time-series-plot-14",
+    "href": "slides/07-make-maps-1.html#opiates-time-series-plot-14",
+    "title": "Data Visualization - 7. Make Maps (1)",
+    "section": "Opiates Time Series plot",
+    "text": "Opiates Time Series plot\n\n\n\nst_top &lt;- opiates |&gt;  filter(year == max(year), abbr != \"DC\") |&gt;\n  group_by(region) |&gt;\n  slice_max(order_by = adjusted, n = 2)\n\nopiates |&gt;\n  mutate(top = state %in% st_top$state) |&gt;\n  ggplot(aes(x = year,\n             y = adjusted)) +\n  geom_line(aes(group = state, color = top)) +\n  geom_smooth(aes(group = region),\n              se = FALSE) +\n  ggrepel::geom_text_repel(\n    data = st_top,\n    mapping = aes(x = year,\n                  y = adjusted,\n                  label = abbr),\n    size = 3,\n    color = \"firebrick\",\n    segment.color = NA,\n    nudge_x = 0.5) +\n  coord_cartesian(c(min(opiates$year),\n                    max(opiates$year) + 1)) +\n  scale_color_manual(values = c(\"gray50\", \"firebrick\")) +\n  guides(color = FALSE) +\n  labs(x = NULL,\n       y = \"Rate per 100,000 population\",\n       title = \"State-Level Opiate Death Rates by Region, 1999-2014\") +\n  facet_wrap(~ reorder(region, adjusted,\n                       na.rm = TRUE),\n             nrow  = 1)"
   },
   {
     "objectID": "slides/02-about-r.html#abstraction-in-software",
@@ -3217,14 +3245,14 @@
     "href": "slides/03-make-a-graph.html#untidy-data-exists-for-good-reasons",
     "title": "Data Visualization - 3. Make Some Graphs",
     "section": "Untidy data exists for good reasons",
-    "text": "Untidy data exists for good reasons\nStoring and printing data in long format entails a lot of repetition:\n\nlibrary(palmerpenguins)\npenguins |&gt; \n  group_by(species, island, year) |&gt; \n  summarize(bill = round(mean(bill_length_mm, na.rm = TRUE),2)) |&gt; \n  knitr::kable()\n\n\n\n\nspecies\nisland\nyear\nbill\n\n\n\n\nAdelie\nBiscoe\n2007\n38.32\n\n\nAdelie\nBiscoe\n2008\n38.70\n\n\nAdelie\nBiscoe\n2009\n39.69\n\n\nAdelie\nDream\n2007\n39.10\n\n\nAdelie\nDream\n2008\n38.19\n\n\nAdelie\nDream\n2009\n38.15\n\n\nAdelie\nTorgersen\n2007\n38.80\n\n\nAdelie\nTorgersen\n2008\n38.77\n\n\nAdelie\nTorgersen\n2009\n39.31\n\n\nChinstrap\nDream\n2007\n48.72\n\n\nChinstrap\nDream\n2008\n48.70\n\n\nChinstrap\nDream\n2009\n49.05\n\n\nGentoo\nBiscoe\n2007\n47.01\n\n\nGentoo\nBiscoe\n2008\n46.94\n\n\nGentoo\nBiscoe\n2009\n48.50"
+    "text": "Untidy data exists for good reasons\nStoring and printing data in long format entails a lot of repetition:\n\nlibrary(palmerpenguins)\npenguins |&gt; \n  group_by(species, island, year) |&gt; \n  summarize(bill = round(mean(bill_length_mm, na.rm = TRUE),2)) |&gt; \n  tinytable::tt()\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                species\n                island\n                year\n                bill\n              \n        \n        \n        \n                \n                  Adelie   \n                  Biscoe   \n                  2007\n                  38.32\n                \n                \n                  Adelie   \n                  Biscoe   \n                  2008\n                  38.70\n                \n                \n                  Adelie   \n                  Biscoe   \n                  2009\n                  39.69\n                \n                \n                  Adelie   \n                  Dream    \n                  2007\n                  39.10\n                \n                \n                  Adelie   \n                  Dream    \n                  2008\n                  38.19\n                \n                \n                  Adelie   \n                  Dream    \n                  2009\n                  38.15\n                \n                \n                  Adelie   \n                  Torgersen\n                  2007\n                  38.80\n                \n                \n                  Adelie   \n                  Torgersen\n                  2008\n                  38.77\n                \n                \n                  Adelie   \n                  Torgersen\n                  2009\n                  39.31\n                \n                \n                  Chinstrap\n                  Dream    \n                  2007\n                  48.72\n                \n                \n                  Chinstrap\n                  Dream    \n                  2008\n                  48.70\n                \n                \n                  Chinstrap\n                  Dream    \n                  2009\n                  49.05\n                \n                \n                  Gentoo   \n                  Biscoe   \n                  2007\n                  47.01\n                \n                \n                  Gentoo   \n                  Biscoe   \n                  2008\n                  46.94\n                \n                \n                  Gentoo   \n                  Biscoe   \n                  2009\n                  48.50"
   },
   {
     "objectID": "slides/03-make-a-graph.html#untidy-data-exists-for-good-reasons-1",
     "href": "slides/03-make-a-graph.html#untidy-data-exists-for-good-reasons-1",
     "title": "Data Visualization - 3. Make Some Graphs",
     "section": "Untidy data exists for good reasons",
-    "text": "Untidy data exists for good reasons\nA wide format is easier and more efficient to read in print:\n\npenguins |&gt; \n  group_by(species, island, year) |&gt; \n  summarize(bill = round(mean(bill_length_mm, na.rm = TRUE), 2)) |&gt; \n  pivot_wider(names_from = year, values_from = bill) |&gt; \n  knitr::kable()\n\n\n\n\nspecies\nisland\n2007\n2008\n2009\n\n\n\n\nAdelie\nBiscoe\n38.32\n38.70\n39.69\n\n\nAdelie\nDream\n39.10\n38.19\n38.15\n\n\nAdelie\nTorgersen\n38.80\n38.77\n39.31\n\n\nChinstrap\nDream\n48.72\n48.70\n49.05\n\n\nGentoo\nBiscoe\n47.01\n46.94\n48.50"
+    "text": "Untidy data exists for good reasons\nA wide format is easier and more efficient to read in print:\n\npenguins |&gt; \n  group_by(species, island, year) |&gt; \n  summarize(bill = round(mean(bill_length_mm, na.rm = TRUE), 2)) |&gt; \n  pivot_wider(names_from = year, values_from = bill) |&gt; \n  tinytable::tt()\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                species\n                island\n                2007\n                2008\n                2009\n              \n        \n        \n        \n                \n                  Adelie   \n                  Biscoe   \n                  38.32\n                  38.70\n                  39.69\n                \n                \n                  Adelie   \n                  Dream    \n                  39.10\n                  38.19\n                  38.15\n                \n                \n                  Adelie   \n                  Torgersen\n                  38.80\n                  38.77\n                  39.31\n                \n                \n                  Chinstrap\n                  Dream    \n                  48.72\n                  48.70\n                  49.05\n                \n                \n                  Gentoo   \n                  Biscoe   \n                  47.01\n                  46.94\n                  48.50"
   },
   {
     "objectID": "slides/03-make-a-graph.html#but-also-for-less-good-reasons",
@@ -3700,7 +3728,7 @@
     "href": "slides/03-make-a-graph.html#in-code-chunks",
     "title": "Data Visualization - 3. Make Some Graphs",
     "section": "In code chunks",
-    "text": "In code chunks\nSet options in any chunk:\nRMarkdown Style\n{r, fig.height=8, fig.width=5, fig.show = \"hold\", fig.cap=\"A caption\"}\nQuarto Style\n#| fig.height=8 \n#| fig.width=5\n#| fig.show: \"hold\" \n#| fig.cap=\"A caption\""
+    "text": "In code chunks\nSet options in any chunk:\nRMarkdown Style\n\n```{r, fig.height=8, fig.width=5, fig.show=\"hold\", fig.cap=\"A caption\"}\ngapminder |&gt; \n  ggplot(mapping = aes(x = gdpPercap, y = lifeExp)) + \n  geom_point()\n```\nQuarto Style\n\n```{r}\n#| fig.height=8 \n#| fig.width=5\n#| fig.show: \"hold\" \n#| fig.cap=\"A caption\"\n\ngapminder |&gt; \n  ggplot(mapping = aes(x = gdpPercap, y = lifeExp)) + \n  geom_point()\n\n```"
   },
   {
     "objectID": "slides/03-make-a-graph.html#or-for-the-whole-document",
@@ -4580,147 +4608,147 @@
   {
     "objectID": "slides/01-looking-at-data-2.html#workhorses",
     "href": "slides/01-looking-at-data-2.html#workhorses",
-    "title": "Data Visualization - 1. Looking at Data (part 2)",
+    "title": "Data Visualization - 1. Looking at Data (b)",
     "section": "Workhorses",
     "text": "Workhorses\n\nHistogram"
   },
   {
     "objectID": "slides/01-looking-at-data-2.html#workhorses-1",
     "href": "slides/01-looking-at-data-2.html#workhorses-1",
-    "title": "Data Visualization - 1. Looking at Data (part 2)",
+    "title": "Data Visualization - 1. Looking at Data (b)",
     "section": "Workhorses",
     "text": "Workhorses\n\nScatterplot"
   },
   {
     "objectID": "slides/01-looking-at-data-2.html#workhorses-2",
     "href": "slides/01-looking-at-data-2.html#workhorses-2",
-    "title": "Data Visualization - 1. Looking at Data (part 2)",
+    "title": "Data Visualization - 1. Looking at Data (b)",
     "section": "Workhorses",
     "text": "Workhorses\n\nTrend"
   },
   {
     "objectID": "slides/01-looking-at-data-2.html#workhorses-3",
     "href": "slides/01-looking-at-data-2.html#workhorses-3",
-    "title": "Data Visualization - 1. Looking at Data (part 2)",
+    "title": "Data Visualization - 1. Looking at Data (b)",
     "section": "Workhorses",
     "text": "Workhorses\n\nPoint-and-range"
   },
   {
     "objectID": "slides/01-looking-at-data-2.html#workhorses-4",
     "href": "slides/01-looking-at-data-2.html#workhorses-4",
-    "title": "Data Visualization - 1. Looking at Data (part 2)",
+    "title": "Data Visualization - 1. Looking at Data (b)",
     "section": "Workhorses",
     "text": "Workhorses\n\nFaceting"
   },
   {
     "objectID": "slides/01-looking-at-data-2.html#show-ponies",
     "href": "slides/01-looking-at-data-2.html#show-ponies",
-    "title": "Data Visualization - 1. Looking at Data (part 2)",
+    "title": "Data Visualization - 1. Looking at Data (b)",
     "section": "Show Ponies",
     "text": "Show Ponies\n\nCongressional comparison"
   },
   {
     "objectID": "slides/01-looking-at-data-2.html#show-ponies-1",
     "href": "slides/01-looking-at-data-2.html#show-ponies-1",
-    "title": "Data Visualization - 1. Looking at Data (part 2)",
+    "title": "Data Visualization - 1. Looking at Data (b)",
     "section": "Show Ponies",
     "text": "Show Ponies\n\nSeveral plots at once"
   },
   {
     "objectID": "slides/01-looking-at-data-2.html#show-ponies-2",
     "href": "slides/01-looking-at-data-2.html#show-ponies-2",
-    "title": "Data Visualization - 1. Looking at Data (part 2)",
+    "title": "Data Visualization - 1. Looking at Data (b)",
     "section": "Show Ponies",
     "text": "Show Ponies\n\nBeeswarm plot"
   },
   {
     "objectID": "slides/01-looking-at-data-2.html#show-ponies-3",
     "href": "slides/01-looking-at-data-2.html#show-ponies-3",
-    "title": "Data Visualization - 1. Looking at Data (part 2)",
+    "title": "Data Visualization - 1. Looking at Data (b)",
     "section": "Show Ponies",
     "text": "Show Ponies\n\nLexis Surface"
   },
   {
     "objectID": "slides/01-looking-at-data-2.html#show-ponies-4",
     "href": "slides/01-looking-at-data-2.html#show-ponies-4",
-    "title": "Data Visualization - 1. Looking at Data (part 2)",
+    "title": "Data Visualization - 1. Looking at Data (b)",
     "section": "Show Ponies",
     "text": "Show Ponies\n\nFaceted maps"
   },
   {
     "objectID": "slides/01-looking-at-data-2.html#unicorns",
     "href": "slides/01-looking-at-data-2.html#unicorns",
-    "title": "Data Visualization - 1. Looking at Data (part 2)",
+    "title": "Data Visualization - 1. Looking at Data (b)",
     "section": "Unicorns …",
     "text": "Unicorns …\n\nThe inevitable Minard"
   },
   {
     "objectID": "slides/01-looking-at-data-2.html#unicorns-1",
     "href": "slides/01-looking-at-data-2.html#unicorns-1",
-    "title": "Data Visualization - 1. Looking at Data (part 2)",
+    "title": "Data Visualization - 1. Looking at Data (b)",
     "section": "Unicorns …",
     "text": "Unicorns …\n\nSwedish mortality"
   },
   {
     "objectID": "slides/01-looking-at-data-2.html#or-monsters",
     "href": "slides/01-looking-at-data-2.html#or-monsters",
-    "title": "Data Visualization - 1. Looking at Data (part 2)",
+    "title": "Data Visualization - 1. Looking at Data (b)",
     "section": "… or monsters",
     "text": "… or monsters\n\n\nNetwork chords"
   },
   {
     "objectID": "slides/01-looking-at-data-1.html#housekeeping",
     "href": "slides/01-looking-at-data-1.html#housekeeping",
-    "title": "Data Visualization - 1. Looking at Data (part 1)",
+    "title": "Data Visualization - 1. Looking at Data (a)",
     "section": "Housekeeping",
     "text": "Housekeeping\n\n10:00am to 12:30pm US EST\nBreak from 12:30:pm to 1:30pm\n1:30pm to 3:30pm\nUse the Zoom chat to ask questions, or raise a hand with"
   },
   {
     "objectID": "slides/01-looking-at-data-1.html#in-between-class-sessions",
     "href": "slides/01-looking-at-data-1.html#in-between-class-sessions",
-    "title": "Data Visualization - 1. Looking at Data (part 1)",
+    "title": "Data Visualization - 1. Looking at Data (a)",
     "section": "In between class sessions",
     "text": "In between class sessions"
   },
   {
     "objectID": "slides/01-looking-at-data-1.html#my-setup-and-yours",
     "href": "slides/01-looking-at-data-1.html#my-setup-and-yours",
-    "title": "Data Visualization - 1. Looking at Data (part 1)",
+    "title": "Data Visualization - 1. Looking at Data (a)",
     "section": "My Setup and Yours",
     "text": "My Setup and Yours\n\nTalking, Slides, and Live-Coding in RStudio\nFollow along and take notes in RStudio yourself\n\nThe course packet is also an RStudio project"
   },
   {
     "objectID": "slides/01-looking-at-data-1.html#get-up-and-running",
     "href": "slides/01-looking-at-data-1.html#get-up-and-running",
-    "title": "Data Visualization - 1. Looking at Data (part 1)",
+    "title": "Data Visualization - 1. Looking at Data (a)",
     "section": "Get up and Running",
     "text": "Get up and Running"
   },
   {
     "objectID": "slides/01-looking-at-data-1.html#try-rendering-your-notes",
     "href": "slides/01-looking-at-data-1.html#try-rendering-your-notes",
-    "title": "Data Visualization - 1. Looking at Data (part 1)",
+    "title": "Data Visualization - 1. Looking at Data (a)",
     "section": "Try rendering your notes",
     "text": "Try rendering your notes\n\n\nDon’t worry if it’s not clear what’s happening at this point."
   },
   {
     "objectID": "slides/01-looking-at-data-1.html#now-write-the-following-code",
     "href": "slides/01-looking-at-data-1.html#now-write-the-following-code",
-    "title": "Data Visualization - 1. Looking at Data (part 1)",
+    "title": "Data Visualization - 1. Looking at Data (a)",
     "section": "Now write the following code",
     "text": "Now write the following code\nWrite this out inside the “code chunk” in your notes.\n\np &lt;- ggplot(data = gapminder, \n            mapping = aes(x = gdpPercap, \n                          y = lifeExp))  \n\n\np + geom_point()\n\n… And Render your document again."
   },
   {
     "objectID": "slides/01-looking-at-data-1.html#now-write-the-following-code-1",
     "href": "slides/01-looking-at-data-1.html#now-write-the-following-code-1",
-    "title": "Data Visualization - 1. Looking at Data (part 1)",
+    "title": "Data Visualization - 1. Looking at Data (a)",
     "section": "Now write the following code",
     "text": "Now write the following code\nWrite this out inside the “code chunk” in your notes.\n\n\np &lt;- ggplot(data = gapminder, \n            mapping = aes(x = gdpPercap, \n                          y = lifeExp))  \n\n\np + geom_point()\n\n\n\n\n\n\n\n\n\n… And Render your document again."
   },
   {
     "objectID": "slides/01-looking-at-data-1.html#tuftes-data-to-ink-ratio",
     "href": "slides/01-looking-at-data-1.html#tuftes-data-to-ink-ratio",
-    "title": "Data Visualization - 1. Looking at Data (part 1)",
+    "title": "Data Visualization - 1. Looking at Data (a)",
     "section": "Tufte’s “Data to Ink Ratio”",
     "text": "Tufte’s “Data to Ink Ratio”"
   },
