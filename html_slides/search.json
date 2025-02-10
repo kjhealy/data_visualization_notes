@@ -2552,7 +2552,7 @@
     "href": "slides/02-about-r.html#strengths-and-weaknesses",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "Strengths and weaknesses",
-    "text": "Strengths and weaknesses\n\n\nNotebooks work smoothly when\n\nYour document or report is small and self-contained.\nYour analysis is quick or lightweight.\nYou are making slides.\nYou are making a lot of similar reports from a template.\nYou regularly refer to calculated items in the text of your analysis.\n\n\n\n\nNotebooks can get awkward when\n\nYour analysis has many pieces.\nYour project has many authors.\nYour analysis needs a lot of scaffolding in code.\nYou have a lot of different outputs."
+    "text": "Strengths and weaknesses\n\n\nNotebooks work smoothly when\n\nYour document or report is small and self-contained.\nYour analysis is quick or lightweight.\nYou are making slides.\nYou are making a lot of similar reports from a template.\nYou regularly refer to calculated items in the text of your analysis.\n\n\n\nNotebooks can get awkward when\n\nYour analysis has many pieces.\nYour project has many authors.\nYour analysis needs a lot of scaffolding in code.\nYou have a lot of different outputs."
   },
   {
     "objectID": "slides/02-about-r.html#in-practice",
@@ -3168,7 +3168,7 @@
     "href": "slides/03-make-a-graph.html#load-our-libraries",
     "title": "Data Visualization - 3. Make Some Graphs",
     "section": "Load our libraries",
-    "text": "Load our libraries\n\nlibrary(here)      # manage file paths\nlibrary(socviz)    # data and some useful functions\nlibrary(tidyverse) # your friend and mine\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(gapminder) # some data"
+    "text": "Load our libraries\n\nlibrary(here)      # manage file paths\nlibrary(socviz)    # data and some useful functions\nlibrary(tidyverse) # your friend and mine\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(gapminder) # some data"
   },
   {
     "objectID": "slides/03-make-a-graph.html#nearly-done-with-the-scaffolding",
@@ -3441,7 +3441,14 @@
     "href": "slides/03-make-a-graph.html#ggplots-flow-of-action-required-2",
     "title": "Data Visualization - 3. Make Some Graphs",
     "section": "ggplot’s flow of action: required",
-    "text": "ggplot’s flow of action: required\n\nGeom"
+    "text": "ggplot’s flow of action: required"
+  },
+  {
+    "objectID": "slides/03-make-a-graph.html#geom",
+    "href": "slides/03-make-a-graph.html#geom",
+    "title": "Data Visualization - 3. Make Some Graphs",
+    "section": "",
+    "text": "Let’s go piece by piece"
   },
   {
     "objectID": "slides/03-make-a-graph.html#start-with-the-data",
@@ -3623,7 +3630,7 @@
     "href": "slides/03-make-a-graph.html#geoms-can-take-many-arguments",
     "title": "Data Visualization - 3. Make Some Graphs",
     "section": "Geoms can take many arguments",
-    "text": "Geoms can take many arguments\n\nHere we set color, size, and alpha. Meanwhile x and y are mapped.\nWe also give non-default values to some other arguments\n\n\np &lt;- ggplot(data = gapminder,\n            mapping = aes(x = gdpPercap,\n                          y = lifeExp)) \np_out &lt;- p + geom_point(alpha = 0.3) +\n    geom_smooth(color = \"orange\", \n                se = FALSE, \n                size = 8, \n                method = \"lm\") +\n    scale_x_log10()"
+    "text": "Geoms can take many arguments\n\nHere we set color, size, and alpha. Meanwhile x and y are mapped.\nWe also give non-default values to some other arguments\n\n\np &lt;- ggplot(data = gapminder,\n            mapping = aes(x = gdpPercap,\n                          y = lifeExp)) \np_out &lt;- p + geom_point(alpha = 0.3) +\n    geom_smooth(color = \"orange\", \n                se = FALSE, \n                linewidth = 8, \n                method = \"lm\") +\n    scale_x_log10()"
   },
   {
     "objectID": "slides/03-make-a-graph.html#geoms-can-take-many-arguments-1",
@@ -3728,14 +3735,14 @@
     "href": "slides/03-make-a-graph.html#in-code-chunks",
     "title": "Data Visualization - 3. Make Some Graphs",
     "section": "In code chunks",
-    "text": "In code chunks\nSet options in any chunk:\nRMarkdown Style\n\n```{r, fig.height=8, fig.width=5, fig.show=\"hold\", fig.cap=\"A caption\"}\ngapminder |&gt; \n  ggplot(mapping = aes(x = gdpPercap, y = lifeExp)) + \n  geom_point()\n```\nQuarto Style\n\n```{r}\n#| fig.height=8 \n#| fig.width=5\n#| fig.show: \"hold\" \n#| fig.cap=\"A caption\"\n\ngapminder |&gt; \n  ggplot(mapping = aes(x = gdpPercap, y = lifeExp)) + \n  geom_point()\n\n```"
+    "text": "In code chunks\nSet options in any chunk:\nRMarkdown Style\n\n```{r, fig.height=8, fig.width=5, fig.show=\"hold\", fig.cap=\"A caption\"}\ngapminder |&gt; \n  ggplot(mapping = aes(x = gdpPercap, y = lifeExp)) + \n  geom_point()\n```\nQuarto Style\n\n```{r}\n#| fig-height: 8 \n#| fig-width: 5\n#| fig-show: \"hold\" \n#| fig-cap: \"A caption\"\n\ngapminder |&gt; \n  ggplot(mapping = aes(x = gdpPercap, y = lifeExp)) + \n  geom_point()\n\n```"
   },
   {
-    "objectID": "slides/03-make-a-graph.html#or-for-the-whole-document",
-    "href": "slides/03-make-a-graph.html#or-for-the-whole-document",
+    "objectID": "slides/03-make-a-graph.html#or-for-the-whole-rmd-document",
+    "href": "slides/03-make-a-graph.html#or-for-the-whole-rmd-document",
     "title": "Data Visualization - 3. Make Some Graphs",
-    "section": "Or for the whole document:",
-    "text": "Or for the whole document:\n\nknitr::opts_chunk$set(warning = TRUE,\n                        message = TRUE,\n                        fig.retina = 3,\n                        fig.align = \"center\",\n                        fig.asp = 0.7,\n                        dev = c(\"png\", \"pdf\"))"
+    "section": "Or for the whole Rmd document:",
+    "text": "Or for the whole Rmd document:\n\nknitr::opts_chunk$set(warning = TRUE,\n                        message = TRUE,\n                        fig.retina = 3,\n                        fig.align = \"center\",\n                        fig.asp = 0.7,\n                        dev = c(\"png\", \"pdf\"))"
   },
   {
     "objectID": "slides/06-work-with-models.html#load-our-packages",
@@ -3889,7 +3896,7 @@
     "href": "slides/06-work-with-models.html#observation-level",
     "title": "Data Visualization - 6. Work With Models",
     "section": "Observation level",
-    "text": "Observation level\n\n&gt; summary(out)\n\nCall:\nlm(formula = lifeExp ~ gdpPercap + log(pop) + continent, data = gapminder)\nResiduals:\n    Min      1Q  Median      3Q     Max \n-47.490  -4.614   0.250   5.293  26.094 \n:::\nCoefficients:\n                   Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)       3.816e+01  2.050e+00  18.618  &lt; 2e-16 ***\ngdpPercap         4.557e-04  2.345e-05  19.435  &lt; 2e-16 ***\nlog(pop)          6.394e-01  1.329e-01   4.810 1.64e-06 ***\ncontinentAmericas 1.308e+01  6.063e-01  21.579  &lt; 2e-16 ***\ncontinentAsia     7.784e+00  5.810e-01  13.398  &lt; 2e-16 ***\ncontinentEurope   1.695e+01  6.350e-01  26.691  &lt; 2e-16 ***\ncontinentOceania  1.764e+01  1.779e+00   9.916  &lt; 2e-16 ***\n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\nResidual standard error: 8.336 on 1697 degrees of freedom\nMultiple R-squared:  0.585, Adjusted R-squared:  0.5835 \nF-statistic: 398.7 on 6 and 1697 DF,  p-value: &lt; 2.2e-16"
+    "text": "Observation level\n\n&gt; summary(out)\n\nCall:\nlm(formula = lifeExp ~ gdpPercap + log(pop) + continent, data = gapminder)\nResiduals:\n    Min      1Q  Median      3Q     Max \n-47.490  -4.614   0.250   5.293  26.094 \nCoefficients:\n                   Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)       3.816e+01  2.050e+00  18.618  &lt; 2e-16 ***\ngdpPercap         4.557e-04  2.345e-05  19.435  &lt; 2e-16 ***\nlog(pop)          6.394e-01  1.329e-01   4.810 1.64e-06 ***\ncontinentAmericas 1.308e+01  6.063e-01  21.579  &lt; 2e-16 ***\ncontinentAsia     7.784e+00  5.810e-01  13.398  &lt; 2e-16 ***\ncontinentEurope   1.695e+01  6.350e-01  26.691  &lt; 2e-16 ***\ncontinentOceania  1.764e+01  1.779e+00   9.916  &lt; 2e-16 ***\n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\nResidual standard error: 8.336 on 1697 degrees of freedom\nMultiple R-squared:  0.585, Adjusted R-squared:  0.5835 \nF-statistic: 398.7 on 6 and 1697 DF,  p-value: &lt; 2.2e-16"
   },
   {
     "objectID": "slides/06-work-with-models.html#observation-level-1",
@@ -4169,14 +4176,14 @@
     "href": "slides/06-work-with-models.html#calculate-the-average-marginal-effects",
     "title": "Data Visualization - 6. Work With Models",
     "section": "Calculate the Average Marginal Effects",
-    "text": "Calculate the Average Marginal Effects\n\nlibrary(marginaleffects)\n\nbo_mfx &lt;- avg_slopes(out_bo)\n\n## This gives us the marginal effects at the unit level \nas_tibble(bo_mfx)\n\n# A tibble: 9 × 12\n  term       contrast    estimate std.error statistic   p.value s.value conf.low\n  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;\n1 polviews_m mean(Conse…  -0.412     0.0283    -14.5  6.82e- 48  157.   -0.467  \n2 polviews_m mean(Extre…  -0.454     0.0420    -10.8  3.55e- 27   87.9  -0.536  \n3 polviews_m mean(Extre…   0.268     0.0295      9.10 9.07e- 20   63.3   0.210  \n4 polviews_m mean(Liber…   0.277     0.0229     12.1  1.46e- 33  109.    0.232  \n5 polviews_m mean(Sligh…  -0.266     0.0330     -8.06 7.65e- 16   50.2  -0.330  \n6 polviews_m mean(Sligh…   0.193     0.0303      6.39 1.66e- 10   32.5   0.134  \n7 race       mean(Black…   0.403     0.0173     23.4  1.18e-120  398.    0.369  \n8 race       mean(Other…   0.125     0.0386      3.23 1.24e-  3    9.66  0.0490 \n9 sex        mean(Femal…   0.0443    0.0177      2.51 1.22e-  2    6.36  0.00967\n# ℹ 4 more variables: conf.high &lt;dbl&gt;, predicted_lo &lt;dbl&gt;, predicted_hi &lt;dbl&gt;,\n#   predicted &lt;dbl&gt;"
+    "text": "Calculate the Average Marginal Effects\n\nlibrary(marginaleffects)\n\nbo_mfx &lt;- avg_slopes(out_bo)\n\n## This gives us the marginal effects at the unit level \nas_tibble(bo_mfx)\n\n# A tibble: 9 × 9\n  term       contrast    estimate std.error statistic   p.value s.value conf.low\n  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;\n1 polviews_m Conservati…  -0.412     0.0283    -14.5  6.82e- 48  157.   -0.467  \n2 polviews_m Extremely …  -0.454     0.0420    -10.8  3.55e- 27   87.9  -0.536  \n3 polviews_m Extremely …   0.268     0.0295      9.10 9.07e- 20   63.3   0.210  \n4 polviews_m Liberal - …   0.277     0.0229     12.1  1.46e- 33  109.    0.232  \n5 polviews_m Slightly C…  -0.266     0.0330     -8.06 7.65e- 16   50.2  -0.330  \n6 polviews_m Slightly L…   0.193     0.0303      6.39 1.66e- 10   32.5   0.134  \n7 race       Black - Wh…   0.403     0.0173     23.4  1.18e-120  398.    0.369  \n8 race       Other - Wh…   0.125     0.0386      3.23 1.24e-  3    9.66  0.0490 \n9 sex        Female - M…   0.0443    0.0177      2.51 1.22e-  2    6.36  0.00967\n# ℹ 1 more variable: conf.high &lt;dbl&gt;"
   },
   {
     "objectID": "slides/06-work-with-models.html#alternatively-do-it-with-broom",
     "href": "slides/06-work-with-models.html#alternatively-do-it-with-broom",
     "title": "Data Visualization - 6. Work With Models",
     "section": "Alternatively, do it with broom",
-    "text": "Alternatively, do it with broom\n\ntidy(bo_mfx)\n\n# A tibble: 9 × 12\n  term       contrast    estimate std.error statistic   p.value s.value conf.low\n  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;\n1 polviews_m mean(Conse…  -0.412     0.0283    -14.5  6.82e- 48  157.   -0.467  \n2 polviews_m mean(Extre…  -0.454     0.0420    -10.8  3.55e- 27   87.9  -0.536  \n3 polviews_m mean(Extre…   0.268     0.0295      9.10 9.07e- 20   63.3   0.210  \n4 polviews_m mean(Liber…   0.277     0.0229     12.1  1.46e- 33  109.    0.232  \n5 polviews_m mean(Sligh…  -0.266     0.0330     -8.06 7.65e- 16   50.2  -0.330  \n6 polviews_m mean(Sligh…   0.193     0.0303      6.39 1.66e- 10   32.5   0.134  \n7 race       mean(Black…   0.403     0.0173     23.4  1.18e-120  398.    0.369  \n8 race       mean(Other…   0.125     0.0386      3.23 1.24e-  3    9.66  0.0490 \n9 sex        mean(Femal…   0.0443    0.0177      2.51 1.22e-  2    6.36  0.00967\n# ℹ 4 more variables: conf.high &lt;dbl&gt;, predicted_lo &lt;dbl&gt;, predicted_hi &lt;dbl&gt;,\n#   predicted &lt;dbl&gt;"
+    "text": "Alternatively, do it with broom\n\ntidy(bo_mfx)\n\n# A tibble: 9 × 9\n  term       contrast    estimate std.error statistic   p.value s.value conf.low\n  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;\n1 polviews_m Conservati…  -0.412     0.0283    -14.5  6.82e- 48  157.   -0.467  \n2 polviews_m Extremely …  -0.454     0.0420    -10.8  3.55e- 27   87.9  -0.536  \n3 polviews_m Extremely …   0.268     0.0295      9.10 9.07e- 20   63.3   0.210  \n4 polviews_m Liberal - …   0.277     0.0229     12.1  1.46e- 33  109.    0.232  \n5 polviews_m Slightly C…  -0.266     0.0330     -8.06 7.65e- 16   50.2  -0.330  \n6 polviews_m Slightly L…   0.193     0.0303      6.39 1.66e- 10   32.5   0.134  \n7 race       Black - Wh…   0.403     0.0173     23.4  1.18e-120  398.    0.369  \n8 race       Other - Wh…   0.125     0.0386      3.23 1.24e-  3    9.66  0.0490 \n9 sex        Female - M…   0.0443    0.0177      2.51 1.22e-  2    6.36  0.00967\n# ℹ 1 more variable: conf.high &lt;dbl&gt;"
   },
   {
     "objectID": "slides/06-work-with-models.html#which-gets-us-back-to-familiar-territory",
@@ -4407,7 +4414,7 @@
     "href": "slides/04-show-the-right-numbers.html#facets-in-action",
     "title": "Data Visualization - 4. Show the Right Numbers",
     "section": "Facets in action",
-    "text": "Facets in action\n\np &lt;- ggplot(data = gapminder,\n            mapping = aes(x = year,\n                          y = gdpPercap))\n\np_out &lt;- p + geom_line(color=\"gray70\", \n              mapping=aes(group = country)) +\n    geom_smooth(size = 1.1,\n                method = \"loess\",\n                se = FALSE) +\n    scale_y_log10(labels=scales::label_dollar()) +\n    facet_wrap(~ continent, ncol = 5) +\n    labs(x = \"Year\",\n         y = \"log GDP per capita\",\n         title = \"GDP per capita on Five Continents\",\n         caption = \"Data: Gapminder\")"
+    "text": "Facets in action\n\np &lt;- ggplot(data = gapminder,\n            mapping = aes(x = year,\n                          y = gdpPercap))\n\np_out &lt;- p + geom_line(color=\"gray70\", \n              mapping=aes(group = country)) +\n    geom_smooth(linewidth = 1.1,\n                method = \"loess\",\n                se = FALSE) +\n    scale_y_log10(labels=scales::label_dollar()) +\n    facet_wrap(~ continent, ncol = 5) +\n    labs(x = \"Year\",\n         y = \"log GDP per capita\",\n         title = \"GDP per capita on Five Continents\",\n         caption = \"Data: Gapminder\")"
   },
   {
     "objectID": "slides/04-show-the-right-numbers.html#the-midwest-dataset",
@@ -4694,7 +4701,7 @@
     "href": "slides/01-looking-at-data-2.html#or-monsters",
     "title": "Data Visualization - 1. Looking at Data (b)",
     "section": "… or monsters",
-    "text": "… or monsters\n\n\nNetwork chords"
+    "text": "… or monsters\n\n\n\nNetwork chords"
   },
   {
     "objectID": "slides/01-looking-at-data-1.html#housekeeping",
