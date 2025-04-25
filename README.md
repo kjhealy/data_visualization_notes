@@ -23,5 +23,5 @@ PDF versions of the slides.
 
 ### The `html_slides/` folder
 
-HTML versions of the slides. Use `index.html` to navigate them.
+HTML versions of the slides. Open the `index.html` file in your browser to navigate them.
 
