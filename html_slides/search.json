@@ -2482,14 +2482,14 @@
     "href": "slides/02-about-r.html#your-code-is-whats-real-in-your-project",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "Your code is what’s real in your project",
-    "text": "Your code is what’s real in your project"
+    "text": "Your code is what’s real in your project\n\nGo to Tools &gt; Global Options &gt; General and (1) Uncheck the box labeled “Restore .RData into workspace at startup”, (2) Select “never” for “Save workspace to .RData on exit”"
   },
   {
     "objectID": "slides/02-about-r.html#consider-not-showing-output-inline",
     "href": "slides/02-about-r.html#consider-not-showing-output-inline",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "Consider not showing output inline",
-    "text": "Consider not showing output inline"
+    "text": "Consider not showing output inline\n\nGo to Tools &gt; Global Options &gt; R Markdown and uncheck the box labeled “Show output inline for all R Markdown Documents”"
   },
   {
     "objectID": "slides/02-about-r.html#where-we-want-to-end-up",
@@ -2566,7 +2566,7 @@
     "href": "slides/02-about-r.html#basic-markdown-summary",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "Basic markdown summary",
-    "text": "Basic markdown summary\n\n\n\n\nDesired style\nUse the following Markdown annotation\n\n\n\n\nHeading 1\n# Heading 1\n\n\nHeading 2\n## Heading 2\n\n\nHeading 3\n### Heading 3 (Actual heading styles will vary.)\n\n\nParagraph\nJust start typing\n\n\nBold\n**Bold**\n\n\nItalic\n*Italic*\n\n\nImages\n[Alternate text for image](path/image.jpg)\n\n\nHyperlinks\n[Link text](https://www.visualizingsociety.com/)\n\n\nUnordered Lists\n\n\n\n- First\n- First\n\n\n- Second.\n- Second\n\n\n- Third\n- Third\n\n\nOrdered Lists\n\n\n\n1. First\n1. First\n\n\n2. Second.\n2. Second\n\n\n3. Third\n3. Third\n\n\nFootnote.¹\nFootnote[^notelabel]\n\n\n¹The note’s content.\n[^notelabel] The note's content."
+    "text": "Basic markdown summary\n\n\n\n\nTo get this\nYou write this\n\n\n\n\nHeading 1\n# Heading 1\n\n\nHeading 2\n## Heading 2\n\n\nHeading 3\n### Heading 3 (Actual heading styles will vary.)\n\n\nParagraph\nJust start typing\n\n\nBold\n**Bold**\n\n\nItalic\n*Italic*\n\n\nImages\n[Alternate text for image](path/image.jpg)\n\n\nHyperlinks\n[Link text](https://www.visualizingsociety.com/)\n\n\nUnordered Lists\n\n\n\n- First\n- First\n\n\n- Second.\n- Second\n\n\n- Third\n- Third\n\n\nOrdered Lists\n\n\n\n1. First\n1. First\n\n\n2. Second.\n2. Second\n\n\n3. Third\n3. Third\n\n\nFootnote.¹\nFootnote[^notelabel]\n\n\n¹The note’s content.\n[^notelabel] The note's content."
   },
   {
     "objectID": "slides/02-about-r.html#the-right-frame-of-mind",
@@ -2748,7 +2748,7 @@
     "href": "slides/02-about-r.html#use-the-pipe-operator",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "Use the pipe operator: |>",
-    "text": "Use the pipe operator: |&gt;\nInstead of deeply nesting functions in parentheses, we can use the pipe operator:\n\nc(1:20) |&gt; mean() |&gt; summary() |&gt; names() |&gt;  length()\n\n[1] 6\n\n\nRead this operator as “and then”"
+    "text": "Use the pipe operator: |&gt;\nInstead of deeply nesting functions in parentheses, we can use the pipe operator:\n\nc(1:20) |&gt; mean() |&gt; summary() |&gt; names() |&gt;  length()\n\n[1] 6\n\n\nRead this operator as “and then”\nLike the assignment operator, this is two characters. To write it, type the pipe character | and then the &gt; character. Better, use a keyboard shortcut. On a Mac, Command Shift M. On a Windows PC, Ctrl Shift M.\nIf the pipe looks like this, %&gt;% (the Magrittr pipe) don’t worry, it will work the same as the one shown here, |&gt;. But to change it, go to Global Options &gt; Code and check the “Use native pipe operator” box."
   },
   {
     "objectID": "slides/02-about-r.html#use-the-pipe-operator-1",
@@ -2797,14 +2797,14 @@
     "href": "slides/02-about-r.html#functions-are-bundled-into-packages-2",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "Functions are bundled into packages",
-    "text": "Functions are bundled into packages\nBut you must load the package in each R session before you can access its contents:\n\n## To load a package, usually at the start of your RMarkdown document or script file\nlibrary(palmerpenguins)\npenguins\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "Functions are bundled into packages\nBut you must load the package in each R session before you can access its contents:\n\n## To load a package, usually at the start of your Quarto document or script file\nlibrary(palmerpenguins)\npenguins\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "slides/02-about-r.html#grabbing-a-single-function-with",
     "href": "slides/02-about-r.html#grabbing-a-single-function-with",
     "title": "Data Visualization - 2. Finding your way in R",
     "section": "Grabbing a single function with ::",
-    "text": "Grabbing a single function with ::\n\n# A little glimpse of what we'll do soon\npenguins |&gt; \n  count(species, sex, year) |&gt; \n  pivot_wider(names_from = year, values_from = n) |&gt; \n  tinytable::tt()\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                species\n                sex\n                2007\n                2008\n                2009\n              \n        \n        \n        \n                \n                  Adelie   \n                  female\n                  22\n                  25\n                  26\n                \n                \n                  Adelie   \n                  male  \n                  22\n                  25\n                  26\n                \n                \n                  Adelie   \n                  NA    \n                   6\n                  NA\n                  NA\n                \n                \n                  Chinstrap\n                  female\n                  13\n                   9\n                  12\n                \n                \n                  Chinstrap\n                  male  \n                  13\n                   9\n                  12\n                \n                \n                  Gentoo   \n                  female\n                  16\n                  22\n                  20\n                \n                \n                  Gentoo   \n                  male  \n                  17\n                  23\n                  21\n                \n                \n                  Gentoo   \n                  NA    \n                   1\n                   1\n                   3"
+    "text": "Grabbing a single function with ::\n\n# A little glimpse of what we'll do soon\npenguins |&gt; \n  count(species, sex, year) |&gt; \n  pivot_wider(names_from = year, values_from = n) |&gt; \n  tinytable::tt()\n\n\n\n    \n\n    \n    \n      \n        \n        \n              \n                species\n                sex\n                2007\n                2008\n                2009\n              \n        \n        \n        \n                \n                  Adelie\n                  female\n                  22\n                  25\n                  26\n                \n                \n                  Adelie\n                  male\n                  22\n                  25\n                  26\n                \n                \n                  Adelie\n                  NA\n                  6\n                  NA\n                  NA\n                \n                \n                  Chinstrap\n                  female\n                  13\n                  9\n                  12\n                \n                \n                  Chinstrap\n                  male\n                  13\n                  9\n                  12\n                \n                \n                  Gentoo\n                  female\n                  16\n                  22\n                  20\n                \n                \n                  Gentoo\n                  male\n                  17\n                  23\n                  21\n                \n                \n                  Gentoo\n                  NA\n                  1\n                  1\n                  3"
   },
   {
     "objectID": "slides/02-about-r.html#remember-those-conflicts",
@@ -3441,14 +3441,7 @@
     "href": "slides/03-make-a-graph.html#ggplots-flow-of-action-required-2",
     "title": "Data Visualization - 3. Make Some Graphs",
     "section": "ggplot’s flow of action: required",
-    "text": "ggplot’s flow of action: required"
-  },
-  {
-    "objectID": "slides/03-make-a-graph.html#geom",
-    "href": "slides/03-make-a-graph.html#geom",
-    "title": "Data Visualization - 3. Make Some Graphs",
-    "section": "",
-    "text": "Let’s go piece by piece"
+    "text": "ggplot’s flow of action: required\n\nGeom"
   },
   {
     "objectID": "slides/03-make-a-graph.html#start-with-the-data",

@@ -6,10 +6,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a9469ea74f376a5b9d9b67a32523b816.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d8ad1b1978128a5839d7838e84671e6b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fonts-0.0/fonts-embed.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.13">
+  <meta name="generator" content="quarto-1.6.42">
 
   <meta name="author" content="Kieran Healy">
   <title>Data Visualization with R and the Tidyverse – Data Visualization - 2. Finding your way in R</title>
@@ -96,7 +96,7 @@
     code span.vs { color: #ed8796; } /* VerbatimString */
     code span.wa { color: #f5a97f; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-90383d57ff71b8a16c49145c3ea8a6c0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-6f429e560f7b8dea3b6b25abf16cad93.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -207,7 +207,7 @@ Kieran Healy
     </div>
 </div>
 
-  <p class="date">October 2024</p>
+  <p class="date">April 2025</p>
 </section>
 <section>
 <section id="getting-to-know-r-and-rstudio" class="title-slide slide level1 inv-title center" data-background-color="#252F3E">
@@ -342,11 +342,13 @@ Kieran Healy
 <section id="your-code-is-whats-real-in-your-project" class="slide level2">
 <h2>Your code is what’s real in your project</h2>
 
-<img data-src="img/02_rstudio_dont_restore.png" class="r-stretch"></section>
+<img data-src="img/02_rstudio_dont_restore.png" class="r-stretch"><p>Go to Tools &gt; Global Options &gt; General and (1) <em>Uncheck</em> the box labeled “Restore .RData into workspace at startup”, (2) Select “never” for “Save workspace to .RData on exit”</p>
+</section>
 <section id="consider-not-showing-output-inline" class="slide level2">
 <h2>Consider not showing output inline</h2>
 
-<img data-src="img/02_rstudio_uncheck_inline.png" class="r-stretch"></section></section>
+<img data-src="img/02_rstudio_uncheck_inline.png" class="r-stretch"><p>Go to Tools &gt; Global Options &gt; R Markdown and <em>uncheck</em> the box labeled “Show output inline for all R Markdown Documents”</p>
+</section></section>
 <section>
 <section id="writing-documents" class="title-slide slide level1 inv-title center" data-background-color="#252F3E">
 <h1>Writing documents</h1>
@@ -407,11 +409,11 @@ Kieran Healy
 <section class="slide level2">
 
 
-<img data-src="img/02_lorem_covid_quarto_qmd.png" style="width:90.0%" class="r-stretch quarto-figure-center"><p class="caption">Markdown document</p></section>
+<img data-src="img/02_lorem_covid_quarto_qmd.png" style="width:90.0%" class="r-stretch quarto-figure-center"><p class="caption">Quarto document</p></section>
 <section class="slide level2">
 
 
-<img data-src="img/02_lorem_covid_quarto_qmd_annotated.png" style="width:90.0%" class="r-stretch quarto-figure-center"><p class="caption">Markdown document annotated</p></section>
+<img data-src="img/02_lorem_covid_quarto_qmd_annotated.png" style="width:90.0%" class="r-stretch quarto-figure-center"><p class="caption">Quarto document annotated</p></section>
 <section class="slide level2">
 
 
@@ -453,8 +455,8 @@ Kieran Healy
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>Desired style</th>
-<th>Use the following Markdown annotation</th>
+<th>To get this</th>
+<th>You write this</th>
 </tr>
 </thead>
 <tbody>
@@ -1037,6 +1039,8 @@ Kieran Healy
 </div>
 </div>
 <p>Read this operator as “<em><span class="fg-green"><strong>and then</strong></span></em>”</p>
+<p>Like the assignment operator, this is two characters. To write it, type the pipe character <code>|</code> and then the <code>&gt;</code> character. Better, use a keyboard shortcut. On a Mac, <strong>Command Shift M</strong>. On a Windows PC, <strong>Ctrl Shift M</strong>.</p>
+<p>If the pipe looks like this, <code>%&gt;%</code> (the <a href="https://r4ds.hadley.nz/data-transform.html#sec-the-pipe">Magrittr pipe</a>) don’t worry, it will work the same as the one shown here, <code>|&gt;</code>. But to change it, go to Global Options &gt; Code and <em>check</em> the “Use native pipe operator” box.</p>
 </section>
 <section id="use-the-pipe-operator-1" class="slide level2">
 <h2>Use the pipe operator: <span class="fg-green">|&gt;</span></h2>
@@ -1138,7 +1142,7 @@ Kieran Healy
 <h2>Functions are bundled into <span class="fg-yellow">packages</span></h2>
 <p>But you must <em>load</em> the package in each R session before you can access its contents:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb95" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a aria-hidden="true" tabindex="-1"></a><span class="do">## To load a package, usually at the start of your RMarkdown document or script file</span></span>
+<div class="sourceCode cell-code" id="cb95" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a aria-hidden="true" tabindex="-1"></a><span class="do">## To load a package, usually at the start of your Quarto document or script file</span></span>
 <span id="cb95-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
 <span id="cb95-3"><a aria-hidden="true" tabindex="-1"></a>penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1172,12 +1176,19 @@ Kieran Healy
 <!-- preamble start -->
 
     <script>
-      function styleCell_q1duzcmrgz3r7cugksi7(i, j, css_id) {
-        var table = document.getElementById("tinytable_q1duzcmrgz3r7cugksi7");
-        table.rows[i].cells[j].classList.add(css_id);
+
+      function styleCell_cu8v1n7dq1eyb9az9jzu(i, j, css_id) {
+          var table = document.getElementById("tinytable_cu8v1n7dq1eyb9az9jzu");
+          var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_q1duzcmrgz3r7cugksi7');
+        var table = document.getElementById('tinytable_cu8v1n7dq1eyb9az9jzu');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -1185,8 +1196,8 @@ Kieran Healy
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_q1duzcmrgz3r7cugksi7(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_q1duzcmrgz3r7cugksi7");
+      function spanCell_cu8v1n7dq1eyb9az9jzu(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_cu8v1n7dq1eyb9az9jzu");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -1212,18 +1223,30 @@ Kieran Healy
         targetCell.rowSpan = rowspan;
         targetCell.colSpan = colspan;
       }
-window.addEventListener('load', function () { styleCell_q1duzcmrgz3r7cugksi7(0, 0, 'tinytable_css_id2u76dx0xwtlenupch9be') })
-window.addEventListener('load', function () { styleCell_q1duzcmrgz3r7cugksi7(0, 1, 'tinytable_css_id2u76dx0xwtlenupch9be') })
-window.addEventListener('load', function () { styleCell_q1duzcmrgz3r7cugksi7(0, 2, 'tinytable_css_id2u76dx0xwtlenupch9be') })
-window.addEventListener('load', function () { styleCell_q1duzcmrgz3r7cugksi7(0, 3, 'tinytable_css_id2u76dx0xwtlenupch9be') })
-window.addEventListener('load', function () { styleCell_q1duzcmrgz3r7cugksi7(0, 4, 'tinytable_css_id2u76dx0xwtlenupch9be') })
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 }, { i: 0, j: 2 }, { i: 0, j: 3 }, { i: 0, j: 4 },  ], css_id: 'tinytable_css_ucvyrri3ata0uo6tr2g7',}, 
+          { positions: [ { i: 8, j: 0 }, { i: 8, j: 1 }, { i: 8, j: 2 }, { i: 8, j: 3 }, { i: 8, j: 4 },  ], css_id: 'tinytable_css_lb7j72id2q4bchtx9xqb',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_cu8v1n7dq1eyb9az9jzu(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
     </script>
 
     <style>
-    .table td.tinytable_css_id2u76dx0xwtlenupch9be, .table th.tinytable_css_id2u76dx0xwtlenupch9be {  border-bottom: solid 0.1em #d3d8dc; }
+      /* tinytable css entries after */
+      .table td.tinytable_css_ucvyrri3ata0uo6tr2g7, .table th.tinytable_css_ucvyrri3ata0uo6tr2g7 { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_lb7j72id2q4bchtx9xqb, .table th.tinytable_css_lb7j72id2q4bchtx9xqb { border-bottom: solid #d3d8dc 0.1em; }
     </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_q1duzcmrgz3r7cugksi7" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_cu8v1n7dq1eyb9az9jzu" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
@@ -1237,23 +1260,23 @@ window.addEventListener('load', function () { styleCell_q1duzcmrgz3r7cugksi7(0, 
         
         <tbody>
                 <tr>
-                  <td>Adelie   </td>
+                  <td>Adelie</td>
                   <td>female</td>
                   <td>22</td>
                   <td>25</td>
                   <td>26</td>
                 </tr>
                 <tr>
-                  <td>Adelie   </td>
-                  <td>male  </td>
+                  <td>Adelie</td>
+                  <td>male</td>
                   <td>22</td>
                   <td>25</td>
                   <td>26</td>
                 </tr>
                 <tr>
-                  <td>Adelie   </td>
-                  <td>NA    </td>
-                  <td> 6</td>
+                  <td>Adelie</td>
+                  <td>NA</td>
+                  <td>6</td>
                   <td>NA</td>
                   <td>NA</td>
                 </tr>
@@ -1261,36 +1284,36 @@ window.addEventListener('load', function () { styleCell_q1duzcmrgz3r7cugksi7(0, 
                   <td>Chinstrap</td>
                   <td>female</td>
                   <td>13</td>
-                  <td> 9</td>
+                  <td>9</td>
                   <td>12</td>
                 </tr>
                 <tr>
                   <td>Chinstrap</td>
-                  <td>male  </td>
+                  <td>male</td>
                   <td>13</td>
-                  <td> 9</td>
+                  <td>9</td>
                   <td>12</td>
                 </tr>
                 <tr>
-                  <td>Gentoo   </td>
+                  <td>Gentoo</td>
                   <td>female</td>
                   <td>16</td>
                   <td>22</td>
                   <td>20</td>
                 </tr>
                 <tr>
-                  <td>Gentoo   </td>
-                  <td>male  </td>
+                  <td>Gentoo</td>
+                  <td>male</td>
                   <td>17</td>
                   <td>23</td>
                   <td>21</td>
                 </tr>
                 <tr>
-                  <td>Gentoo   </td>
-                  <td>NA    </td>
-                  <td> 1</td>
-                  <td> 1</td>
-                  <td> 3</td>
+                  <td>Gentoo</td>
+                  <td>NA</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>3</td>
                 </tr>
         </tbody>
       </table>
